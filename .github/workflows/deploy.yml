@@ -35,6 +35,11 @@ jobs:
       - name: Accessibility audit (WCAG 2.1 AA, zero violations)
         run: npm run a11y
       - uses: actions/configure-pages@v5
+        with:
+          # Try to enable Pages (source: GitHub Actions) automatically on
+          # first run; if the token lacks permission, enable it manually:
+          # Settings → Pages → Source → "GitHub Actions".
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
