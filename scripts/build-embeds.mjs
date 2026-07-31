@@ -103,9 +103,15 @@ for (const rel of htmlPages(SITE)) {
   // Assets keep their own path. Strip the preview base, then absolutise —
   // the official logos have to resolve from utrockets.com, where a
   // site-root /assets/ does not exist.
-  if (PREFIX) payload = payload.replaceAll(`src="${PREFIX}/`, 'src="/');
+  if (PREFIX) {
+    payload = payload
+      .replaceAll(`src="${PREFIX}/`, 'src="/')
+      .replaceAll(`data-rkt-reel="${PREFIX}/`, 'data-rkt-reel="/');
+  }
   if (ASSET_BASE) {
-    payload = payload.replaceAll('src="/assets/', `src="${ASSET_BASE}/assets/`);
+    payload = payload
+      .replaceAll('src="/assets/', `src="${ASSET_BASE}/assets/`)
+      .replaceAll('data-rkt-reel="/assets/', `data-rkt-reel="${ASSET_BASE}/assets/`);
   }
 
   const slug = /data-page="([^"]+)"/.exec(payload)?.[1] ?? "page";

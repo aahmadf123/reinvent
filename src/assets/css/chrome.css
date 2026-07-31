@@ -8,6 +8,58 @@ body.rkt-body {
   background: var(--rkt-paper, #f2f4f7);
 }
 
+/* ---------- page transitions ----------
+   Cross-document view transitions. Browsers without support just
+   navigate, so this is pure enhancement and costs no JS.
+
+   The easing is written out rather than taken from a token: these
+   pseudo-elements live on the document root, outside .rkt and
+   .rkt-chrome where the tokens are declared, so var() would not
+   resolve. Keep it in step with --rkt-ease. */
+@view-transition {
+  navigation: auto;
+}
+
+/* Chrome is identical on every page — naming it keeps it planted
+   while only the content beneath it moves. */
+.rkt-header {
+  view-transition-name: rkt-header;
+}
+
+.rkt-footer {
+  view-transition-name: rkt-footer;
+}
+
+@keyframes rkt-page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes rkt-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+::view-transition-old(root) {
+  animation: rkt-page-out 180ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+::view-transition-new(root) {
+  animation: rkt-page-in 340ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 .rkt-skip {
   position: absolute;
   left: -9999px;
@@ -163,22 +215,33 @@ body.rkt-body {
   border-radius: var(--rkt-radius);
   display: block;
   white-space: nowrap;
+  position: relative;
+  transition: color var(--rkt-fast) var(--rkt-ease);
 }
 
-.rkt-nav a:hover {
-  color: var(--rkt-white);
-  text-decoration: underline;
-  text-decoration-color: var(--rkt-gold);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.3em;
+/* A gold rule that wipes in from the left, instead of an underline
+   that pops. Colour still carries the state on its own. */
+.rkt-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0.7rem;
+  right: 0.7rem;
+  bottom: 0.28rem;
+  height: 2px;
+  background: var(--rkt-gold);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--rkt-med) var(--rkt-ease);
 }
 
+.rkt-nav a:hover,
 .rkt-nav a[aria-current="page"] {
   color: var(--rkt-white);
-  text-decoration: underline;
-  text-decoration-color: var(--rkt-gold);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.3em;
+}
+
+.rkt-nav a:hover::after,
+.rkt-nav a[aria-current="page"]::after {
+  transform: none;
 }
 
 .rkt-nav .rkt-nav-item {
@@ -224,10 +287,29 @@ body.rkt-body {
   padding: 0.6em 1.3em 0.5em;
 }
 
+.rkt-nav .rkt-cta a {
+  transition:
+    background-color var(--rkt-fast) var(--rkt-ease),
+    box-shadow var(--rkt-fast) var(--rkt-ease),
+    transform var(--rkt-fast) var(--rkt-ease);
+}
+
+/* The CTA is a button, not a nav link — no wiping rule under it. */
+.rkt-nav .rkt-cta a::after {
+  display: none;
+}
+
 .rkt-nav .rkt-cta a:hover {
   background: var(--rkt-gold-press);
   text-decoration: none;
   color: var(--rkt-navy);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.rkt-nav .rkt-cta a:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 /* mobile nav */
@@ -372,4 +454,18 @@ body.rkt-body {
   border-radius: 999px;
   padding: 0.35em 0.9em;
   align-self: center;
+}
+
+/* ---------- reduced motion ----------
+   reset.css covers everything inside .rkt; the chrome sits outside
+   it, so it needs its own guard. */
+@media (prefers-reduced-motion: reduce) {
+  .rkt-chrome,
+  .rkt-chrome *,
+  .rkt-chrome *::before,
+  .rkt-chrome *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

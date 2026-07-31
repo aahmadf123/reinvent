@@ -13,7 +13,7 @@
   font-family: var(--rkt-font-body);
   font-size: 1.0625rem;
   line-height: 1.65;
-  color: var(--rkt-deep);
+  color: var(--rkt-navy);
   background: var(--rkt-paper);
   -webkit-text-size-adjust: 100%;
   overflow-wrap: break-word;
@@ -41,7 +41,7 @@
 }
 
 .rkt a {
-  color: var(--rkt-blue);
+  color: var(--rkt-navy);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.16em;
@@ -53,13 +53,18 @@
 }
 
 .rkt :focus-visible {
-  outline: 2px solid var(--rkt-blue);
+  outline: 2px solid var(--rkt-navy);
   outline-offset: 2px;
   border-radius: var(--rkt-radius);
 }
 
-.rkt .rkt-dark :focus-visible,
-.rkt [class*="--dark"] :focus-visible {
+/* Navy outlines vanish on navy and black fields — switch to gold. */
+.rkt .rkt-section--navy :focus-visible,
+.rkt .rkt-section--black :focus-visible,
+.rkt .rkt-hero :focus-visible,
+.rkt .rkt-ctaband :focus-visible,
+.rkt .rkt-crumb :focus-visible,
+.rkt .rkt-telemetry :focus-visible {
   outline-color: var(--rkt-gold);
 }
 
@@ -70,6 +75,19 @@
 .rkt table {
   border-collapse: collapse;
   width: 100%;
+}
+
+/* Available to screen readers, invisible on screen. */
+.rkt .rkt-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {

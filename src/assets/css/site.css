@@ -296,9 +296,12 @@
   grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
 }
 
+/* Centred: three figures in a row read as a scoreboard, which is the
+   vernacular this page is borrowing from. */
 .rkt .rkt-telemetry li {
-  padding: 1.5rem var(--rkt-gutter);
+  padding: 1.75rem var(--rkt-gutter);
   border-left: 1px solid var(--rkt-line-dark);
+  text-align: center;
 }
 
 .rkt .rkt-telemetry li:first-child {
@@ -327,13 +330,41 @@
   margin-top: 0.5rem;
 }
 
-/* ---------- section headers ---------- */
+/* ---------- section headers ----------
+   Alignment carries meaning here: paper reads, navy declares. Sections
+   you scan — anything leading into a card grid, a table, or prose —
+   stay left-aligned. Short, single-statement sections centre, so the
+   page has a rhythm instead of one unbroken left edge. */
 .rkt .rkt-sechead {
   margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
 }
 
 .rkt .rkt-sechead .rkt-h2 {
   max-width: 24ch;
+}
+
+.rkt .rkt-sechead .rkt-lede {
+  margin-top: 1rem;
+}
+
+.rkt .rkt-sechead--center {
+  text-align: center;
+}
+
+.rkt .rkt-sechead--center .rkt-slant,
+.rkt .rkt-sechead--center .rkt-h2,
+.rkt .rkt-sechead--center .rkt-lede {
+  margin-inline: auto;
+}
+
+.rkt .rkt-sechead--center .rkt-eyebrow {
+  /* the wide track pushes the last letter off-centre */
+  text-indent: 0.2em;
+}
+
+/* A centred head wants its section's controls centred too. */
+.rkt .rkt-section--center .rkt-btnrow {
+  justify-content: center;
 }
 
 /* ---------- card grid ---------- */
@@ -559,22 +590,24 @@
   overflow: hidden;
 }
 
+/* One call, one focus — so this is the page's centred moment. */
 .rkt .rkt-ctaband .rkt-wrap {
-  padding-block: clamp(3rem, 7vw, 4.5rem);
+  padding-block: clamp(3.5rem, 8vw, 5.5rem);
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1.75rem;
   position: relative;
+  text-align: center;
 }
 
 .rkt .rkt-ctaband .rkt-h2 {
-  max-width: 22ch;
+  max-width: 20ch;
 }
 
 .rkt .rkt-ctaband .rkt-btnrow {
   margin-top: 0;
+  justify-content: center;
 }
 
 /* ---------- FAQ ---------- */
@@ -616,10 +649,6 @@
   font-weight: 500;
   color: var(--rkt-navy);
   flex-shrink: 0;
-}
-
-.rkt .rkt-faq details[open] summary::after {
-  content: "\2212";
 }
 
 .rkt .rkt-faq .rkt-faq-a {
@@ -781,20 +810,155 @@
   text-align: center;
 }
 
-/* ---------- reveal animation (preview only, JS-gated) ---------- */
-.rkt-js .rkt .rkt-reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 250ms ease-out, transform 250ms ease-out;
+/* ============================================================
+   Motion.
+
+   One easing curve, three durations, from tokens.css. Two rules
+   govern everything below: nothing moves more than a few pixels,
+   and nothing is the only signal for anything — every hover state
+   also changes colour or weight, so the motion is decoration on
+   top of a change that is already legible without it.
+
+   reset.css flattens all of it under prefers-reduced-motion.
+   ============================================================ */
+
+/* --- hero entrance: one orchestrated sequence on load --- */
+@keyframes rkt-lift-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
 }
 
-.rkt-js .rkt .rkt-reveal.is-in {
+.rkt .rkt-hero .rkt-lift {
+  animation: rkt-lift-in var(--rkt-slow) var(--rkt-ease) both;
+}
+
+.rkt .rkt-hero .rkt-lift:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.rkt .rkt-hero .rkt-lift:nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.rkt .rkt-hero .rkt-lift:nth-child(4) {
+  animation-delay: 270ms;
+}
+
+/* --- scroll reveal (preview only; embeds ship without JS) --- */
+.rkt-anim .rkt .rkt-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--rkt-med) var(--rkt-ease),
+    transform var(--rkt-med) var(--rkt-ease);
+  transition-delay: calc(var(--rkt-i, 0) * var(--rkt-stagger));
+}
+
+.rkt-anim .rkt .rkt-reveal.is-in {
   opacity: 1;
   transform: none;
 }
 
+/* The slant rule draws itself in as its head arrives. */
+.rkt-anim .rkt .rkt-reveal .rkt-slant {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--rkt-slow) var(--rkt-ease) 120ms;
+}
+
+.rkt-anim .rkt .rkt-sechead--center.rkt-reveal .rkt-slant {
+  transform-origin: center;
+}
+
+.rkt-anim .rkt .rkt-reveal.is-in .rkt-slant {
+  transform: none;
+}
+
+/* --- buttons --- */
+.rkt a.rkt-btn {
+  transition:
+    background-color var(--rkt-fast) var(--rkt-ease),
+    border-color var(--rkt-fast) var(--rkt-ease),
+    box-shadow var(--rkt-fast) var(--rkt-ease),
+    transform var(--rkt-fast) var(--rkt-ease);
+}
+
+.rkt a.rkt-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(10, 34, 64, 0.3);
+}
+
+.rkt a.rkt-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* --- cards --- */
+.rkt .rkt-card {
+  transition:
+    transform var(--rkt-med) var(--rkt-ease),
+    box-shadow var(--rkt-med) var(--rkt-ease);
+}
+
+.rkt .rkt-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(10, 34, 64, 0.15);
+}
+
+.rkt .rkt-section--navy .rkt-card:hover,
+.rkt .rkt-section--black .rkt-card:hover {
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.rkt .rkt-card .rkt-arrow {
+  display: inline-block;
+  transition: transform var(--rkt-med) var(--rkt-ease);
+}
+
+.rkt .rkt-card:hover .rkt-arrow,
+.rkt .rkt-card:focus-within .rkt-arrow {
+  transform: translateX(5px);
+}
+
+/* --- altitude bands --- */
+.rkt .rkt-band::before {
+  transition: transform var(--rkt-med) var(--rkt-ease);
+}
+
+.rkt .rkt-band:hover::before {
+  transform: scale(1.35);
+}
+
+/* --- FAQ --- */
+.rkt .rkt-faq summary {
+  transition: color var(--rkt-fast) var(--rkt-ease);
+}
+
+.rkt .rkt-faq summary:hover {
+  color: var(--rkt-navy);
+  text-decoration: underline;
+  text-decoration-color: var(--rkt-gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.15em;
+}
+
+/* One glyph that rotates into a close mark, rather than swapping
+   characters — a swap can't be animated. */
+.rkt .rkt-faq summary::after {
+  display: inline-block;
+  transition: transform var(--rkt-med) var(--rkt-ease);
+}
+
+.rkt .rkt-faq details[open] summary::after {
+  content: "+";
+  transform: rotate(45deg);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .rkt-js .rkt .rkt-reveal {
+  .rkt-anim .rkt .rkt-reveal,
+  .rkt-anim .rkt .rkt-reveal .rkt-slant {
     opacity: 1;
     transform: none;
     transition: none;

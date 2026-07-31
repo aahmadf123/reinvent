@@ -47,14 +47,59 @@
     }
   }
 
+  // Cards in a grid reveal in sequence rather than all at once. The
+  // index feeds a transition-delay in CSS.
+  document.querySelectorAll(".rkt-cards").forEach(function (grid) {
+    var i = 0;
+    grid.querySelectorAll(":scope > .rkt-reveal").forEach(function (el) {
+      el.style.setProperty("--rkt-i", i++);
+    });
+  });
+
+  // Stat figures count up the first time they're seen. The real values
+  // live in a .rkt-sr sibling that never changes, so assistive tech is
+  // unaffected by whatever the visible digits are doing mid-animation.
+  function countUp(el) {
+    var final = el.textContent.trim();
+    var digits = final.replace(/[^0-9]/g, "");
+    if (!digits) return;
+    var target = parseInt(digits, 10);
+    if (!isFinite(target) || target === 0) return;
+    var prefix = final.slice(0, final.indexOf(digits.charAt(0)));
+    var suffix = final.slice(final.indexOf(digits) + digits.length);
+    var grouped = /,/.test(final);
+    var start = null;
+    var dur = 900;
+
+    function frame(now) {
+      if (start === null) start = now;
+      var t = Math.min(1, (now - start) / dur);
+      // ease-out cubic — lands softly on the real number
+      var v = Math.round(target * (1 - Math.pow(1 - t, 3)));
+      el.textContent = prefix + (grouped ? v.toLocaleString("en-US") : v) + suffix;
+      if (t < 1) requestAnimationFrame(frame);
+      else el.textContent = final;
+    }
+    requestAnimationFrame(frame);
+  }
+
   // Reveal-on-scroll (single motion pattern; disabled for reduced motion)
   var targets = document.querySelectorAll(".rkt-reveal");
+  var stats = document.querySelectorAll("[data-rkt-count]");
+
   if (reduced || !("IntersectionObserver" in window)) {
     targets.forEach(function (el) {
       el.classList.add("is-in");
     });
     return;
   }
+
+  // Only now commit to hiding anything. The CSS that makes .rkt-reveal
+  // invisible is gated on this class, so if any code above had thrown,
+  // the page would still be fully readable — content is never hidden by
+  // a stylesheet that depends on script we haven't reached yet.
+  document.documentElement.classList.add("rkt-anim");
+
   var io = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
@@ -68,5 +113,20 @@
   );
   targets.forEach(function (el) {
     io.observe(el);
+  });
+
+  var statIo = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          countUp(entry.target);
+          statIo.unobserve(entry.target);
+        }
+      });
+    },
+    { rootMargin: "0px 0px -12% 0px" }
+  );
+  stats.forEach(function (el) {
+    statIo.observe(el);
   });
 })();

@@ -19,7 +19,11 @@
 {% endmacro %}
 
 {# Hero. Pass media=true on the home page to run the footage reel
-   behind it; every other page gets the flat Midnight Blue field. #}
+   behind it; every other page gets the flat Midnight Blue field.
+
+   The reel's URL goes through the `url` filter: it lives on a data
+   attribute, which Eleventy's base plugin does not rewrite, so
+   without this it would miss the deploy path prefix and 404. #}
 {% macro hero(eyebrow, title, lede="", sub=false, media=false) %}
 <section class="rkt-hero{% if sub %} rkt-hero--sub{% endif %}">
   {% if media %}
@@ -28,37 +32,44 @@
     {# No src: rkt.js attaches the reel only on large screens, and never
        when the visitor asks for reduced motion or is saving data. Without
        JS — including inside SIDEARM embeds — the still above stands in. #}
-    <video data-rkt-reel="/assets/video/rockets-hero.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+    <video data-rkt-reel="{{ '/assets/video/rockets-hero.mp4' | url }}" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
   </div>
   {% endif %}
   <div class="rkt-wrap">
-    <p class="rkt-eyebrow">{{ eyebrow }}</p>
-    <h1 class="rkt-display">{{ title | safe }}</h1>
-    {% if lede %}<p class="rkt-lede">{{ lede }}</p>{% endif %}
-    {% if caller %}{{ caller() }}{% endif %}
+    <p class="rkt-eyebrow rkt-lift">{{ eyebrow }}</p>
+    <h1 class="rkt-display rkt-lift">{{ title | safe }}</h1>
+    {% if lede %}<p class="rkt-lede rkt-lift">{{ lede }}</p>{% endif %}
+    {% if caller %}<div class="rkt-lift">{{ caller() }}</div>{% endif %}
   </div>
 </section>
 {% endmacro %}
 
+{# Stat strip. The visible figures animate up from zero, so the real
+   values are carried in a screen-reader copy that never changes. #}
 {% macro telemetry(stats) %}
 <div class="rkt-telemetry">
   <ul>
     {% for s in stats %}
     <li>
-      <span class="rkt-stat">{{ s.n }}</span>
-      <span class="rkt-stat-label">{{ s.label }}</span>
+      <span class="rkt-sr">{{ s.n }} {{ s.label }}</span>
+      <span aria-hidden="true">
+        <span class="rkt-stat" data-rkt-count>{{ s.n }}</span>
+        <span class="rkt-stat-label">{{ s.label }}</span>
+      </span>
     </li>
     {% endfor %}
   </ul>
 </div>
 {% endmacro %}
 
-{% macro sechead(eyebrow, title, lede="") %}
-<div class="rkt-sechead rkt-reveal">
+{# Section head. center=true for short, declarative sections — see the
+   alignment note in site.css. #}
+{% macro sechead(eyebrow, title, lede="", center=false) %}
+<div class="rkt-sechead rkt-reveal{% if center %} rkt-sechead--center{% endif %}">
   {{ slant() }}
   <p class="rkt-eyebrow">{{ eyebrow }}</p>
   <h2 class="rkt-h2">{{ title | safe }}</h2>
-  {% if lede %}<p class="rkt-lede" style="margin-top:1rem">{{ lede }}</p>{% endif %}
+  {% if lede %}<p class="rkt-lede">{{ lede }}</p>{% endif %}
 </div>
 {% endmacro %}
 
@@ -69,7 +80,7 @@
     {% if c.tag %}<span class="rkt-card-tag">{{ c.tag }}</span>{% endif %}
     <h3 class="rkt-h3"><a href="{{ c.href }}">{{ c.title }}</a></h3>
     <p>{{ c.text }}</p>
-    {% if c.cta %}<span class="rkt-card-cta" aria-hidden="true">{{ c.cta }} →</span>{% endif %}
+    {% if c.cta %}<span class="rkt-card-cta" aria-hidden="true">{{ c.cta }} <span class="rkt-arrow">→</span></span>{% endif %}
   </li>
   {% endfor %}
 </ul>

@@ -38,11 +38,14 @@ for (const vp of VIEWPORTS) {
   const page = await ctx.newPage();
   for (const url of pages) {
     await page.goto(`http://127.0.0.1:${port}${url}`, { waitUntil: "networkidle" });
-    // settle reveal animations so full-page shots aren't half-faded
+    // settle reveal animations so full-page shots aren't half-faded.
+    // Long enough to outlast the longest chain: the card stagger
+    // (3 × --rkt-stagger) plus a --rkt-med transition, and the hero's
+    // --rkt-slow entrance.
     await page.evaluate(() =>
       document.querySelectorAll(".rkt-reveal").forEach((el) => el.classList.add("is-in"))
     );
-    await page.waitForTimeout(120);
+    await page.waitForTimeout(1100);
     const name =
       (url === "/" ? "home" : url.replace(/^\/|\/$/g, "").replaceAll("/", "-")) +
       `--${vp.name}${REDUCED ? "--reduced" : ""}.png`;
