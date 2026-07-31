@@ -3,23 +3,40 @@
    uses only rkt- prefixed classes so output stays portable.
    ============================================================ #}
 
-{% macro traj(cls="") %}
-<svg class="rkt-traj{% if cls %} {{ cls }}{% endif %}" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-  <path d="M0 78 Q 720 70 1198 4" fill="none" stroke="currentColor" stroke-width="2.5"/>
-  <path d="M200 69.5 V 79.5 M500 59.1 V 69.1 M800 40.8 V 50.8 M1050 17.4 V 27.4" fill="none" stroke="currentColor" stroke-width="2"/>
-  <circle cx="1198" cy="4" r="4" fill="currentColor"/>
+{# Slant rule — two gold bars raked to the same angle as the italic
+   in the TOLEDO logotype, so section heads pick up the wordmark's
+   lean without going near the artwork.
+
+   Deliberately plain geometry. The rocket is a registered mark and
+   the guide forbids redrawing or outlining it, so nothing here
+   imitates its silhouette; where the rocket itself is wanted,
+   brand.njk places the official file instead. #}
+{% macro slant(cls="") %}
+<svg class="rkt-slant{% if cls %} {{ cls }}{% endif %}" viewBox="0 0 120 12" aria-hidden="true" focusable="false">
+  <path d="M2.4 12 L4.8 0 L86 0 L83.6 12 Z" fill="currentColor"/>
+  <path d="M93.4 12 L95.8 0 L109 0 L106.6 12 Z" fill="currentColor"/>
 </svg>
 {% endmacro %}
 
-{% macro hero(eyebrow, title, lede="", sub=false) %}
+{# Hero. Pass media=true on the home page to run the footage reel
+   behind it; every other page gets the flat Midnight Blue field. #}
+{% macro hero(eyebrow, title, lede="", sub=false, media=false) %}
 <section class="rkt-hero{% if sub %} rkt-hero--sub{% endif %}">
+  {% if media %}
+  <div class="rkt-hero-media">
+    <img src="/assets/img/rockets-hero-poster.jpg" alt="" width="1600" height="900" fetchpriority="high" decoding="async">
+    {# No src: rkt.js attaches the reel only on large screens, and never
+       when the visitor asks for reduced motion or is saving data. Without
+       JS — including inside SIDEARM embeds — the still above stands in. #}
+    <video data-rkt-reel="/assets/video/rockets-hero.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+  </div>
+  {% endif %}
   <div class="rkt-wrap">
     <p class="rkt-eyebrow">{{ eyebrow }}</p>
     <h1 class="rkt-display">{{ title | safe }}</h1>
     {% if lede %}<p class="rkt-lede">{{ lede }}</p>{% endif %}
     {% if caller %}{{ caller() }}{% endif %}
   </div>
-  {{ traj("rkt-hero-arc") }}
 </section>
 {% endmacro %}
 
@@ -38,7 +55,7 @@
 
 {% macro sechead(eyebrow, title, lede="") %}
 <div class="rkt-sechead rkt-reveal">
-  {{ traj("rkt-traj--rule") }}
+  {{ slant() }}
   <p class="rkt-eyebrow">{{ eyebrow }}</p>
   <h2 class="rkt-h2">{{ title | safe }}</h2>
   {% if lede %}<p class="rkt-lede" style="margin-top:1rem">{{ lede }}</p>{% endif %}

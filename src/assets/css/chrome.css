@@ -5,7 +5,7 @@
    ============================================================ */
 body.rkt-body {
   margin: 0;
-  background: var(--rkt-paper, #f7f5f0);
+  background: var(--rkt-paper, #f2f4f7);
 }
 
 .rkt-skip {
@@ -13,9 +13,9 @@ body.rkt-body {
   left: -9999px;
   top: 0;
   z-index: 100;
-  background: #fcd116;
-  color: #06172e;
-  font-family: "Barlow", Arial, sans-serif;
+  background: var(--rkt-gold);
+  color: var(--rkt-navy);
+  font-family: var(--rkt-font-body);
   font-weight: 600;
   padding: 0.75rem 1.25rem;
   text-decoration: none;
@@ -25,9 +25,81 @@ body.rkt-body {
   left: 0;
 }
 
+/* ---------- identity ----------
+   Marks are sized by height with width:auto so the supplied
+   proportions are never altered. Clear space comes from the
+   branding guide (p.7) and scales with the mark. */
+.rkt-logo,
+.rkt-rocket {
+  display: block;
+  width: auto;
+}
+
+.rkt-brand {
+  --rkt-logo-h: clamp(1.75rem, 4.2vw, 2.25rem);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--rkt-white);
+  padding-block: calc(var(--rkt-logo-h) * var(--rkt-clear-logo));
+}
+
+.rkt-brand .rkt-logo {
+  height: var(--rkt-logo-h);
+  /* X = 1/4 the logo height keeps the label out of the clear zone */
+  margin-right: calc(var(--rkt-logo-h) * var(--rkt-clear-logo));
+}
+
+.rkt-brand-label {
+  font-family: var(--rkt-font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: calc(var(--rkt-logo-h) * 0.52);
+  line-height: 1;
+  color: var(--rkt-gold);
+  border-left: 2px solid var(--rkt-line-dark);
+  padding-left: calc(var(--rkt-logo-h) * var(--rkt-clear-logo));
+}
+
+/* The approved Rocket Fund lockup (guide p.10). The tag is small by
+   design — it holds the artwork's proportions — so only use md+. */
+.rkt-lockup {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(var(--rkt-logo-h) * var(--rkt-clear-logo));
+  margin-left: calc(var(--rkt-logo-h) * var(--rkt-clear-logo) * -1);
+}
+
+.rkt-lockup--md {
+  --rkt-logo-h: 3.9rem;
+}
+
+.rkt-lockup--lg {
+  --rkt-logo-h: 5.5rem;
+}
+
+.rkt-lockup .rkt-logo {
+  height: var(--rkt-logo-h);
+}
+
+.rkt-lockup-tag {
+  margin-top: calc(var(--rkt-logo-h) * 0.15);
+  font-family: var(--rkt-font-body);
+  font-weight: 600;
+  font-size: calc(var(--rkt-logo-h) * 0.17);
+  letter-spacing: 0.3em;
+  text-indent: 0.3em; /* cancels the trailing track so it stays centred */
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--rkt-white);
+  white-space: nowrap;
+}
+
 /* ---------- header ---------- */
 .rkt-header {
-  background: var(--rkt-deep);
+  background: var(--rkt-navy);
   color: var(--rkt-white);
   border-bottom: 1px solid var(--rkt-line-dark);
   font-family: var(--rkt-font-body);
@@ -45,50 +117,14 @@ body.rkt-body {
   min-height: 4.25rem;
 }
 
-.rkt-mark {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  text-decoration: none;
-  color: var(--rkt-white);
-  padding: 0.6rem 0;
-}
-
-.rkt-mark svg {
-  width: 2.1rem;
-  height: 2.1rem;
-  flex-shrink: 0;
-}
-
-.rkt-mark .rkt-mark-team {
-  font-family: var(--rkt-font-display);
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 1.15rem;
-  letter-spacing: 0.04em;
-  line-height: 1;
-  display: block;
-}
-
-.rkt-mark .rkt-mark-sub {
-  font-family: var(--rkt-font-mono);
-  font-weight: 600;
-  font-size: 0.62rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--rkt-gold);
-  display: block;
-  margin-top: 0.25rem;
-}
-
 .rkt-menu-btn {
   display: none;
   margin-left: auto;
   background: none;
   border: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 2px;
+  border-radius: var(--rkt-radius);
   color: var(--rkt-white);
-  font-family: var(--rkt-font-mono);
+  font-family: var(--rkt-font-body);
   font-weight: 600;
   font-size: 0.75rem;
   letter-spacing: 0.14em;
@@ -119,12 +155,12 @@ body.rkt-body {
 }
 
 .rkt-nav a {
-  color: #dbe3ec;
+  color: var(--rkt-mist);
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   padding: 0.55rem 0.7rem;
-  border-radius: 2px;
+  border-radius: var(--rkt-radius);
   display: block;
   white-space: nowrap;
 }
@@ -157,9 +193,9 @@ body.rkt-body {
   top: 100%;
   left: 0;
   min-width: 14.5rem;
-  background: var(--rkt-midnight);
+  background: var(--rkt-navy);
   border: 1px solid var(--rkt-line-dark);
-  border-radius: 2px;
+  border-radius: var(--rkt-radius);
   display: none;
 }
 
@@ -170,7 +206,7 @@ body.rkt-body {
 
 .rkt-nav .rkt-sub a {
   padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
 
 .rkt-nav .rkt-cta {
@@ -179,7 +215,7 @@ body.rkt-body {
 
 .rkt-nav .rkt-cta a {
   background: var(--rkt-gold);
-  color: var(--rkt-deep);
+  color: var(--rkt-navy);
   font-family: var(--rkt-font-display);
   font-weight: 700;
   text-transform: uppercase;
@@ -189,9 +225,9 @@ body.rkt-body {
 }
 
 .rkt-nav .rkt-cta a:hover {
-  background: #ffdd45;
+  background: var(--rkt-gold-press);
   text-decoration: none;
-  color: var(--rkt-deep);
+  color: var(--rkt-navy);
 }
 
 /* mobile nav */
@@ -206,7 +242,7 @@ body.rkt-body {
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--rkt-deep);
+    background: var(--rkt-navy);
     border-bottom: 1px solid var(--rkt-line-dark);
     margin: 0;
     padding: 0.5rem var(--rkt-gutter) 1.25rem;
@@ -256,8 +292,8 @@ body.rkt-body {
 
 /* ---------- footer ---------- */
 .rkt-footer {
-  background: var(--rkt-deep);
-  color: #c3cedb;
+  background: var(--rkt-navy);
+  color: var(--rkt-mist);
   font-family: var(--rkt-font-body);
   border-top: 3px solid var(--rkt-gold);
 }
@@ -271,11 +307,16 @@ body.rkt-body {
   grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
 }
 
+.rkt-footer .rkt-footer-brand p {
+  margin-top: 1.25rem;
+  max-width: 34ch;
+}
+
 .rkt-footer h2 {
-  font-family: var(--rkt-font-mono);
+  font-family: var(--rkt-font-body);
   font-weight: 600;
   font-size: 0.75rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--rkt-gold);
   margin: 0 0 1rem;
@@ -294,12 +335,12 @@ body.rkt-body {
 }
 
 .rkt-footer a {
-  color: #dbe3ec;
+  color: var(--rkt-mist);
   text-decoration: none;
 }
 
 .rkt-footer a:hover {
-  color: #ffffff;
+  color: var(--rkt-white);
   text-decoration: underline;
   text-decoration-color: var(--rkt-gold);
 }
@@ -314,7 +355,7 @@ body.rkt-body {
   margin-inline: auto;
   padding: 1.25rem var(--rkt-gutter) 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  font-size: 0.85rem;
+  font-size: 0.8125rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -322,13 +363,13 @@ body.rkt-body {
 }
 
 .rkt-footer .rkt-preview-chip {
-  font-family: var(--rkt-font-mono);
+  font-family: var(--rkt-font-body);
   font-weight: 600;
   font-size: 0.68rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 999px;
-  padding: 0.3em 0.9em;
+  padding: 0.35em 0.9em;
   align-self: center;
 }

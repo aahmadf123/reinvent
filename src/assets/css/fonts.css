@@ -1,51 +1,55 @@
-/* Self-hosted fonts (preview site). SIDEARM embeds load the same
-   families from Google Fonts instead — see docs/sidearm-paste-guide.md. */
+/* Self-hosted stand-ins for the branding guide's licensed faces:
+   Saira Condensed for Smart Sans Std (campaign), Montserrat for
+   Gotham (secondary). SIDEARM embeds load the same two families
+   from Google Fonts instead — see docs/sidearm-paste-guide.md.
+   If the department licenses the real faces for web, swap the
+   family names in tokens.css and these @font-face blocks. */
 @font-face {
-  font-family: "Barlow Condensed";
+  font-family: "Saira Condensed";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/saira-condensed-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Saira Condensed";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("../fonts/barlow-condensed-600.woff2") format("woff2");
+  src: url("../fonts/saira-condensed-600.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Barlow Condensed";
+  font-family: "Saira Condensed";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("../fonts/barlow-condensed-700.woff2") format("woff2");
+  src: url("../fonts/saira-condensed-700.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Barlow";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("../fonts/barlow-400.woff2") format("woff2");
+  src: url("../fonts/montserrat-400.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Barlow";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("../fonts/barlow-500.woff2") format("woff2");
+  src: url("../fonts/montserrat-500.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Barlow";
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("../fonts/barlow-600.woff2") format("woff2");
+  src: url("../fonts/montserrat-600.woff2") format("woff2");
 }
 @font-face {
-  font-family: "IBM Plex Mono";
+  font-family: "Montserrat";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   font-display: swap;
-  src: url("../fonts/plex-mono-500.woff2") format("woff2");
-}
-@font-face {
-  font-family: "IBM Plex Mono";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("../fonts/plex-mono-600.woff2") format("woff2");
+  src: url("../fonts/montserrat-700.woff2") format("woff2");
 }

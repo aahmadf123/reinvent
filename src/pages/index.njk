@@ -4,12 +4,14 @@ description: The Rocket Fund is the official annual giving program of Toledo Ath
 sidearmSlug: rocket-fund-home
 cleanUrl: utrockets.com/give
 ---
-{% from "components.njk" import hero, telemetry, sechead, cards, ctaband, traj %}
+{% from "components.njk" import hero, telemetry, sechead, cards, ctaband, slant %}
 
 {% call hero(
   "Toledo Athletics · Official Annual Giving",
   "Fuel the<br>Rockets.",
-  "Your gift powers more than 400 student-athletes across 17 varsity sports — in the classroom, in competition, and in the community."
+  "Your gift powers more than 400 student-athletes across 17 varsity sports — in the classroom, in competition, and in the community.",
+  false,
+  true
 ) %}
 <div class="rkt-btnrow">
   <a class="rkt-btn" href="/give/">Give Now</a>
@@ -38,7 +40,7 @@ cleanUrl: utrockets.com/give
   </div>
 </section>
 
-<section class="rkt-section rkt-section--dark">
+<section class="rkt-section rkt-section--navy">
   <div class="rkt-wrap">
     {{ sechead(
       "Benefits & levels",

@@ -1,7 +1,11 @@
 /* ============================================================
-   Rocket Fund components — "Launch Telemetry"
+   Rocket Fund components.
    All selectors scoped under .rkt; classes prefixed rkt-.
    This file ships inside every SIDEARM embed.
+
+   Colour and type come from tokens.css, which tracks the Toledo
+   Athletics Branding Guidelines. Two brand colours, two faces —
+   if something here needs a third, it's wrong.
    ============================================================ */
 
 /* ---------- layout primitives ---------- */
@@ -15,18 +19,18 @@
   padding-block: clamp(3rem, 8vw, 5.5rem);
 }
 
-.rkt .rkt-section--dark {
-  background: var(--rkt-midnight);
+.rkt .rkt-section--navy {
+  background: var(--rkt-navy);
   color: var(--rkt-white);
 }
 
-.rkt .rkt-section--deep {
-  background: var(--rkt-deep);
+.rkt .rkt-section--black {
+  background: var(--rkt-black);
   color: var(--rkt-white);
 }
 
-.rkt .rkt-section--dark a,
-.rkt .rkt-section--deep a {
+.rkt .rkt-section--navy a,
+.rkt .rkt-section--black a {
   color: var(--rkt-white);
 }
 
@@ -42,13 +46,26 @@
   padding-left: 1.25rem;
 }
 
+/* Links on paper are navy — Athletic Gold never carries text on
+   light, it fails contrast at every size. */
+.rkt a {
+  color: var(--rkt-navy);
+}
+
+/* ---------- identity marks inside content ---------- */
+.rkt .rkt-logo,
+.rkt .rkt-rocket {
+  display: block;
+  width: auto;
+}
+
 /* ---------- type ---------- */
 .rkt .rkt-display {
   font-family: var(--rkt-font-display);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.01em;
-  line-height: 0.95;
+  letter-spacing: 0.005em;
+  line-height: 0.92;
 }
 
 .rkt h1.rkt-display {
@@ -59,8 +76,8 @@
   font-family: var(--rkt-font-display);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.015em;
-  line-height: 1;
+  letter-spacing: 0.01em;
+  line-height: 0.98;
   font-size: clamp(1.9rem, 4.5vw, 3rem);
 }
 
@@ -68,46 +85,65 @@
   font-family: var(--rkt-font-display);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.025em;
   line-height: 1.05;
   font-size: clamp(1.35rem, 2.6vw, 1.75rem);
 }
 
+/* Labels use the secondary face tracked wide — the same treatment
+   the guide gives its own sub-brand tags. There is no monospace
+   in this brand. */
 .rkt .rkt-eyebrow {
-  font-family: var(--rkt-font-mono);
+  font-family: var(--rkt-font-body);
   font-weight: 600;
-  font-size: 0.8125rem;
-  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--rkt-slate);
   display: block;
   margin-bottom: 0.875rem;
 }
 
-.rkt .rkt-section--dark .rkt-eyebrow,
-.rkt .rkt-section--deep .rkt-eyebrow {
+.rkt .rkt-section--navy .rkt-eyebrow,
+.rkt .rkt-section--black .rkt-eyebrow {
   color: var(--rkt-gold);
 }
 
 .rkt .rkt-lede {
-  font-size: clamp(1.125rem, 2vw, 1.3125rem);
-  line-height: 1.55;
-  max-width: 46ch;
+  font-size: clamp(1.0625rem, 1.7vw, 1.1875rem);
+  line-height: 1.6;
+  max-width: 48ch;
 }
 
-.rkt .rkt-mono {
-  font-family: var(--rkt-font-mono);
-  font-weight: 500;
+.rkt .rkt-figures {
   font-variant-numeric: tabular-nums;
+}
+
+/* ---------- slant rule ----------
+   Two gold bars raked to the logotype's italic. Deliberately plain
+   geometry: the rocket is a registered mark and may not be redrawn,
+   so nothing here imitates it. The real mark is used as supplied,
+   or not at all. */
+.rkt .rkt-slant {
+  display: block;
+  width: 7.5rem;
+  height: 0.75rem;
+  margin-bottom: 1.125rem;
+  color: var(--rkt-gold);
 }
 
 /* ---------- hero ---------- */
 .rkt .rkt-hero {
   position: relative;
-  background: var(--rkt-deep);
+  background: var(--rkt-navy);
   color: var(--rkt-white);
-  padding-block: clamp(4rem, 11vw, 8rem) clamp(3.5rem, 9vw, 6.5rem);
+  padding-block: clamp(4rem, 11vw, 7.5rem) clamp(3.5rem, 9vw, 6rem);
   overflow: hidden;
+  isolation: isolate;
+}
+
+.rkt .rkt-hero .rkt-wrap {
+  position: relative;
 }
 
 .rkt .rkt-hero .rkt-eyebrow {
@@ -116,16 +152,69 @@
 
 .rkt .rkt-hero .rkt-lede {
   margin-top: 1.5rem;
-  color: #cfd8e3;
+  color: var(--rkt-mist);
 }
 
-.rkt .rkt-hero-arc {
+/* Footage of the athletes the money pays for. It sits behind a
+   heavy Midnight Blue scrim so headline contrast never depends on
+   which frame is showing. */
+.rkt .rkt-hero-media {
   position: absolute;
-  inset: auto 0 0 0;
+  inset: 0;
+  z-index: -1;
+  background: var(--rkt-navy);
+}
+
+.rkt .rkt-hero-media img,
+.rkt .rkt-hero-media video {
   width: 100%;
-  height: clamp(110px, 20vw, 280px);
-  color: var(--rkt-gold);
-  pointer-events: none;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rkt .rkt-hero-media video {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 600ms ease-out;
+}
+
+.rkt .rkt-hero-media video.is-playing {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rkt .rkt-hero-media video {
+    transition: none;
+  }
+}
+
+.rkt .rkt-hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(10, 34, 64, 0.95) 0%,
+      rgba(10, 34, 64, 0.9) 40%,
+      rgba(10, 34, 64, 0.62) 62%,
+      rgba(10, 34, 64, 0.38) 100%
+    ),
+    linear-gradient(to top, rgba(10, 34, 64, 0.8) 0%, rgba(10, 34, 64, 0) 42%);
+}
+
+/* Narrow screens: text runs the full width, so it can't rely on the
+   scrim being heaviest at the left. Flatten it and keep it dark. */
+@media (max-width: 60em) {
+  .rkt .rkt-hero-media::after {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 34, 64, 0.88) 0%,
+      rgba(10, 34, 64, 0.93) 100%
+    );
+  }
 }
 
 .rkt .rkt-hero--sub {
@@ -144,29 +233,29 @@
   margin-top: 2rem;
 }
 
-/* a.rkt-btn (not .rkt-btn alone): must outrank ".rkt .rkt-section--dark a",
+/* a.rkt-btn (not .rkt-btn alone): must outrank ".rkt .rkt-section--navy a",
    which would otherwise repaint gold buttons with white text. */
 .rkt a.rkt-btn {
   display: inline-block;
   font-family: var(--rkt-font-display);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   font-size: 1.125rem;
   line-height: 1;
   padding: 0.9em 1.6em 0.8em;
   border-radius: var(--rkt-radius);
   text-decoration: none;
   background: var(--rkt-gold);
-  color: var(--rkt-deep);
+  color: var(--rkt-navy);
   border: 2px solid var(--rkt-gold);
 }
 
 .rkt a.rkt-btn:hover {
-  background: #ffdd45;
-  border-color: #ffdd45;
+  background: var(--rkt-gold-press);
+  border-color: var(--rkt-gold-press);
   text-decoration: none;
-  color: var(--rkt-deep);
+  color: var(--rkt-navy);
 }
 
 .rkt a.rkt-btn--ghost {
@@ -176,27 +265,27 @@
 }
 
 .rkt a.rkt-btn--ghost:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
   border-color: var(--rkt-white);
   color: var(--rkt-white);
 }
 
 .rkt a.rkt-btn--ghost-light {
   background: transparent;
-  color: var(--rkt-blue);
-  border-color: var(--rkt-blue);
+  color: var(--rkt-navy);
+  border-color: var(--rkt-navy);
 }
 
 .rkt a.rkt-btn--ghost-light:hover {
-  background: rgba(0, 63, 135, 0.06);
-  color: var(--rkt-blue);
+  background: rgba(10, 34, 64, 0.07);
+  color: var(--rkt-navy);
 }
 
-/* ---------- telemetry stat strip ---------- */
+/* ---------- stat strip ---------- */
 .rkt .rkt-telemetry {
   border-top: 1px solid var(--rkt-line-dark);
   border-bottom: 1px solid var(--rkt-line-dark);
-  background: var(--rkt-midnight);
+  background: var(--rkt-navy);
   color: var(--rkt-white);
 }
 
@@ -217,35 +306,25 @@
 }
 
 .rkt .rkt-telemetry .rkt-stat {
-  font-family: var(--rkt-font-mono);
-  font-weight: 600;
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-family: var(--rkt-font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 2.9rem);
   font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
   color: var(--rkt-gold);
   display: block;
-  line-height: 1.1;
+  line-height: 1;
 }
 
 .rkt .rkt-telemetry .rkt-stat-label {
-  font-family: var(--rkt-font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
+  font-family: var(--rkt-font-body);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #c3cedb;
-}
-
-/* ---------- trajectory divider (signature element) ---------- */
-.rkt .rkt-traj {
+  color: var(--rkt-mist);
   display: block;
-  width: 100%;
-  height: 44px;
-  color: var(--rkt-gold);
-}
-
-.rkt .rkt-traj--rule {
-  height: 28px;
-  max-width: 16rem;
-  margin-bottom: 1.25rem;
+  margin-top: 0.5rem;
 }
 
 /* ---------- section headers ---------- */
@@ -278,10 +357,10 @@
   gap: 0.75rem;
 }
 
-.rkt .rkt-section--dark .rkt-card,
-.rkt .rkt-section--deep .rkt-card {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.14);
+.rkt .rkt-section--navy .rkt-card,
+.rkt .rkt-section--black .rkt-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.16);
   border-top-color: var(--rkt-gold);
 }
 
@@ -294,39 +373,41 @@
   text-decoration: underline;
   text-decoration-color: var(--rkt-gold);
   text-decoration-thickness: 2px;
+  text-underline-offset: 0.15em;
 }
 
 .rkt .rkt-card p {
   color: var(--rkt-slate);
-  font-size: 0.975rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
   flex-grow: 1;
 }
 
-.rkt .rkt-section--dark .rkt-card p,
-.rkt .rkt-section--deep .rkt-card p {
-  color: #c3cedb;
+.rkt .rkt-section--navy .rkt-card p,
+.rkt .rkt-section--black .rkt-card p {
+  color: var(--rkt-mist);
 }
 
 .rkt .rkt-card .rkt-card-cta {
-  font-family: var(--rkt-font-mono);
+  font-family: var(--rkt-font-body);
   font-weight: 600;
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .rkt .rkt-card .rkt-card-tag {
-  font-family: var(--rkt-font-mono);
+  font-family: var(--rkt-font-body);
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--rkt-slate);
 }
 
-.rkt .rkt-section--dark .rkt-card .rkt-card-tag,
-.rkt .rkt-section--deep .rkt-card .rkt-card-tag {
-  color: #c3cedb;
+.rkt .rkt-section--navy .rkt-card .rkt-card-tag,
+.rkt .rkt-section--black .rkt-card .rkt-card-tag {
+  color: var(--rkt-mist);
 }
 
 /* ---------- altitude bands (benefits page) ---------- */
@@ -363,21 +444,23 @@
 }
 
 .rkt .rkt-band-amount {
-  font-family: var(--rkt-font-mono);
-  font-weight: 600;
-  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-family: var(--rkt-font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.8vw, 1.9rem);
   font-variant-numeric: tabular-nums;
-  color: var(--rkt-blue);
-  line-height: 1.15;
+  color: var(--rkt-navy);
+  line-height: 1.05;
 }
 
 .rkt .rkt-band-amount .rkt-per {
   display: block;
-  font-size: 0.72rem;
+  font-family: var(--rkt-font-body);
+  font-weight: 500;
+  font-size: 0.6875rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--rkt-slate);
-  margin-top: 0.2rem;
+  margin-top: 0.35rem;
 }
 
 .rkt .rkt-band-name {
@@ -413,12 +496,12 @@
 
 .rkt .rkt-band-note {
   margin-top: 0.6rem;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--rkt-slate);
 }
 
 .rkt .rkt-band--featured {
-  background: linear-gradient(90deg, rgba(252, 209, 22, 0.1), rgba(252, 209, 22, 0) 65%);
+  background: linear-gradient(90deg, rgba(255, 205, 0, 0.14), rgba(255, 205, 0, 0) 65%);
 }
 
 .rkt .rkt-band--featured::before {
@@ -428,11 +511,11 @@
   top: 2.4rem;
 }
 
-/* Double class: must outrank the base .rkt-chip color, declared later. */
+/* Double class: must outrank the base .rkt-chip colour, declared later. */
 .rkt .rkt-chip.rkt-chip--gold {
   background: var(--rkt-gold);
   border-color: var(--rkt-gold);
-  color: var(--rkt-deep);
+  color: var(--rkt-navy);
 }
 
 @media (max-width: 40em) {
@@ -446,12 +529,12 @@
 /* ---------- badges / preview notes ---------- */
 .rkt .rkt-chip {
   display: inline-block;
-  font-family: var(--rkt-font-mono);
+  font-family: var(--rkt-font-body);
   font-weight: 600;
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 0.25em 0.7em;
+  padding: 0.3em 0.75em;
   border: 1px solid var(--rkt-slate);
   border-radius: 999px;
   color: var(--rkt-slate);
@@ -462,15 +545,15 @@
   margin-top: 2rem;
   padding: 0.9rem 1.1rem;
   border-left: 3px solid var(--rkt-slate);
-  background: #efece4;
-  color: #3f4c5c;
-  font-size: 0.9rem;
+  background: #e7ebf1;
+  color: #33415a;
+  font-size: 0.875rem;
   max-width: var(--rkt-measure);
 }
 
 /* ---------- CTA band ---------- */
 .rkt .rkt-ctaband {
-  background: var(--rkt-deep);
+  background: var(--rkt-navy);
   color: var(--rkt-white);
   position: relative;
   overflow: hidden;
@@ -519,7 +602,7 @@
   font-family: var(--rkt-font-display);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.025em;
   font-size: 1.2rem;
 }
 
@@ -529,9 +612,9 @@
 
 .rkt .rkt-faq summary::after {
   content: "+";
-  font-family: var(--rkt-font-mono);
+  font-family: var(--rkt-font-body);
   font-weight: 500;
-  color: var(--rkt-blue);
+  color: var(--rkt-navy);
   flex-shrink: 0;
 }
 
@@ -556,9 +639,9 @@
 
 .rkt .rkt-table caption {
   text-align: left;
-  font-family: var(--rkt-font-mono);
+  font-family: var(--rkt-font-body);
   font-weight: 600;
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--rkt-slate);
@@ -574,16 +657,16 @@
 }
 
 .rkt .rkt-table thead th {
-  font-family: var(--rkt-font-mono);
+  font-family: var(--rkt-font-body);
   font-weight: 600;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--rkt-slate);
-  border-bottom: 2px solid var(--rkt-deep);
+  border-bottom: 2px solid var(--rkt-navy);
 }
 
-.rkt .rkt-table .rkt-mono {
+.rkt .rkt-table .rkt-figures {
   white-space: nowrap;
 }
 
@@ -610,19 +693,23 @@
 
 .rkt .rkt-channel p {
   color: var(--rkt-slate);
-  font-size: 0.95rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
 }
 
-.rkt .rkt-channel .rkt-mono {
-  color: var(--rkt-deep);
-  font-size: 1.05rem;
+.rkt .rkt-channel .rkt-figures {
+  font-family: var(--rkt-font-display);
+  font-weight: 600;
+  color: var(--rkt-navy);
+  font-size: 1.25rem;
   display: block;
   margin-top: 0.75rem;
+  letter-spacing: 0.01em;
 }
 
 /* ---------- breadcrumb (lives inside embed) ---------- */
 .rkt .rkt-crumb {
-  background: var(--rkt-midnight);
+  background: var(--rkt-navy);
   color: var(--rkt-white);
   border-bottom: 1px solid var(--rkt-line-dark);
 }
@@ -634,8 +721,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
-  font-family: var(--rkt-font-mono);
-  font-size: 0.75rem;
+  font-family: var(--rkt-font-body);
+  font-weight: 500;
+  font-size: 0.6875rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -647,7 +735,7 @@
 }
 
 .rkt .rkt-crumb a {
-  color: #c3cedb;
+  color: var(--rkt-mist);
   text-decoration: none;
 }
 
@@ -674,7 +762,7 @@
   border-radius: var(--rkt-radius);
   background: repeating-linear-gradient(
     -45deg,
-    #ece8df 0 12px,
+    #e4e9f0 0 12px,
     var(--rkt-paper) 12px 24px
   );
   min-height: 14rem;
@@ -684,7 +772,7 @@
 }
 
 .rkt .rkt-figure figcaption {
-  font-family: var(--rkt-font-mono);
+  font-family: var(--rkt-font-body);
   font-weight: 600;
   font-size: 0.75rem;
   letter-spacing: 0.16em;

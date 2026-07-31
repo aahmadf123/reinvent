@@ -16,8 +16,9 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { htmlPages } from "./_lib.mjs";
+import { fileURLToPath } from "node:url";
 
-const ROOT = new URL("..", import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const SITE = join(ROOT, "_site");
 const OUT = join(SITE, "embed");
 const PREFIX = (process.env.PATH_PREFIX || "/").replace(/\/$/, "");
@@ -27,7 +28,16 @@ const css = ["tokens.css", "reset.css", "site.css"]
   .join("\n");
 
 const FONTS_LINK =
-  '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">';
+  '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">';
+
+// Embeds live on utrockets.com, where /assets/ does not exist. Point every
+// asset reference — logos above all — at a host that actually serves them.
+// Override with EMBED_ASSET_BASE when the files move to SIDEARM storage.
+const ASSET_BASE = (
+  process.env.EMBED_ASSET_BASE ??
+  JSON.parse(readFileSync(join(ROOT, "src/_data/site.json"), "utf8")).embedAssetBase ??
+  ""
+).replace(/\/$/, "");
 
 // ---- Read front matter from src/pages: preview path ↔ slug ↔ clean URL ----
 const pagesDir = join(ROOT, "src/pages");
@@ -37,14 +47,22 @@ const walk = (dir) => {
     const full = join(dir, name);
     if (statSync(full).isDirectory()) walk(full);
     else if (name.endsWith(".njk")) {
-      const src = readFileSync(full, "utf8");
+      // Normalise CRLF: a Windows checkout would otherwise fail every
+      // front-matter match and silently emit an empty URL map.
+      const src = readFileSync(full, "utf8").replace(/\r\n/g, "\n");
       const fm = /^---\n([\s\S]*?)\n---/.exec(src)?.[1] ?? "";
       const get = (key) => new RegExp(`^${key}:\\s*(.+)$`, "m").exec(fm)?.[1]?.trim();
       const title = get("title");
       const slug = get("sidearmSlug");
       const clean = get("cleanUrl");
       if (title && slug) {
-        let rel = full.slice(pagesDir.length + 1).replace(/(index)?\.njk$/, "");
+        // POSIX separators: rel becomes a URL path, and a Windows checkout
+        // would otherwise emit "/premium\basketball/" and quietly skip the
+        // clean-URL rewrite for every nested page.
+        let rel = full
+          .slice(pagesDir.length + 1)
+          .replaceAll("\\", "/")
+          .replace(/(index)?\.njk$/, "");
         if (rel && !rel.endsWith("/")) rel += "/"; // match Eleventy's trailing-slash URLs
         rows.push({ title, slug, clean, preview: "/" + rel });
       }
@@ -81,6 +99,14 @@ for (const rel of htmlPages(SITE)) {
     payload = payload.replaceAll(`href="${preview}"`, `href="${clean}"`);
   }
   payload = payload.replaceAll('href="/"', `href="${homeClean}"`);
+
+  // Assets keep their own path. Strip the preview base, then absolutise —
+  // the official logos have to resolve from utrockets.com, where a
+  // site-root /assets/ does not exist.
+  if (PREFIX) payload = payload.replaceAll(`src="${PREFIX}/`, 'src="/');
+  if (ASSET_BASE) {
+    payload = payload.replaceAll('src="/assets/', `src="${ASSET_BASE}/assets/`);
+  }
 
   const slug = /data-page="([^"]+)"/.exec(payload)?.[1] ?? "page";
   const embed = `<!--

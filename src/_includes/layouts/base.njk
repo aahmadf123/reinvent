@@ -1,11 +1,26 @@
-<!doctype html>
+{% from "brand.njk" import rocketFund, athleticLogo %}<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if title %}{{ title }} · {% endif %}Rocket Fund · Toledo Athletics</title>
   <meta name="description" content="{{ description or site.tagline }}">
-  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#0a2240">
+
+  <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/assets/img/favicon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/img/favicon-180.png">
+  <link rel="manifest" href="/assets/site.webmanifest">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Rocket Fund · Toledo Athletics">
+  <meta property="og:title" content="{% if title %}{{ title }} · {% endif %}Rocket Fund">
+  <meta property="og:description" content="{{ description or site.tagline }}">
+  <meta property="og:image" content="/assets/img/share-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" href="/assets/fonts/saira-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/montserrat-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/tokens.css">
   <link rel="stylesheet" href="/assets/css/reset.css">
@@ -18,16 +33,9 @@
 
 <header class="rkt-chrome rkt-header">
   <div class="rkt-header-in">
-    <a class="rkt-mark" href="/">
-      <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-        <path d="M6 42 Q 22 38 40 10" fill="none" stroke="#fcd116" stroke-width="3" stroke-linecap="round"/>
-        <path d="M40 10 L33.5 12.4 L37.4 17.2 Z" fill="#fcd116"/>
-        <circle cx="6" cy="42" r="2.5" fill="#fcd116"/>
-      </svg>
-      <span>
-        <span class="rkt-mark-team">Toledo Rockets</span>
-        <span class="rkt-mark-sub">Rocket Fund</span>
-      </span>
+    <a class="rkt-brand" href="/" aria-label="Rocket Fund, Toledo Athletics — home">
+      {{ athleticLogo("on-navy", "", true) }}
+      <span class="rkt-brand-label">Rocket&nbsp;Fund</span>
     </a>
     <button class="rkt-menu-btn" aria-expanded="false" aria-controls="rkt-nav">Menu</button>
     <nav class="rkt-nav" id="rkt-nav" aria-label="Giving site">
@@ -73,6 +81,10 @@
 
 <footer class="rkt-chrome rkt-footer">
   <div class="rkt-footer-in">
+    <div class="rkt-footer-brand">
+      {{ rocketFund("on-navy", "md") }}
+      <p>The official annual giving program of Toledo Athletics. Every gift fuels more than 400 student-athletes across 17 varsity sports.</p>
+    </div>
     <div>
       <h2>Athletic Development Office</h2>
       <address>
@@ -90,13 +102,9 @@
         <li><a href="{{ site.mainSiteUrl }}">UTRockets.com</a></li>
       </ul>
     </div>
-    <div>
-      <h2>The Rocket Fund</h2>
-      <p>The official annual giving program of Toledo Athletics. Every gift fuels 400+ student-athletes across 17 varsity sports.</p>
-    </div>
   </div>
   <div class="rkt-footer-legal">
-    <span>© 2026 University of Toledo Athletics</span>
+    <span>© 2026 The University of Toledo. Toledo Athletics marks are registered trademarks used under license.</span>
     <span class="rkt-preview-chip">{{ site.previewNote }}</span>
   </div>
 </footer>

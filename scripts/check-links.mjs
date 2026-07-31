@@ -7,8 +7,9 @@
 import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { htmlPages } from "./_lib.mjs";
+import { fileURLToPath } from "node:url";
 
-const ROOT = new URL("..", import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const SITE = join(ROOT, "_site");
 const PREFIX = (process.env.PATH_PREFIX || "/").replace(/\/$/, "");
 

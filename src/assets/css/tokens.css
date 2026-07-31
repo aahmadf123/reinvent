@@ -1,24 +1,44 @@
 /* ============================================================
    Rocket Fund design tokens — single source of truth.
-   Brand values: University of Toledo toolkit (updated 5/2026).
-   If a 2026-27 athletics guide supplies different values,
-   swap them here only.
+
+   Values come from the Toledo Athletics Branding Guidelines
+   (2023). The guide specifies exactly two brand colours and
+   three typefaces; everything else here is a neutral derived
+   to serve them. Do not add a third brand colour.
+
+   See docs/brand.md for the full mapping, including which web
+   fonts stand in for the guide's licensed faces and why.
    ============================================================ */
 .rkt,
 .rkt-chrome {
-  --rkt-midnight: #002649; /* UT midnight blue — primary surface */
-  --rkt-blue: #003f87;     /* UT dark blue — links, secondary surfaces */
-  --rkt-deep: #06172e;     /* near-black navy — hero fields, text on paper */
-  --rkt-gold: #fcd116;     /* UT gold — CTAs and instruments; never text on light */
-  --rkt-paper: #f7f5f0;    /* warm white base */
-  --rkt-white: #ffffff;
-  --rkt-slate: #5a6b80;    /* secondary text on paper (AA at body size) */
-  --rkt-line: #ddd8cc;     /* hairlines on paper */
-  --rkt-line-dark: rgba(252, 209, 22, 0.3); /* hairlines on dark */
+  /* --- brand colours (guide p.5) --- */
+  --rkt-navy: #0a2240;   /* Midnight Blue · PANTONE 289C */
+  --rkt-gold: #ffcd00;   /* Athletic Gold · PANTONE 116C */
+  --rkt-white: #ffffff;  /* the wordmark's third colour */
+  --rkt-black: #000000;  /* the guide sanctions a black-ground lockup */
 
-  --rkt-font-display: "Barlow Condensed", "Arial Narrow", "Franklin Gothic Medium", sans-serif;
-  --rkt-font-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
-  --rkt-font-mono: "IBM Plex Mono", ui-monospace, "Courier New", monospace;
+  /* Interactive shade of 116C. Used on controls only — never on a mark. */
+  --rkt-gold-press: #e6b900;
+
+  /* --- neutrals, tinted toward 289C so nothing reads warm --- */
+  --rkt-paper: #f2f4f7;  /* page ground */
+  --rkt-slate: #4a5a70;  /* secondary text on paper — 6.4:1 */
+  --rkt-mist: #c6d0de;   /* secondary text on navy — 10.3:1 */
+  --rkt-line: #d3d9e2;   /* hairlines on paper */
+  --rkt-line-dark: rgba(255, 205, 0, 0.28); /* hairlines on navy */
+
+  /* --- type ---
+     Smart Sans Std and Gotham are licensed; these are the closest
+     open faces. Saira Condensed shares the squared-off skeleton of
+     the guide's campaign face, Montserrat the geometric one of
+     Gotham. The guide has no monospace, so the site has none. */
+  --rkt-font-display: "Saira Condensed", "Arial Narrow", "Franklin Gothic Medium", sans-serif;
+  --rkt-font-body: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+
+  /* --- clear space (guide p.7) ---
+     Multiply by the rendered height of the mark it surrounds. */
+  --rkt-clear-rocket: 0.3333; /* X = 1/3 height of the rocket logo */
+  --rkt-clear-logo: 0.25;     /* X = 1/4 height of the athletic logo */
 
   --rkt-measure: 68ch;
   --rkt-radius: 2px;

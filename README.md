@@ -1,4 +1,4 @@
-# UT Rockets Giving Site — SIDEARM consolidation preview
+# Toledo Athletics Giving Site — SIDEARM consolidation preview
 
 Rebuild of **supportutrockets.com** (Rocket Fund / athletics development) as
 custom pages destined for **utrockets.com** SIDEARM feature pages — letting

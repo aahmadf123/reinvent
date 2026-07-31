@@ -46,7 +46,8 @@ export function htmlPages(root) {
       if (statSync(full).isDirectory()) {
         if (name !== "embed" && !name.startsWith("_")) walk(full);
       } else if (name.endsWith(".html")) {
-        out.push(full.slice(root.length + 1));
+        // Always POSIX-style: these become URL paths downstream.
+        out.push(full.slice(root.length + 1).replaceAll("\\", "/"));
       }
     }
   };

@@ -7,8 +7,9 @@ import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { chromium } from "playwright";
 import { serveDir, htmlPages, chromiumExecutable } from "./_lib.mjs";
+import { fileURLToPath } from "node:url";
 
-const ROOT = new URL("..", import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const SITE = join(ROOT, "_site");
 const OUT = process.env.SHOT_DIR || join(ROOT, "_shots");
 const REDUCED = process.argv.includes("--reduced-motion");

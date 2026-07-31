@@ -5,6 +5,8 @@
 
   document.documentElement.classList.add("rkt-js");
 
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
   // Mobile nav toggle
   var btn = document.querySelector(".rkt-menu-btn");
   var nav = document.getElementById("rkt-nav");
@@ -22,8 +24,30 @@
     });
   }
 
+  // Hero reel. The markup ships with a still and no video source; the
+  // footage is attached only where it is welcome — a screen wide enough
+  // to see it, no reduced-motion preference, and no data-saver request.
+  // Everywhere else the still is the hero, which is also what the
+  // JS-free SIDEARM embeds get.
+  var reel = document.querySelector("[data-rkt-reel]");
+  if (reel) {
+    var conn = navigator.connection || {};
+    var wide = window.matchMedia("(min-width: 48em)").matches;
+    if (wide && !reduced && !conn.saveData) {
+      reel.addEventListener("playing", function () {
+        reel.classList.add("is-playing");
+      });
+      reel.src = reel.getAttribute("data-rkt-reel");
+      var playing = reel.play();
+      if (playing && playing.catch) {
+        playing.catch(function () {
+          /* Autoplay refused — the still stays. */
+        });
+      }
+    }
+  }
+
   // Reveal-on-scroll (single motion pattern; disabled for reduced motion)
-  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var targets = document.querySelectorAll(".rkt-reveal");
   if (reduced || !("IntersectionObserver" in window)) {
     targets.forEach(function (el) {

@@ -1,0 +1,19 @@
+{
+  "name": "Rocket Fund · Toledo Athletics",
+  "short_name": "Rocket Fund",
+  "icons": [
+    {
+      "src": "/assets/img/favicon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0A2240",
+  "background_color": "#0A2240",
+  "display": "standalone"
+}

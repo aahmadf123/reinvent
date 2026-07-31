@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "eleventy --serve --port 8080",
     "build": "eleventy && node scripts/build-embeds.mjs && node scripts/check-links.mjs",
+    "brand": "node scripts/build-brand-assets.mjs",
     "embeds": "node scripts/build-embeds.mjs",
     "links": "node scripts/check-links.mjs",
     "shots": "node scripts/screenshot.mjs",
@@ -15,9 +16,8 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
     "@axe-core/playwright": "^4.10.2",
-    "@fontsource/barlow": "^5.2.6",
-    "@fontsource/barlow-condensed": "^5.2.6",
-    "@fontsource/ibm-plex-mono": "^5.2.6",
+    "@fontsource/montserrat": "^5.3.0",
+    "@fontsource/saira-condensed": "^5.3.0",
     "playwright": "^1.54.0"
   }
 }

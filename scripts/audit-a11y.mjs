@@ -11,8 +11,9 @@ import { join } from "node:path";
 import { chromium } from "playwright";
 import { AxeBuilder } from "@axe-core/playwright";
 import { serveDir, htmlPages, chromiumExecutable } from "./_lib.mjs";
+import { fileURLToPath } from "node:url";
 
-const ROOT = new URL("..", import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
 const SITE = join(ROOT, "_site");
 const TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"];
 

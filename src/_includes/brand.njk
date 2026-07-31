@@ -1,0 +1,41 @@
+{# ============================================================
+   Official identity lockups. These render the athletic marks as
+   supplied — never redrawn, recoloured, outlined, stretched, or
+   tilted. Marks are sized by height with width:auto, so the
+   supplied proportions survive exactly. Clear space is enforced
+   in CSS from the rendered height (guide p.7): X = 1/4 the
+   athletic logo, X = 1/3 the rocket.
+
+   Pick the variant that matches the surface behind the mark:
+     on-navy   gold rocket + white wordmark
+     on-light  navy + gold, for paper
+     on-gold   navy + white, for gold fields
+     on-black  gold + white, for black fields
+   ============================================================ #}
+
+{% macro athleticLogo(variant="on-navy", alt="Toledo", eager=false) %}
+{%- set d = {
+  "on-navy":  { w: 2021, h: 1177 },
+  "on-light": { w: 2026, h: 1183 },
+  "on-gold":  { w: 1635, h: 954 },
+  "on-black": { w: 2021, h: 1177 }
+}[variant] -%}
+<img class="rkt-logo" src="/assets/img/brand/toledo-primary-{{ variant }}.png" alt="{{ alt }}" width="{{ d.w }}" height="{{ d.h }}" decoding="async"{% if not eager %} loading="lazy"{% endif %}>
+{%- endmacro %}
+
+{# The secondary rocket mark on its own. #}
+{% macro rocketMark(tone="gold", alt="") %}
+<img class="rkt-rocket" src="/assets/img/brand/toledo-rocket-{{ tone }}.png" alt="{{ alt }}"{% if not alt %} aria-hidden="true"{% endif %} width="1760" height="667" loading="lazy" decoding="async">
+{%- endmacro %}
+
+{# Rocket Fund lockup — the approved alternate identity (guide p.10):
+   the athletic logo above a letterspaced ROCKET FUND tag, tag scaled
+   from the logo height so the artwork's proportions hold. The tag is
+   small by design, so only use this at md or larger; for tight chrome
+   use athleticLogo() beside a separate label instead. #}
+{% macro rocketFund(variant="on-navy", size="md") %}
+<span class="rkt-lockup rkt-lockup--{{ size }}">
+  {{ athleticLogo(variant, "Toledo") }}
+  <span class="rkt-lockup-tag">Rocket Fund</span>
+</span>
+{%- endmacro %}

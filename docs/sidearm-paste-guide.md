@@ -10,9 +10,15 @@ file — see `docs/sidearm-url-map.md` for the full page-by-page map.
 Each embed contains:
 
 1. A comment header identifying the page.
-2. A Google Fonts `<link>` (Barlow Condensed, Barlow, IBM Plex Mono).
+2. A Google Fonts `<link>` (Saira Condensed, Montserrat — see `docs/brand.md`
+   for why these stand in for Smart Sans Std and Gotham).
 3. One `<style>` block — the complete compiled CSS, scoped under `.rkt`.
 4. One `<div class="rkt" data-page="...">` — the entire page content.
+
+Images inside an embed — the athletic marks above all — are rewritten to
+absolute URLs against `embedAssetBase` in `src/_data/site.json`, because a
+site-root `/assets/` path does not exist on utrockets.com. Set
+`EMBED_ASSET_BASE` when the files move to SIDEARM's own file storage.
 
 Embeds contain **no JavaScript** by design: every page works fully without
 it, so SIDEARM script sanitization can never break a page. They also contain
@@ -47,7 +53,8 @@ stripped.
 | Symptom | Cause | Fix |
 |---|---|---|
 | Page renders unstyled | `<style>` block stripped by the editor | Upload the CSS through SIDEARM's custom CSS / additional stylesheet mechanism instead. The style block is identical on every embed, so one upload covers all pages — then paste embeds without their `<style>` block. |
-| Wrong fonts | `<link>` tag stripped | Add the Google Fonts link via SIDEARM's head-injection / custom code setting. Fallback stacks (Arial Narrow / Helvetica / monospace) keep pages legible either way. |
+| Wrong fonts | `<link>` tag stripped | Add the Google Fonts link via SIDEARM's head-injection / custom code setting. Fallback stacks (Arial Narrow / Helvetica) keep pages legible either way. |
+| Logos missing | `embedAssetBase` host unreachable from utrockets.com | Upload `src/assets/img/brand/` to SIDEARM file storage and rebuild with `EMBED_ASSET_BASE=<that base>`. |
 | Layout collides with site styles | A global SIDEARM rule outranks a scoped one | Report the specific element; scoping under `.rkt` makes targeted overrides safe to add at the end of the style block. |
 
 ## Fonts note

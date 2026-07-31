@@ -4,14 +4,15 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(HtmlBasePlugin);
 
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  // Stand-ins for the branding guide's licensed faces — see docs/brand.md.
   eleventyConfig.addPassthroughCopy({
-    "node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-600-normal.woff2": "assets/fonts/barlow-condensed-600.woff2",
-    "node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-700-normal.woff2": "assets/fonts/barlow-condensed-700.woff2",
-    "node_modules/@fontsource/barlow/files/barlow-latin-400-normal.woff2": "assets/fonts/barlow-400.woff2",
-    "node_modules/@fontsource/barlow/files/barlow-latin-500-normal.woff2": "assets/fonts/barlow-500.woff2",
-    "node_modules/@fontsource/barlow/files/barlow-latin-600-normal.woff2": "assets/fonts/barlow-600.woff2",
-    "node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2": "assets/fonts/plex-mono-500.woff2",
-    "node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2": "assets/fonts/plex-mono-600.woff2"
+    "node_modules/@fontsource/saira-condensed/files/saira-condensed-latin-500-normal.woff2": "assets/fonts/saira-condensed-500.woff2",
+    "node_modules/@fontsource/saira-condensed/files/saira-condensed-latin-600-normal.woff2": "assets/fonts/saira-condensed-600.woff2",
+    "node_modules/@fontsource/saira-condensed/files/saira-condensed-latin-700-normal.woff2": "assets/fonts/saira-condensed-700.woff2",
+    "node_modules/@fontsource/montserrat/files/montserrat-latin-400-normal.woff2": "assets/fonts/montserrat-400.woff2",
+    "node_modules/@fontsource/montserrat/files/montserrat-latin-500-normal.woff2": "assets/fonts/montserrat-500.woff2",
+    "node_modules/@fontsource/montserrat/files/montserrat-latin-600-normal.woff2": "assets/fonts/montserrat-600.woff2",
+    "node_modules/@fontsource/montserrat/files/montserrat-latin-700-normal.woff2": "assets/fonts/montserrat-700.woff2"
   });
 
   eleventyConfig.addWatchTarget("src/assets/");
