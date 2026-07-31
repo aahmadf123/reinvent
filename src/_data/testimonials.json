@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Karina James",
+    "sport": "Women's Cross Country",
+    "year": "2025",
+    "img": "/assets/img/people/karina-james-cutout.png",
+    "w": 700,
+    "h": 900,
+    "quote": "The support I've received has been essential to me. Our donors' generosity has provided me with on-campus resources that support my daily growth and success. I am incredibly thankful for the opportunities that I will have in the future."
+  },
+  {
+    "name": "Grace Freiberger",
+    "sport": "Volleyball",
+    "year": "2025",
+    "img": "/assets/img/people/grace-freiberger-cutout.png",
+    "w": 700,
+    "h": 900,
+    "quote": "Our donors have truly become family to us, sharing in our journey and providing the 'home' we need to represent our community with pride. Their belief in us creates a ripple effect of motivation, driving us to perform our best on and off the court."
+  },
+  {
+    "name": "Troy Sudbrook",
+    "sport": "Baseball",
+    "year": "2026",
+    "img": "/assets/img/people/troy-sudbrook-cutout.png",
+    "w": 700,
+    "h": 900,
+    "quote": "When I chose to pursue my dream of playing collegiate baseball at Toledo, I never knew it would come with so much more and provide a roadmap for my future. The University of Toledo will always be a part of me when I begin my career in business."
+  }
+]

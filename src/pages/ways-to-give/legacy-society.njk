@@ -1,13 +1,13 @@
 ---
 title: Legacy Society
-description: The Rocket Fund Legacy Society lets you endow your giving in perpetuity — 4% supports the department's top priorities each year while the endowment grows forever.
+description: The Rocket Fund Legacy Society lets you endow your giving in perpetuity — a $2,500 minimum, a 4% annual draw, and recognition alongside its current members.
 sidearmSlug: legacy-society
 cleanUrl: utrockets.com/legacysociety
 crumb:
   - label: Ways to Give
     href: /ways-to-give/
 ---
-{% from "components.njk" import hero, sechead, ctaband, figureSlot %}
+{% from "components.njk" import hero, sechead, ctaband %}
 
 {% call hero("Rocket Fund Legacy Society", "Give in perpetuity", "Ensure your support for Toledo student-athletes continues forever — an orbit that never decays.", true) %}
 <div class="rkt-btnrow">
@@ -21,18 +21,36 @@ crumb:
       <div class="rkt-prose rkt-reveal">
         {{ sechead("How it works", "The mechanics of forever") }}
         <p>The Rocket Fund Legacy Society gives every Rocket supporter the opportunity to make their giving permanent through the Rocket Fund endowment.</p>
-        <p>Each year, the athletic department may use <strong>4% of the endowment</strong> to address its top priorities. Any investment gains above that 4% are added back to the principal — so the endowment keeps growing, and your support lasts in perpetuity.</p>
-        <p>Legacy gifts can be established through outright gifts, pledges, or estate plans. Our team will work with you and the UToledo Foundation to structure the gift that fits your goals.</p>
+        <p>Each year, the athletic department may use <strong>{{ legacy.draw }} of the endowment</strong> to address its top priorities. Any investment gains above that are added back to the principal — so the endowment keeps growing, and your support lasts in perpetuity.</p>
+        <p>The arithmetic is simple: multiply your annual gift by <strong>{{ legacy.multiplier }}</strong>. If you give $1,000 a year, a $25,000 endowment generates that gift forever. Legacy Society gifts start at <strong>{{ legacy.minimum }}</strong> — the endowment behind a $100 annual gift.</p>
       </div>
       <div class="rkt-prose rkt-reveal">
-        {{ sechead("Why it matters", "A gift with no final season") }}
-        <p>Annual gifts fuel this year's team. An endowed gift fuels every team that follows — a scholarship, a program need, a priority met, year after year, in your name or in honor of someone who shaped your Toledo story.</p>
+        {{ sechead("Ways to fund it", "Five routes to forever") }}
+        <ul>
+          <li><strong>Gifts and pledges</strong> — outright, or payable over two to five years</li>
+          <li><strong>Bequests</strong> — a provision in your will or trust</li>
+          <li><strong>Life insurance</strong> — name the Rocket Fund as beneficiary</li>
+          <li><strong>Charitable gift annuities</strong> — income for life, legacy after</li>
+          <li><strong>Retirement plan assets</strong> — including IRA charitable rollovers at age 70½+</li>
+        </ul>
+        <p>Gifts over <strong>{{ legacy.wallRecognition }}</strong> are recognized on the Legacy Society Walls in Savage Arena and the Glass Bowl, and every member is recognized on the video board during games.</p>
         <div class="rkt-btnrow">
           <a class="rkt-btn" href="{{ site.legacyFormUrl }}">Request information</a>
           <a class="rkt-btn rkt-btn--ghost-light" href="/contact/">Talk to our team</a>
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="rkt-section rkt-section--navy rkt-section--center">
+  <div class="rkt-wrap">
+    {{ sechead("The honor roll", "Current members", "The Rockets whose support already lasts forever.", true) }}
+    <ul class="rkt-honorroll rkt-reveal">
+      {% for m in legacy.members %}
+      <li>{{ m }}</li>
+      {% endfor %}
+    </ul>
   </div>
 </section>
 

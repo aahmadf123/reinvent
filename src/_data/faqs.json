@@ -4,20 +4,36 @@
     "a": ["The Rocket Fund is the athletic department's official annual giving program. Gifts provide essential support for more than 400 student-athletes across 17 varsity sports — funding scholarships, academic assistance, and equipment needs."]
   },
   {
+    "q": "How do I make my gift?",
+    "a": ["Three ways: give online, call the Rocket Fund at 419.530.2510 (text or call), or mail a check to the Athletic Development Office, The University of Toledo, 2801 West Bancroft Street MS 302, Toledo, OH 43606."]
+  },
+  {
     "q": "How is a Rocket Fund gift different from my ticket or seat payment?",
     "a": ["Philanthropic gifts to the Rocket Fund are above and beyond any required payments for seating and parking. Your gift is an investment in student-athletes, and it also determines your donor benefits and priority level."]
   },
   {
     "q": "At what giving level do benefits begin?",
-    "a": ["Benefits and privileges, such as premium parking and priority seating assistance, are provided at levels of support of $100 or more annually. Privileges increase with your level of support."]
+    "a": ["Benefits are provided at the $100 level and up, across six membership levels: Century ($100), Blue ($300), Gold ($600), Executive ($1,200), Coaches ($2,500), and Directors ($5,000 and up). Privileges increase with your level of support."]
+  },
+  {
+    "q": "What is the deadline to give for football and basketball benefits?",
+    "a": ["To receive parking and seating benefits for the coming season, give by June 30 for football and by August 1 for basketball."]
+  },
+  {
+    "q": "Can I direct my gift to a specific sport or area?",
+    "a": ["Yes. Gifts may be designated Unrestricted (for the needs the Athletic Department judges most important), to Scholarship Aid for all student-athletes, or to Program Operations for a particular team. Any Rocket Fund gift connected to premium seat payments or benefits must be designated Unrestricted."]
   },
   {
     "q": "What is the Joe Grogan Room?",
-    "a": ["The Joe Grogan Room is the donor hospitality room at Savage Arena. It is open to all Rocket Fund donors at the Gold level ($600 and above) during men's and women's basketball games, and pregame table reservations are available to Executive-level donors ($1,200 and above)."]
+    "a": ["The Joe Grogan Room is the donor hospitality room at Savage Arena. It is open to all Rocket Fund donors at the Gold level ($600 and above) during men's and women's basketball games, and pregame table reservations are available to Executive-level donors ($1,200 and above). A game ticket is also required for entry."]
   },
   {
-    "q": "How is football and basketball parking assigned?",
-    "a": ["All donors receive a season parking pass. Parking areas are assigned based on your total annual giving to the Rocket Fund — for example, the Gold level ($600) qualifies for a Lot 10 parking pass for football."]
+    "q": "With my donation, do I receive premium parking?",
+    "a": [
+      "All payments to the Rocket Fund include a season parking pass if requested, with areas assigned by membership level.",
+      "Football: Century — Areas 3 and 4 · Blue — Area 5 · Gold and Executive — Area 10 · Coaches and Directors — Area 9.",
+      "Basketball: Century and Blue receive an Area B pass (Area 10 for men's games; Areas 3, 5 and 6 for women's games, excluding doubleheaders). Gold, Executive, Coaches and Directors receive an Area A pass (Lots 3, 4, 5, 6 and 18)."
+    ]
   },
   {
     "q": "What is GameChange?",
@@ -28,7 +44,7 @@
     "a": ["Yes. The Rocket Fund Legacy Society lets you endow your support in perpetuity. The athletic department may use 4% of the endowment annually for its top priorities, and investment gains above that are reinvested so the endowment lasts forever."]
   },
   {
-    "q": "How do I give by phone or mail?",
-    "a": ["Call the Athletic Development Office at 419.530.2510 or 419.530.4183, or mail your gift to the Athletic Development Office, 2801 West Bancroft Street MS 302, Toledo, OH 43606."]
+    "q": "How do I update my information or reach the Rocket Fund team?",
+    "a": ["The office is open 9 a.m. – 5 p.m., Monday through Friday. Call or text 419.530.2510, or email rocketsathleticdevelopment@utoledo.edu. Our full staff directory is on the Our Team page."]
   }
 ]

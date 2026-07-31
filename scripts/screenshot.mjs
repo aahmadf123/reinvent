@@ -38,6 +38,16 @@ for (const vp of VIEWPORTS) {
   const page = await ctx.newPage();
   for (const url of pages) {
     await page.goto(`http://127.0.0.1:${port}${url}`, { waitUntil: "networkidle" });
+    // Walk the page so lazy-loaded images fetch before the full-page
+    // capture — fullPage screenshots don't scroll for real.
+    await page.evaluate(async () => {
+      for (let y = 0; y < document.body.scrollHeight; y += innerHeight) {
+        scrollTo(0, y);
+        await new Promise((r) => setTimeout(r, 60));
+      }
+      scrollTo(0, 0);
+    });
+    await page.waitForLoadState("networkidle");
     // settle reveal animations so full-page shots aren't half-faded.
     // Long enough to outlast the longest chain: the card stagger
     // (3 × --rkt-stagger) plus a --rkt-med transition, and the hero's

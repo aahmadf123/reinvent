@@ -13,15 +13,20 @@ cross-page navigation to work.
 | Fuel the Rockets | `/` | `/feature/rocket-fund-home` | `embed/rocket-fund-home.html` | `utrockets.com/give` |
 | Benefits & Giving Levels | `/benefits/` | `/feature/rocket-fund-benefits` | `embed/rocket-fund-benefits.html` | `utrockets.com/rocketfundbenefits` |
 | Contact | `/contact/` | `/feature/development-contact` | `embed/development-contact.html` | `utrockets.com/contact` |
+| Special Events | `/events/` | `/feature/special-events` | `embed/special-events.html` | `utrockets.com/specialevents` |
 | Frequently Asked Questions | `/faq/` | `/feature/rocket-fund-faq` | `embed/rocket-fund-faq.html` | `utrockets.com/rocketfundfaq` |
 | Give Now | `/give/` | `/feature/give-now` | `embed/give-now.html` | `utrockets.com/givenow` |
+| Development Internships | `/internships/` | `/feature/development-internships` | `embed/development-internships.html` | `utrockets.com/internships` |
 | Premium Seating & Parking | `/premium/` | `/feature/premium-seating` | `embed/premium-seating.html` | `utrockets.com/premium` |
 | Basketball Premium | `/premium/basketball/` | `/feature/basketball-premium` | `embed/basketball-premium.html` | `utrockets.com/basketballpremium` |
 | Football Premium | `/premium/football/` | `/feature/football-premium` | `embed/football-premium.html` | `utrockets.com/footballpremium` |
 | Premium Parking | `/premium/parking/` | `/feature/premium-parking` | `embed/premium-parking.html` | `utrockets.com/premiumparking` |
 | The Rocket Fund | `/rocket-fund/` | `/feature/rocket-fund` | `embed/rocket-fund.html` | `utrockets.com/rocketfund` |
+| Meet the Team | `/team/` | `/feature/development-staff` | `embed/development-staff.html` | `utrockets.com/staff` |
 | Ways to Give | `/ways-to-give/` | `/feature/ways-to-give` | `embed/ways-to-give.html` | `utrockets.com/waystogive` |
+| Downtown Coaches Association | `/ways-to-give/downtown-coaches/` | `/feature/downtown-coaches` | `embed/downtown-coaches.html` | `utrockets.com/downtowncoaches` |
 | GameChange | `/ways-to-give/gamechange/` | `/feature/gamechange` | `embed/gamechange.html` | `utrockets.com/gamechange` |
 | Legacy Society | `/ways-to-give/legacy-society/` | `/feature/legacy-society` | `embed/legacy-society.html` | `utrockets.com/legacysociety` |
 | Rocket Car Program | `/ways-to-give/rocket-car/` | `/feature/rocket-car` | `embed/rocket-car.html` | `utrockets.com/rocketcar` |
 | Varsity T Club | `/ways-to-give/varsity-t-club/` | `/feature/varsity-t-club` | `embed/varsity-t-club.html` | `utrockets.com/varsityt` |
+| Why Give | `/why-give/` | `/feature/why-give` | `embed/why-give.html` | `utrockets.com/whygive` |

@@ -123,14 +123,37 @@ sport* ("Toledo Rockets Football") are not.
 ## Hero footage
 
 `src/assets/video/rockets-hero.mp4` is cut from the reel supplied in
-`Branding/hero.mp4` (1080p, 41.7 s, 61 MB) — two segments covering the band
-at the Glass Bowl, basketball, and football, re-encoded to 1152×648 and
-1.78 MB with the audio dropped.
+`Branding/hero.mp4` (1080p, 41.7 s, 61 MB) by `npm run video`
+(`scripts/build-hero-video.mjs`). Four segments, snapped to detected scene
+cuts: the band at the Glass Bowl into volleyball (0–7.34 s), the basketball
+drive and layup (19.52–22.39 s), the football celebration (25.33–29.4 s),
+and the Toledo flag as the closing beat (40.01–41.67 s) — 15.9 s total.
+
+The encode keeps the master's full **1920×1080** and native 29.97 fps, drops
+the audio, and is a **two-pass H.264 High** encode against an 8.5 MB byte
+budget (~4.4 Mbps), faststart enabled. The poster
+(`src/assets/img/rockets-hero-poster.jpg`, 1600×900) is extracted from the
+finished reel at the band wide shot. Both outputs are committed; re-run
+`npm run video` only to change the cut.
+
+An earlier hand-made 1152×648 / 838 kbps encode is why the hero once looked
+soft: the CSS displays the reel full-bleed with `object-fit: cover`, so any
+sub-1080p source is upscaled. Don't ship one.
 
 It is attached by `rkt.js` only on screens ≥ 48em, with no reduced-motion
 preference and no data-saver request. Everywhere else — including the
 JS-free SIDEARM embeds — the poster still is the hero. The scrim over it is
-Midnight Blue at 0.88–0.95 behind the text, which holds white type above
-11:1 regardless of which frame is showing.
+Midnight Blue behind the text, which holds white type comfortably above AA
+regardless of which frame is showing.
 
 The full 61 MB original is not shipped and should not be.
+
+## Photography from the live site
+
+`npm run fetch-assets` (`scripts/fetch-remote-assets.mjs`) downloads the
+program's own photography from supportutrockets.com's CDN and normalizes it:
+athlete cutouts (PNG, alpha kept) into `src/assets/img/people/`, impact
+photos (JPEG, ≤1600 px) into `src/assets/img/impact/`, and staff headshots
+(JPEG, ≤800 px) into `src/assets/img/people/`. The donor benefits chart
+lands in `docs/reference/` for transcription only and never ships. Outputs
+are committed; the script skips existing files unless run with `--force`.

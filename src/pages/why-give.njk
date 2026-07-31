@@ -1,0 +1,69 @@
+---
+title: Why Give
+description: Toledo Rockets compete at the highest level of intercollegiate athletics while achieving academic standards among the best in the nation. Here's why your gift matters.
+sidearmSlug: why-give
+cleanUrl: utrockets.com/whygive
+crumb: []
+---
+{% from "components.njk" import hero, declaration, quoteRotator, sechead, cards, ctaband %}
+
+{% call hero("The case for support", "Why give?", "Whether you're a Toledo alum, relative, friend, or fan, your support of the Rocket Fund is crucial in the lives of our student-athletes.", true) %}
+<div class="rkt-btnrow">
+  <a class="rkt-btn" href="/give/">Give Now</a>
+  <a class="rkt-btn rkt-btn--ghost" href="/rocket-fund/">How the Rocket Fund works</a>
+</div>
+{% endcall %}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    <div class="rkt-split">
+      <div class="rkt-prose rkt-reveal">
+        {{ sechead("Team Toledo", "Success is a team effort") }}
+        <p>Our Rockets compete at the highest level of intercollegiate athletics while achieving academic standards that are among the best in the nation. Success for University of Toledo student-athletes is truly a team effort — and there are endless ways to play your part on <strong>#TeamToledo</strong>.</p>
+        <p>Philanthropic giving is different from transactional giving: it is above and beyond any required payment for seats or parking, and it goes to work directly in the lives of student-athletes — scholarships, academics, nutrition, and the daily resources that turn talent into graduates.</p>
+      </div>
+      <div class="rkt-prose rkt-reveal">
+        {{ sechead("The strategic plan", "Rise together") }}
+        <p>Toledo Athletics' strategic plan lays out the path to national prominence — the investments, the facilities, and the standard of excellence the department is building toward.</p>
+        <div class="rkt-btnrow">
+          <a class="rkt-btn rkt-btn--ghost-light" href="{{ site.riseTogetherUrl }}">Explore Rise Together Toledo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ declaration(
+  "The mission",
+  "Transform lives while elevating the university and community through the power of sports."
+) }}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    <div class="rkt-prose rkt-reveal">
+      {{ sechead("The vision", "The gold standard") }}
+      <p>"Together, Toledo will rise to national prominence as the 'gold standard' of college athletics." That vision runs through everything the Rocket Fund supports — and it starts with people who decide their support belongs on the field, in the classroom, and in the community.</p>
+      <p>"There are endless ways to play your part on #TeamToledo," says <strong>Tom Moreland, Vice President and Director of Athletics</strong> — from an annual Rocket Fund gift to premium seating, endowments, and everyday round-up giving.</p>
+    </div>
+  </div>
+</section>
+
+<section class="rkt-section rkt-section--navy rkt-section--center">
+  <div class="rkt-wrap">
+    {{ sechead("Athlete voices", "Hear it from the Rockets", "", true) }}
+    {{ quoteRotator(testimonials) }}
+  </div>
+</section>
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    {{ sechead("Ways to give", "Play your part") }}
+    {{ cards([
+      { tag: "Annual", title: "Rocket Fund", text: "The annual giving program at the heart of it all — benefits begin at $100 a year.", href: "/rocket-fund/", cta: "Learn more" },
+      { tag: "Forever", title: "Legacy Society", text: "Endow your gift so it fuels Toledo student-athletes in perpetuity.", href: "/ways-to-give/legacy-society/", cta: "Learn more" },
+      { tag: "Everyday", title: "GameChange", text: "Round up your purchases and give a little with every swipe.", href: "/ways-to-give/gamechange/", cta: "Enroll" }
+    ]) }}
+  </div>
+</section>
+
+{{ ctaband("Play your part on #TeamToledo.", "/give/", "Give Now", "/ways-to-give/", "All ways to give") }}

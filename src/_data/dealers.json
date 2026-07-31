@@ -1,0 +1,10 @@
+[
+  { "name": "Ballas Buick GMC", "addressLines": ["5715 W. Central Ave", "Toledo, OH 43615"], "phone": "419.464.7699", "tel": "+14194647699" },
+  { "name": "Brondes Ford Toledo", "addressLines": ["5545 Secor Rd", "Toledo, OH 43623"], "phone": "419.517.6024", "tel": "+14195176024" },
+  { "name": "Brown Honda", "addressLines": ["6155 W. Central Ave", "Toledo, OH 43615"], "phone": "419.531.0151", "tel": "+14195310151" },
+  { "name": "Brondes Ford Lincoln Maumee", "addressLines": ["1475 Arrowhead Rd", "Maumee, OH 43537"], "phone": "419.887.1511", "tel": "+14198871511" },
+  { "name": "Grogan's Towne", "addressLines": ["6100 Telegraph Rd", "Toledo, OH 43612"], "phone": "419.476.0761", "tel": "+14194760761" },
+  { "name": "Dave White Chevrolet", "addressLines": ["5880 Monroe Street", "Sylvania, OH 43560"], "phone": "419.885.4444", "tel": "+14198854444" },
+  { "name": "Jim White Toyota", "addressLines": ["6123 W. Central Ave", "Toledo, OH 43615"], "phone": "419.841.6681", "tel": "+14198416681" },
+  { "name": "Yark Automotive Group", "addressLines": ["6019 Central Ave", "Toledo, OH 43615"], "phone": "419.842.7848", "tel": "+14198427848" }
+]

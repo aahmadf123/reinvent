@@ -1,0 +1,32 @@
+---
+title: Development Internships
+description: Internship opportunities with the Rocket Fund — development sales, operations, and special events roles with Toledo Athletics.
+sidearmSlug: development-internships
+cleanUrl: utrockets.com/internships
+crumb: []
+---
+{% from "components.njk" import hero, sechead, cards, ctaband %}
+
+{% call hero("Join the crew", "Development Internships", "Learn athletics fundraising from the inside — sales, operations, and special events with the Rocket Fund.", true) %}
+<div class="rkt-btnrow">
+  <a class="rkt-btn" href="mailto:zane.collier@utoledo.edu">Ask about openings</a>
+</div>
+{% endcall %}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    {{ sechead(
+      "Three tracks",
+      "Pick your position",
+      "Each posting below opens the full description. For more information, contact Zane Collier at zane.collier@utoledo.edu or 419.530.5087."
+    ) }}
+    {{ cards([
+      { tag: "Sales", title: "Development Sales", text: "Work donor and premium-seating pipelines, learn the revenue side of college athletics, and sharpen a sales skill set that travels.", href: site.internshipPdfs[0].href, cta: "Read the posting" },
+      { tag: "Operations", title: "Development Operations", text: "The systems behind the gifts — data, stewardship, gameday benefit fulfillment, and the details that keep donors coming back.", href: site.internshipPdfs[1].href, cta: "Read the posting" },
+      { tag: "Events", title: "Special Events", text: "Build the Reverse Raffle, golf outings, and Hall of Fame night from the ground up — planning, logistics, and showtime.", href: site.internshipPdfs[2].href, cta: "Read the posting" }
+    ]) }}
+    <p class="rkt-note">Position descriptions open as PDFs hosted by Toledo Athletics.</p>
+  </div>
+</section>
+
+{{ ctaband("Start your career at kickoff.", "mailto:zane.collier@utoledo.edu", "Email Zane Collier", "/team/", "Meet the team") }}
