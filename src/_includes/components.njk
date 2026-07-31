@@ -20,12 +20,14 @@
 
 {# Hero. Pass media=true on the home page to run the footage reel
    behind it; every other page gets the flat Midnight Blue field.
+   center=true stacks the composition on the page's centre line —
+   the launch treatment, reserved for the home page.
 
    The reel's URL goes through the `url` filter: it lives on a data
    attribute, which Eleventy's base plugin does not rewrite, so
    without this it would miss the deploy path prefix and 404. #}
-{% macro hero(eyebrow, title, lede="", sub=false, media=false) %}
-<section class="rkt-hero{% if sub %} rkt-hero--sub{% endif %}">
+{% macro hero(eyebrow, title, lede="", sub=false, media=false, center=false) %}
+<section class="rkt-hero{% if sub %} rkt-hero--sub{% endif %}{% if center %} rkt-hero--launch{% endif %}">
   {% if media %}
   <div class="rkt-hero-media">
     <img src="/assets/img/rockets-hero-poster.jpg" alt="" width="1600" height="900" fetchpriority="high" decoding="async">
@@ -60,6 +62,168 @@
     {% endfor %}
   </ul>
 </div>
+{% endmacro %}
+
+{# Scoreboard wall — the signature moment. Six figures and three photos
+   share one hairline-gold grid, the way a stadium board mixes numbers
+   and replays. Same screen-reader twin as telemetry: the visible count
+   animates, the real value never changes. Rows read photo, stat, stat. #}
+{% macro scoreboard(eyebrow, title, stats, photos=[]) %}
+<section class="rkt-section rkt-section--navy rkt-section--center rkt-scoreboard rkt-section--joint-both">
+  <div class="rkt-wrap">
+    <div class="rkt-sechead rkt-sechead--center rkt-reveal">
+      {{ slant() }}
+      <p class="rkt-eyebrow">{{ eyebrow }}</p>
+      <h2 class="rkt-h2">{{ title | safe }}</h2>
+    </div>
+    <div class="rkt-board">
+      {% for row in range(0, 3) %}
+        {% if photos[row] %}
+        <div class="rkt-board-photo rkt-reveal">
+          <img src="{{ photos[row].src }}" alt="{{ photos[row].alt }}" width="{{ photos[row].w }}" height="{{ photos[row].h }}" loading="lazy" decoding="async">
+        </div>
+        {% endif %}
+        {% for s in [stats[row * 2], stats[row * 2 + 1]] %}
+        {% if s %}
+        <div class="rkt-board-stat rkt-reveal">
+          <span class="rkt-sr">{{ s.n }} {{ s.label }}</span>
+          <span aria-hidden="true">
+            <span class="rkt-stat" data-rkt-count>{{ s.n }}</span>
+            <span class="rkt-stat-label">{{ s.label }}</span>
+          </span>
+        </div>
+        {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endmacro %}
+
+{# Declaration band — a short statement given the full navy field and the
+   centre line. For missions, visions, and words worth that much room. #}
+{% macro declaration(eyebrow, statement, attribution="") %}
+<section class="rkt-section rkt-section--navy rkt-declare">
+  <div class="rkt-wrap rkt-reveal">
+    {{ slant() }}
+    <p class="rkt-eyebrow">{{ eyebrow }}</p>
+    {% if attribution %}
+    <figure class="rkt-declare-quote">
+      <blockquote><p class="rkt-declare-text">{{ statement }}</p></blockquote>
+      <figcaption class="rkt-declare-cite">{{ attribution }}</figcaption>
+    </figure>
+    {% else %}
+    <p class="rkt-declare-text">{{ statement }}</p>
+    {% endif %}
+    {% if caller %}{{ caller() }}{% endif %}
+  </div>
+</section>
+{% endmacro %}
+
+{# Giving levels as ticket stubs — the artifact a donor actually holds.
+   The stub carries the amount, a punched perforation separates it from
+   the benefits, and the notches are cut by the page ground showing
+   through. Pure CSS; no images. #}
+{% macro tickets(levels) %}
+<ol class="rkt-tickets">
+  {% for l in levels %}
+  <li class="rkt-ticket{% if l.featured %} rkt-ticket--featured{% endif %} rkt-reveal">
+    <div class="rkt-ticket-stub">
+      <span class="rkt-ticket-amount rkt-figures">{{ l.amount }}</span>
+      <span class="rkt-ticket-per">{{ l.per }}</span>
+    </div>
+    <div class="rkt-ticket-body">
+      <div class="rkt-ticket-name">
+        <h3 class="rkt-h3">{{ l.name }}</h3>
+        {% if l.featured %}<span class="rkt-chip rkt-chip--gold">Most popular</span>{% endif %}
+        {% if l.sample %}<span class="rkt-chip">Amount to be confirmed</span>{% endif %}
+      </div>
+      {% if l.impact %}<p class="rkt-ticket-impact">{{ l.impact }}</p>{% endif %}
+      <ul>
+        {% for b in l.benefits %}<li>{{ b }}</li>{% endfor %}
+      </ul>
+      {% if l.note %}<p class="rkt-ticket-note">{{ l.note }}</p>{% endif %}
+    </div>
+  </li>
+  {% endfor %}
+</ol>
+{% endmacro %}
+
+{# Athlete voices. Ships as a stacked set of figures — the form embeds
+   and no-JS visitors keep. rkt.js upgrades it to a paced rotator with
+   its own controls where motion is welcome. #}
+{% macro quoteRotator(items) %}
+<div class="rkt-quotes" data-rkt-quotes>
+  {% for q in items %}
+  <figure class="rkt-quote rkt-reveal">
+    <img src="{{ q.img }}" alt="" width="{{ q.w }}" height="{{ q.h }}" loading="lazy" decoding="async">
+    <div class="rkt-quote-text">
+      <blockquote><p>{{ q.quote }}</p></blockquote>
+      <figcaption>
+        <strong>{{ q.name }}</strong>
+        <span>{{ q.sport }} · Class of {{ q.year }}</span>
+      </figcaption>
+    </div>
+  </figure>
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{# Staff directory cards. #}
+{% macro staffGrid(people) %}
+<ul class="rkt-staff">
+  {% for p in people %}
+  <li class="rkt-staffcard rkt-reveal">
+    <img src="{{ p.img }}" alt="{{ p.name }}" width="{{ p.w }}" height="{{ p.h }}" loading="lazy" decoding="async">
+    <div class="rkt-staffcard-body">
+      <h3 class="rkt-h3">{{ p.name }}</h3>
+      <p class="rkt-staff-title">{{ p.title }}</p>
+      <p class="rkt-figures"><a href="tel:{{ p.tel }}">{{ p.phone }}</a></p>
+      {% if p.email %}<p class="rkt-staff-mail"><a href="mailto:{{ p.email }}">{{ p.email }}</a></p>{% endif %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+
+{# Season calendar, grouped by month — the one place a sequence marker
+   is honest, because the months are the sequence. #}
+{% macro eventList(calendar) %}
+<div class="rkt-eventlist">
+  {% for m in calendar %}
+  <section class="rkt-month rkt-reveal" aria-label="{{ m.month }}">
+    <h3 class="rkt-h3 rkt-month-name">{{ m.month }}</h3>
+    <ul>
+      {% for e in m.events %}
+      <li class="rkt-event">
+        <span class="rkt-event-date">{{ e.day or "TBA" }}</span>
+        <div class="rkt-event-body">
+          <p class="rkt-event-name">{{ e.name }}</p>
+          {% if e.when %}<p class="rkt-event-meta">{{ e.when }}</p>{% endif %}
+          {% if e.venue %}<p class="rkt-event-meta">{{ e.venue }}</p>{% endif %}
+          {% if e.href %}<p class="rkt-event-meta"><a href="{{ e.href }}">{{ e.label or "Details" }}</a></p>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{# Partner dealers — reuses the channel card grid. #}
+{% macro dealerGrid(dealers) %}
+<ul class="rkt-channels">
+  {% for d in dealers %}
+  <li class="rkt-channel rkt-reveal">
+    <h3 class="rkt-h3">{{ d.name }}</h3>
+    <address>
+      {% for line in d.addressLines %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}
+    </address>
+    <span class="rkt-figures"><a href="tel:{{ d.tel }}">{{ d.phone }}</a></span>
+  </li>
+  {% endfor %}
+</ul>
 {% endmacro %}
 
 {# Section head. center=true for short, declarative sections — see the
@@ -98,8 +262,17 @@
 </section>
 {% endmacro %}
 
-{% macro figureSlot(caption) %}
+{# With a src this is a real photograph; without one it stays the striped
+   placeholder that marks a slot still waiting on approved photography. #}
+{% macro figureSlot(caption, src="", alt="", width=0, height=0) %}
+{% if src %}
+<figure class="rkt-photo rkt-reveal">
+  <img src="{{ src }}" alt="{{ alt }}" width="{{ width }}" height="{{ height }}" loading="lazy" decoding="async">
+  <figcaption>{{ caption }}</figcaption>
+</figure>
+{% else %}
 <figure class="rkt-figure rkt-reveal">
   <figcaption>{{ caption }}</figcaption>
 </figure>
+{% endif %}
 {% endmacro %}

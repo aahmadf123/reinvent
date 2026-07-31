@@ -1,0 +1,37 @@
+---
+title: Meet the Team
+description: The Rocket Fund staff — Connor Whelan, Josh Dittman, Ryleigh Gordon, and Zane Collier — ready to help with giving, benefits, and premium seating.
+sidearmSlug: development-staff
+cleanUrl: utrockets.com/staff
+crumb: []
+---
+{% from "components.njk" import hero, sechead, staffGrid, ctaband %}
+
+{% call hero("Mission control", "Meet the team", "Four people, one job: connecting your support to Toledo student-athletes.", true) %}
+<div class="rkt-btnrow">
+  <a class="rkt-btn" href="/contact/">Contact us</a>
+</div>
+{% endcall %}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    {{ sechead(
+      "Athletic Development",
+      "The Rocket Fund staff",
+      "Call, text, or email — the office is open 9 a.m. to 5 p.m., Monday through Friday."
+    ) }}
+    {{ staffGrid(staff) }}
+  </div>
+</section>
+
+<section class="rkt-section rkt-section--navy">
+  <div class="rkt-wrap">
+    <div class="rkt-prose rkt-reveal">
+      {{ sechead("The office", "Where to find us") }}
+      <p>Athletic Development Office<br>The University of Toledo<br>{{ site.addressLines[0] }}<br>{{ site.addressLines[1] }}</p>
+      <p>Main line (call or text): <a href="tel:+14195302510">{{ site.phonePrimary }}</a><br>Email: <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    </div>
+  </div>
+</section>
+
+{{ ctaband("A question away from your answer.", "/contact/", "Contact us", "/give/", "Give Now") }}

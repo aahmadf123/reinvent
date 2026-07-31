@@ -1,13 +1,13 @@
 ---
 title: Rocket Car Program
-description: Dealerships across Northwest Ohio and Southeast Michigan provide courtesy vehicles for Toledo coaches and administrators, aiding recruiting and public relations.
+description: Eight dealerships across Northwest Ohio and Southeast Michigan provide courtesy vehicles for Toledo coaches and administrators, aiding recruiting and public relations.
 sidearmSlug: rocket-car
 cleanUrl: utrockets.com/rocketcar
 crumb:
   - label: Ways to Give
     href: /ways-to-give/
 ---
-{% from "components.njk" import hero, sechead, ctaband, figureSlot %}
+{% from "components.njk" import hero, sechead, dealerGrid, ctaband %}
 
 {% call hero("Dealer partnerships", "Rocket Car Program", "Area dealerships keep Toledo's coaches on the road — recruiting, connecting, and representing the Rockets.", true) %}
 <div class="rkt-btnrow">
@@ -17,25 +17,18 @@ crumb:
 
 <section class="rkt-section">
   <div class="rkt-wrap">
-    <div class="rkt-split">
-      <div class="rkt-prose rkt-reveal">
-        {{ sechead("The program", "Wheels for the mission") }}
-        <p>The University of Toledo Athletics Department partners with automobile dealerships throughout Northwest Ohio and Southeast Michigan in an athletics courtesy car program. Participating dealers provide a vehicle for a Toledo coach or administrator.</p>
-        <p>The program directly aids the athletic department in <strong>recruiting</strong>, <strong>public relations</strong>, and <strong>attracting talented coaches and staff</strong> — miles that turn into wins.</p>
-      </div>
-      <div class="rkt-prose rkt-reveal">
-        {{ sechead("For dealers", "What partners receive") }}
-        <ul>
-          <li>Rocket Fund membership and donor benefits <span class="rkt-chip">Sample — to be confirmed</span></li>
-          <li>Recognition across Toledo Athletics platforms <span class="rkt-chip">Sample — to be confirmed</span></li>
-          <li>Gameday hospitality and ticket opportunities <span class="rkt-chip">Sample — to be confirmed</span></li>
-        </ul>
-        <div class="rkt-btnrow">
-          <a class="rkt-btn" href="/contact/">Start the conversation</a>
-        </div>
-      </div>
+    <div class="rkt-prose rkt-reveal">
+      {{ sechead("The program", "Wheels for the mission") }}
+      <p>The University of Toledo Athletics Department partners with automobile dealerships throughout Northwest Ohio and Southeast Michigan in an athletics courtesy car program. Participating dealers provide a vehicle for a Toledo coach or administrator.</p>
+      <p>The program directly aids the athletic department in <strong>recruiting</strong>, <strong>public relations</strong>, and <strong>attracting talented coaches and staff</strong> — miles that turn into wins. To join, contact Josh Dittman, Senior Associate AD for Development, at <a href="tel:+14195304183">419.530.4183</a>.</p>
     </div>
-    <p class="rkt-note">Preview note: dealer benefit details are placeholders pending confirmation by Athletic Development.</p>
+  </div>
+</section>
+
+<section class="rkt-section rkt-section--navy">
+  <div class="rkt-wrap">
+    {{ sechead("The starting lineup", "Participating dealerships", "Eight partners already drive the program.") }}
+    {{ dealerGrid(dealers) }}
   </div>
 </section>
 

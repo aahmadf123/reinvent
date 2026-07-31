@@ -1,0 +1,40 @@
+---
+title: Special Events
+description: The Rocket Fund events calendar — Reverse Raffle, Rocket Golf Classic, golf outings, Homecoming, and the Varsity T Hall of Fame induction.
+sidearmSlug: special-events
+cleanUrl: utrockets.com/specialevents
+crumb: []
+---
+{% from "components.njk" import hero, sechead, eventList, ctaband %}
+
+{% call hero("Mark the calendar", "Special Events", "From the Reverse Raffle to Hall of Fame night — the events that bring #TeamToledo together all year.", true) %}
+<div class="rkt-btnrow">
+  <a class="rkt-btn" href="/contact/">Ask about an event</a>
+</div>
+{% endcall %}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    {{ sechead(
+      "The season",
+      "Upcoming events",
+      "Dates are set per season and reviewed annually. For the full athletic composite schedule, visit UTRockets.com."
+    ) }}
+    {{ eventList(events) }}
+    <p class="rkt-note">For event registration and details, call the Athletic Development Office at 419.530.5087.</p>
+  </div>
+</section>
+
+<section class="rkt-section rkt-section--navy">
+  <div class="rkt-wrap">
+    <div class="rkt-prose rkt-reveal">
+      {{ sechead("Full schedule", "Every Rockets date, one place") }}
+      <p>Game schedules for all 17 varsity sports live on the main athletics site — special events on this page orbit around them.</p>
+      <div class="rkt-btnrow">
+        <a class="rkt-btn" href="{{ site.mainSiteUrl }}">Visit UTRockets.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ ctaband("Save a seat at the next one.", "/contact/", "Ask about an event", "/give/", "Give Now") }}

@@ -1,13 +1,13 @@
 ---
 title: Basketball Premium
-description: Premium basketball seating at Savage Arena — Joe Grogan Room hospitality, premium chairbacks, and Executive pregame tables for Rocket Fund donors.
+description: Premium basketball seating at Savage Arena — suites, loges, club seats, Venture Courtside, lower bowl zones, and Joe Grogan Room hospitality.
 sidearmSlug: basketball-premium
 cleanUrl: utrockets.com/basketballpremium
 crumb:
   - label: Premium Seating & Parking
     href: /premium/
 ---
-{% from "components.njk" import hero, sechead, cards, ctaband, figureSlot %}
+{% from "components.njk" import hero, sechead, ctaband, figureSlot %}
 
 {% call hero("Savage Arena", "Basketball Premium", "Toledo basketball up close — with hospitality that starts before tipoff.", true) %}
 <div class="rkt-btnrow">
@@ -19,26 +19,76 @@ crumb:
   <div class="rkt-wrap">
     <div class="rkt-split">
       <div class="rkt-prose rkt-reveal">
-        {{ sechead("Donor hospitality", "The Joe Grogan Room") }}
-        <p>The Joe Grogan Room is the donor hospitality space at Savage Arena, open for men's and women's basketball games to every Rocket Fund donor at the Gold level ($600 and above).</p>
-        <p>Executive-level donors ($1,200 and above) can reserve a pregame table — your spot is waiting when you walk in.</p>
+        {{ sechead("The building", "John F. Savage Arena") }}
+        <p>Home to Rocket men's and women's basketball as well as women's volleyball, Savage Arena debuted its <strong>$30 million renovation and expansion</strong> in November 2008. Originally built in 1976 as Centennial Hall, it became Savage Hall in 1988 and Savage Arena in 2008.</p>
+        <p>The Joe Grogan Room — the donor hospitality room with a full-service bar and restaurant — is open for men's and women's basketball to every Rocket Fund donor at the <strong>Gold level ($600 and above)</strong>, with pregame table reservations for <strong>Executive-level donors ($1,200 and above)</strong>.</p>
         <div class="rkt-btnrow">
           <a class="rkt-btn" href="/benefits/">See giving levels</a>
         </div>
       </div>
-      {{ figureSlot("Photo slot — Joe Grogan Room imagery to be supplied") }}
+      {{ figureSlot("Game night at Savage Arena", "/assets/img/impact/impact-3.jpg", "The court at Savage Arena during a Toledo basketball game", 1600, 900) }}
     </div>
   </div>
 </section>
 
 <section class="rkt-section rkt-section--navy">
   <div class="rkt-wrap">
-    {{ sechead("Premium seating", "Courtside range") }}
-    {{ cards([
-      { tag: "Sample — to be confirmed", title: "Premium Chairbacks", text: "The closest reserved chairback seating to the floor, at center court.", href: "/contact/", cta: "Inquire" },
-      { tag: "Sample — to be confirmed", title: "Courtside Seats", text: "Feel the pace of the game from floor level — the most immersive seat in Savage Arena.", href: "/contact/", cta: "Inquire" }
-    ]) }}
-    <p class="rkt-note">Preview note: seating categories above are samples. Final Savage Arena premium offerings and pricing to be confirmed by Athletic Development.</p>
+    {{ sechead("Premium seating", "Pick your view of the floor") }}
+    <div class="rkt-tablewrap rkt-reveal">
+      <table class="rkt-table">
+        <caption>Savage Arena premium seating</caption>
+        <thead>
+          <tr>
+            <th scope="col">Seating</th>
+            <th scope="col">What comes with it</th>
+            <th scope="col">Per seat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Suites</td>
+            <td>24 tickets to all Savage Arena events, pregame meal for men's basketball, in-suite food and beverage, premium parking</td>
+            <td>Contact us</td>
+          </tr>
+          <tr>
+            <td>Loges</td>
+            <td>Semi-private executive seats with bar rail, name displayed at your loge, video-board recognition, in-seat service, Grogan Room access</td>
+            <td>Contact us</td>
+          </tr>
+          <tr>
+            <td>Club seats</td>
+            <td>Padded semi-private seating, in-seat wait service, VIP access to suites and loges, Grogan Room access, premium parking</td>
+            <td>Contact us</td>
+          </tr>
+          <tr>
+            <td>Venture Courtside Club — first row</td>
+            <td>Seats on the floor, baseline to baseline, Lot 3 parking, Venture Courtside Club access</td>
+            <td class="rkt-figures">$2,000</td>
+          </tr>
+          <tr>
+            <td>Venture Courtside Club — second row</td>
+            <td>Same courtside experience, one row back</td>
+            <td class="rkt-figures">$1,750</td>
+          </tr>
+          <tr>
+            <td>Lower bowl — Zone A</td>
+            <td>East and west sidelines, parking included</td>
+            <td class="rkt-figures">$375</td>
+          </tr>
+          <tr>
+            <td>Lower bowl — Zone B</td>
+            <td>East and west sidelines, parking included</td>
+            <td class="rkt-figures">$275</td>
+          </tr>
+          <tr>
+            <td>Lower bowl — Zone C</td>
+            <td>East and west sidelines, parking included</td>
+            <td class="rkt-figures">$100</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="rkt-note">Venture Courtside prices include the Rocket Fund contribution; lower-bowl prices are premium seat payments. Per IRS regulation, premium seating payments are not tax-deductible.</p>
   </div>
 </section>
 

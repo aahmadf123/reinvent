@@ -8,6 +8,8 @@
     "dev": "eleventy --serve --port 8080",
     "build": "eleventy && node scripts/build-embeds.mjs && node scripts/check-links.mjs",
     "brand": "node scripts/build-brand-assets.mjs",
+    "video": "node scripts/build-hero-video.mjs",
+    "fetch-assets": "node scripts/fetch-remote-assets.mjs",
     "embeds": "node scripts/build-embeds.mjs",
     "links": "node scripts/check-links.mjs",
     "shots": "node scripts/screenshot.mjs",
@@ -18,6 +20,7 @@
     "@axe-core/playwright": "^4.10.2",
     "@fontsource/montserrat": "^5.3.0",
     "@fontsource/saira-condensed": "^5.3.0",
+    "ffmpeg-static": "^5.3.0",
     "playwright": "^1.54.0"
   }
 }

@@ -1,0 +1,37 @@
+[
+  {
+    "month": "May",
+    "events": [
+      { "day": "9", "name": "Reverse Raffle", "when": "Saturday, 6:30 p.m.", "venue": "Savage Arena" }
+    ]
+  },
+  {
+    "month": "June",
+    "events": [
+      { "day": "1", "name": "Rocket Golf Classic", "when": "Monday", "venue": "Stone Oak Country Club" }
+    ]
+  },
+  {
+    "month": "July",
+    "events": [
+      { "day": "27", "name": "Women's Basketball Golf Outing", "when": "Monday" },
+      { "day": "", "name": "Football Golf Outing", "when": "Date to be announced" }
+    ]
+  },
+  {
+    "month": "October",
+    "events": [
+      { "day": "10", "name": "Homecoming Football Game", "when": "Saturday, kickoff to be announced", "venue": "Glass Bowl" },
+      { "day": "23", "name": "Varsity T Hall of Fame Induction", "when": "Friday, 6:00 p.m.", "venue": "Savage Arena" },
+      { "day": "", "name": "Varsity T Club Tailgate", "when": "Home football Saturdays", "venue": "Varsity T All Sports Pavilion" }
+    ]
+  },
+  {
+    "month": "Dates to be announced",
+    "events": [
+      { "day": "", "name": "Football Country Club Events", "when": "Summer" },
+      { "day": "", "name": "Men's Basketball Roundball Social", "venue": "Savage Arena" },
+      { "day": "", "name": "Women's Basketball Tipoff Dinner", "venue": "Lancelot Thompson Student Union Auditorium" }
+    ]
+  }
+]

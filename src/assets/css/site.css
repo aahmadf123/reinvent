@@ -34,6 +34,26 @@
   color: var(--rkt-white);
 }
 
+/* ---------- slant joints ----------
+   Where navy meets paper, the seam rakes to the same lean as the
+   logotype's italic instead of running level. The clip eats ~3vw of
+   the section, so each joint edge carries compensating padding.
+   Only meaningful where the adjoining backgrounds differ. */
+.rkt .rkt-section--joint-top {
+  clip-path: polygon(0 3vw, 100% 0, 100% 100%, 0 100%);
+  padding-top: calc(clamp(3rem, 8vw, 5.5rem) + 3vw);
+}
+
+.rkt .rkt-section--joint-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3vw), 0 100%);
+  padding-bottom: calc(clamp(3rem, 8vw, 5.5rem) + 3vw);
+}
+
+.rkt .rkt-section--joint-both {
+  clip-path: polygon(0 3vw, 100% 0, 100% calc(100% - 3vw), 0 100%);
+  padding-block: calc(clamp(3rem, 8vw, 5.5rem) + 3vw);
+}
+
 .rkt .rkt-prose {
   max-width: var(--rkt-measure);
 }
@@ -225,6 +245,55 @@
   font-size: clamp(2.4rem, 6vw, 4.25rem);
 }
 
+/* ---------- hero, launch treatment ----------
+   The home page stacks the whole composition on the centre line and
+   lets the display face go as big as the viewport allows. Copy sits
+   over the busiest part of the frame, so the scrim flattens into a
+   symmetric wash instead of leaning left. */
+.rkt .rkt-hero--launch {
+  text-align: center;
+  padding-block: clamp(5rem, 14vw, 9.5rem) clamp(4rem, 11vw, 7rem);
+}
+
+.rkt .rkt-hero--launch .rkt-wrap {
+  max-width: 56rem;
+}
+
+.rkt .rkt-hero--launch h1.rkt-display {
+  font-size: clamp(3.25rem, 10vw, 7.5rem);
+}
+
+.rkt .rkt-hero--launch .rkt-eyebrow {
+  text-indent: 0.2em; /* the wide track pushes the last letter off-centre */
+}
+
+.rkt .rkt-hero--launch .rkt-lede {
+  margin-inline: auto;
+}
+
+.rkt .rkt-hero--launch .rkt-btnrow {
+  justify-content: center;
+}
+
+.rkt .rkt-hero--launch .rkt-hero-media::after {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 34, 64, 0.92) 0%,
+    rgba(10, 34, 64, 0.62) 55%,
+    rgba(10, 34, 64, 0.85) 100%
+  );
+}
+
+@media (max-width: 60em) {
+  .rkt .rkt-hero--launch .rkt-hero-media::after {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 34, 64, 0.88) 0%,
+      rgba(10, 34, 64, 0.93) 100%
+    );
+  }
+}
+
 /* ---------- buttons ---------- */
 .rkt .rkt-btnrow {
   display: flex;
@@ -328,6 +397,122 @@
   color: var(--rkt-mist);
   display: block;
   margin-top: 0.5rem;
+}
+
+/* ---------- scoreboard wall ----------
+   The page's loudest moment: figures and photographs in one grid,
+   separated by hairline gold — the gap paints the lines, the way a
+   stadium board mixes numbers with replays. Rows read photo, stat,
+   stat on wide screens; the photo takes its own row on narrow ones. */
+.rkt .rkt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rkt-line-dark);
+  border: 1px solid var(--rkt-line-dark);
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.rkt .rkt-board-photo,
+.rkt .rkt-board-stat {
+  background: var(--rkt-navy);
+}
+
+.rkt .rkt-board-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  min-height: 12rem;
+}
+
+.rkt .rkt-board-stat {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: clamp(1.75rem, 4vw, 3rem) var(--rkt-gutter);
+}
+
+.rkt .rkt-board-stat .rkt-stat {
+  font-family: var(--rkt-font-display);
+  font-weight: 700;
+  font-size: clamp(3.25rem, 7.5vw, 6rem);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  color: var(--rkt-gold);
+  display: block;
+  line-height: 1;
+}
+
+.rkt .rkt-board-stat .rkt-stat-label {
+  font-family: var(--rkt-font-body);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rkt-mist);
+  display: block;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 60em) {
+  .rkt .rkt-board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rkt .rkt-board-photo {
+    grid-column: span 2;
+  }
+}
+
+/* ---------- declaration band ----------
+   One sentence, the full navy field, the centre line. */
+.rkt .rkt-declare .rkt-wrap {
+  text-align: center;
+  max-width: 60rem;
+}
+
+.rkt .rkt-declare .rkt-slant,
+.rkt .rkt-declare .rkt-declare-text,
+.rkt .rkt-declare .rkt-declare-quote {
+  margin-inline: auto;
+}
+
+.rkt .rkt-declare .rkt-eyebrow {
+  color: var(--rkt-gold);
+  text-indent: 0.2em;
+}
+
+.rkt .rkt-declare-text {
+  font-family: var(--rkt-font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.04;
+  font-size: clamp(1.9rem, 4.5vw, 3.4rem);
+  max-width: 26ch;
+}
+
+.rkt .rkt-declare-quote {
+  margin: 0;
+}
+
+.rkt .rkt-declare-quote blockquote {
+  margin: 0;
+}
+
+.rkt .rkt-declare-cite {
+  margin-top: 1.5rem;
+  font-family: var(--rkt-font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rkt-mist);
+}
+
+.rkt .rkt-declare .rkt-btnrow {
+  justify-content: center;
 }
 
 /* ---------- section headers ----------
@@ -441,67 +626,104 @@
   color: var(--rkt-mist);
 }
 
-/* ---------- altitude bands (benefits page) ---------- */
-.rkt .rkt-bands {
+/* ---------- ticket stubs (giving levels) ----------
+   The artifact a donor actually holds. Navy stub carries the amount,
+   a punched perforation separates it from the benefits, and the
+   notches are the page ground showing through the card edge. */
+.rkt .rkt-tickets {
   list-style: none;
   padding: 0;
   margin-top: 2.5rem;
-  position: relative;
+  display: grid;
+  gap: 1.25rem;
+  max-width: 56rem;
 }
 
-.rkt .rkt-band {
+.rkt .rkt-ticket {
   position: relative;
+  overflow: hidden;
   display: grid;
   grid-template-columns: minmax(7.5rem, 10rem) 1fr;
-  gap: 1.5rem;
-  padding: 2rem 0 2rem 2rem;
-  border-left: 2px solid var(--rkt-gold);
+  background: var(--rkt-white);
+  border: 1px solid var(--rkt-line);
+  border-radius: var(--rkt-radius);
 }
 
-.rkt .rkt-band::before {
-  content: "";
-  position: absolute;
-  left: -7px;
-  top: 2.55rem;
-  width: 12px;
-  height: 12px;
-  background: var(--rkt-gold);
-  border: 2px solid var(--rkt-paper);
-  border-radius: 50%;
+.rkt .rkt-ticket-stub {
+  background: var(--rkt-navy);
+  color: var(--rkt-white);
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: 1.5rem 1rem;
 }
 
-.rkt .rkt-band + .rkt-band {
-  border-top: 1px solid var(--rkt-line);
-}
-
-.rkt .rkt-band-amount {
+.rkt .rkt-ticket-amount {
   font-family: var(--rkt-font-display);
   font-weight: 700;
-  font-size: clamp(1.5rem, 2.8vw, 1.9rem);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
   font-variant-numeric: tabular-nums;
-  color: var(--rkt-navy);
-  line-height: 1.05;
+  color: var(--rkt-gold);
+  line-height: 1;
 }
 
-.rkt .rkt-band-amount .rkt-per {
+.rkt .rkt-ticket-per {
   display: block;
   font-family: var(--rkt-font-body);
   font-weight: 500;
   font-size: 0.6875rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--rkt-slate);
-  margin-top: 0.35rem;
+  color: var(--rkt-mist);
+  margin-top: 0.45rem;
 }
 
-.rkt .rkt-band-name {
+.rkt .rkt-ticket-body {
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  border-left: 2px dashed var(--rkt-line);
+  position: relative;
+}
+
+/* The punch notches: paper circles straddling the perforation at the
+   card's top and bottom edges; overflow:hidden clips them to half discs. */
+.rkt .rkt-ticket-body::before,
+.rkt .rkt-ticket-body::after {
+  content: "";
+  position: absolute;
+  left: -9px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--rkt-paper);
+  border: 1px solid var(--rkt-line);
+}
+
+.rkt .rkt-ticket-body::before {
+  top: -9px;
+}
+
+.rkt .rkt-ticket-body::after {
+  bottom: -9px;
+}
+
+.rkt .rkt-ticket-name {
   display: flex;
   align-items: baseline;
   gap: 0.75rem;
   flex-wrap: wrap;
 }
 
-.rkt .rkt-band ul {
+.rkt .rkt-ticket-impact {
+  margin-top: 0.5rem;
+  font-family: var(--rkt-font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rkt-slate);
+}
+
+.rkt .rkt-ticket ul {
   list-style: none;
   padding: 0;
   margin-top: 0.875rem;
@@ -510,12 +732,12 @@
   max-width: 56ch;
 }
 
-.rkt .rkt-band li {
+.rkt .rkt-ticket ul li {
   padding-left: 1.4rem;
   position: relative;
 }
 
-.rkt .rkt-band li::before {
+.rkt .rkt-ticket ul li::before {
   content: "";
   position: absolute;
   left: 0;
@@ -525,21 +747,37 @@
   background: var(--rkt-gold);
 }
 
-.rkt .rkt-band-note {
+.rkt .rkt-ticket-note {
   margin-top: 0.6rem;
   font-size: 0.875rem;
   color: var(--rkt-slate);
 }
 
-.rkt .rkt-band--featured {
-  background: linear-gradient(90deg, rgba(255, 205, 0, 0.14), rgba(255, 205, 0, 0) 65%);
+.rkt .rkt-ticket--featured {
+  border-color: var(--rkt-gold);
+  box-shadow: 0 0 0 1px var(--rkt-gold);
 }
 
-.rkt .rkt-band--featured::before {
-  width: 16px;
-  height: 16px;
-  left: -9px;
-  top: 2.4rem;
+.rkt .rkt-ticket--featured .rkt-ticket-stub {
+  background: var(--rkt-gold);
+}
+
+.rkt .rkt-ticket--featured .rkt-ticket-amount {
+  color: var(--rkt-navy);
+}
+
+.rkt .rkt-ticket--featured .rkt-ticket-per {
+  color: rgba(10, 34, 64, 0.78);
+}
+
+@media (max-width: 40em) {
+  .rkt .rkt-ticket {
+    grid-template-columns: minmax(6.5rem, 7.5rem) 1fr;
+  }
+
+  .rkt .rkt-ticket-body {
+    padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  }
 }
 
 /* Double class: must outrank the base .rkt-chip colour, declared later. */
@@ -547,14 +785,6 @@
   background: var(--rkt-gold);
   border-color: var(--rkt-gold);
   color: var(--rkt-navy);
-}
-
-@media (max-width: 40em) {
-  .rkt .rkt-band {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-    padding-left: 1.5rem;
-  }
 }
 
 /* ---------- badges / preview notes ---------- */
@@ -699,6 +929,27 @@
   white-space: nowrap;
 }
 
+/* On navy, the slate caption/header ink and navy rules disappear —
+   swap to the dark-ground secondary ink and gold hairlines. */
+.rkt .rkt-section--navy .rkt-table caption,
+.rkt .rkt-section--navy .rkt-table thead th,
+.rkt .rkt-section--black .rkt-table caption,
+.rkt .rkt-section--black .rkt-table thead th {
+  color: var(--rkt-mist);
+}
+
+.rkt .rkt-section--navy .rkt-table thead th,
+.rkt .rkt-section--black .rkt-table thead th {
+  border-bottom-color: var(--rkt-gold);
+}
+
+.rkt .rkt-section--navy .rkt-table th,
+.rkt .rkt-section--navy .rkt-table td,
+.rkt .rkt-section--black .rkt-table th,
+.rkt .rkt-section--black .rkt-table td {
+  border-bottom-color: var(--rkt-line-dark);
+}
+
 /* ---------- contact / channel cards ---------- */
 .rkt .rkt-channels {
   list-style: none;
@@ -734,6 +985,7 @@
   display: block;
   margin-top: 0.75rem;
   letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
 }
 
 /* ---------- breadcrumb (lives inside embed) ---------- */
@@ -808,6 +1060,239 @@
   text-transform: uppercase;
   color: var(--rkt-slate);
   text-align: center;
+}
+
+/* Real photography in the same slot. */
+.rkt .rkt-photo {
+  margin: 0;
+}
+
+.rkt .rkt-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--rkt-radius);
+  border: 1px solid var(--rkt-line);
+}
+
+.rkt .rkt-photo figcaption {
+  margin-top: 0.75rem;
+  font-family: var(--rkt-font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rkt-slate);
+}
+
+.rkt .rkt-section--navy .rkt-photo figcaption,
+.rkt .rkt-section--black .rkt-photo figcaption {
+  color: var(--rkt-mist);
+}
+
+/* ---------- athlete voices ----------
+   Stacked figures by default — the embed form. rkt.js upgrades the
+   set to a rotator (see the motion block for what that changes). */
+.rkt .rkt-quotes {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+  margin-top: 2rem;
+}
+
+.rkt .rkt-quote {
+  margin: 0;
+  background: var(--rkt-white);
+  border: 1px solid var(--rkt-line);
+  border-radius: var(--rkt-radius);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.rkt .rkt-quote img {
+  width: min(11rem, 60%);
+  height: auto;
+  align-self: center;
+}
+
+.rkt .rkt-quote-text {
+  border-top: 2px solid var(--rkt-gold);
+  padding-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+.rkt .rkt-quote blockquote {
+  margin: 0;
+  flex-grow: 1;
+}
+
+.rkt .rkt-quote blockquote p {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #33415a;
+}
+
+.rkt .rkt-quote figcaption strong {
+  display: block;
+  font-family: var(--rkt-font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  font-size: 1.2rem;
+  color: var(--rkt-navy);
+}
+
+.rkt .rkt-quote figcaption span {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--rkt-font-body);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rkt-slate);
+}
+
+/* ---------- staff directory ---------- */
+.rkt .rkt-staff {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+}
+
+.rkt .rkt-staffcard {
+  background: var(--rkt-white);
+  border: 1px solid var(--rkt-line);
+  border-top: 3px solid var(--rkt-gold);
+  border-radius: var(--rkt-radius);
+  overflow: hidden;
+}
+
+.rkt .rkt-staffcard img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+.rkt .rkt-staffcard-body {
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+.rkt .rkt-staff-title {
+  margin-top: 0.35rem;
+  font-family: var(--rkt-font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rkt-slate);
+}
+
+.rkt .rkt-staffcard .rkt-figures {
+  font-family: var(--rkt-font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 0.75rem;
+}
+
+.rkt .rkt-staff-mail {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- season calendar ---------- */
+.rkt .rkt-eventlist {
+  margin-top: 2rem;
+  display: grid;
+  gap: clamp(2rem, 5vw, 3rem);
+  max-width: 56rem;
+}
+
+.rkt .rkt-month-name {
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--rkt-navy);
+}
+
+.rkt .rkt-month ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rkt .rkt-event {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 1.25rem;
+  padding-block: 1.1rem;
+  border-bottom: 1px solid var(--rkt-line);
+}
+
+.rkt .rkt-event-date {
+  display: grid;
+  place-content: center;
+  aspect-ratio: 1;
+  background: var(--rkt-navy);
+  color: var(--rkt-gold);
+  font-family: var(--rkt-font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
+  border-radius: var(--rkt-radius);
+  align-self: start;
+}
+
+.rkt .rkt-event-name {
+  font-family: var(--rkt-font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  font-size: 1.2rem;
+  color: var(--rkt-navy);
+}
+
+.rkt .rkt-event-meta {
+  margin-top: 0.2rem;
+  font-size: 0.875rem;
+  color: var(--rkt-slate);
+}
+
+/* ---------- legacy honor roll ---------- */
+.rkt .rkt-honorroll {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto 0;
+  max-width: 56rem;
+  columns: 3 14rem;
+  column-gap: 2.5rem;
+  text-align: left;
+}
+
+.rkt .rkt-honorroll li {
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--rkt-line-dark);
+  break-inside: avoid;
+  font-size: 0.9375rem;
+  color: var(--rkt-mist);
+}
+
+/* ---------- addresses inside cards ---------- */
+.rkt .rkt-channel address {
+  font-style: normal;
+  color: var(--rkt-slate);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin-top: 0.35rem;
 }
 
 /* ============================================================
@@ -922,13 +1407,89 @@
   transform: translateX(5px);
 }
 
-/* --- altitude bands --- */
-.rkt .rkt-band::before {
-  transition: transform var(--rkt-med) var(--rkt-ease);
+/* --- ticket stubs --- */
+.rkt .rkt-ticket {
+  transition:
+    transform var(--rkt-med) var(--rkt-ease),
+    box-shadow var(--rkt-med) var(--rkt-ease);
 }
 
-.rkt .rkt-band:hover::before {
-  transform: scale(1.35);
+.rkt .rkt-ticket:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(10, 34, 64, 0.14);
+}
+
+.rkt .rkt-ticket--featured:hover {
+  box-shadow:
+    0 0 0 1px var(--rkt-gold),
+    0 12px 26px rgba(10, 34, 64, 0.18);
+}
+
+/* --- athlete voices rotator (preview only; rkt.js builds it) --- */
+.rkt-js .rkt .rkt-quotes.is-rotator {
+  display: block;
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.rkt-js .rkt .rkt-quotes.is-rotator .rkt-quote[hidden] {
+  display: none;
+}
+
+.rkt-js .rkt .rkt-quotes.is-rotator .rkt-quote {
+  animation: rkt-quote-in var(--rkt-med) var(--rkt-ease);
+}
+
+@keyframes rkt-quote-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.rkt .rkt-quotes-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.rkt .rkt-quotes-controls button {
+  font-family: var(--rkt-font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--rkt-white);
+  color: var(--rkt-navy);
+  border: 1px solid var(--rkt-navy);
+  border-radius: var(--rkt-radius);
+  padding: 0.55em 0.9em;
+  cursor: pointer;
+  transition:
+    background-color var(--rkt-fast) var(--rkt-ease),
+    color var(--rkt-fast) var(--rkt-ease);
+}
+
+.rkt .rkt-quotes-controls button:hover {
+  background: var(--rkt-navy);
+  color: var(--rkt-white);
+}
+
+.rkt .rkt-quotes-count {
+  font-family: var(--rkt-font-body);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--rkt-slate);
+  font-variant-numeric: tabular-nums;
+  min-width: 3.5rem;
+  text-align: center;
+}
+
+.rkt .rkt-section--navy .rkt-quotes-count,
+.rkt .rkt-section--black .rkt-quotes-count {
+  color: var(--rkt-mist);
 }
 
 /* --- FAQ --- */

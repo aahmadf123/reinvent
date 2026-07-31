@@ -1,13 +1,13 @@
 ---
 title: Benefits & Giving Levels
-description: Rocket Fund benefits begin at $100 a year and climb from there — priority seating, premium parking, and Joe Grogan Room access at Savage Arena.
+description: Rocket Fund benefits begin at $100 a year and climb through six levels — Century, Blue, Gold, Executive, Coaches, and Directors.
 sidearmSlug: rocket-fund-benefits
 cleanUrl: utrockets.com/rocketfundbenefits
 crumb: []
 ---
-{% from "components.njk" import hero, sechead, ctaband %}
+{% from "components.njk" import hero, sechead, tickets, ctaband %}
 
-{% call hero("Benefits & levels", "Gain altitude", "Benefits and privileges begin at $100 of annual support and increase with your level of giving.", true) %}
+{% call hero("Benefits & levels", "Gain altitude", "Six membership levels, starting at $100 of annual support. Every level carries every benefit below it.", true) %}
 <div class="rkt-btnrow">
   <a class="rkt-btn" href="/give/">Give Now</a>
 </div>
@@ -16,30 +16,12 @@ crumb: []
 <section class="rkt-section">
   <div class="rkt-wrap">
     {{ sechead(
-      "The flight path",
-      "Giving levels",
-      "Your total annual giving to the Rocket Fund sets your level. Each level carries every benefit below it."
+      "The season ticket to giving",
+      "Membership levels",
+      "Your total annual giving to the Rocket Fund sets your level — and each level names the real cost it covers for a student-athlete."
     ) }}
-    <ol class="rkt-bands">
-      {% for level in levels %}
-      <li class="rkt-band{% if level.featured %} rkt-band--featured{% endif %} rkt-reveal">
-        <p class="rkt-band-amount">{{ level.amount }}<span class="rkt-per">{{ level.per }}</span></p>
-        <div>
-          <div class="rkt-band-name">
-            <h3 class="rkt-h3">{{ level.name }}</h3>
-            {% if level.featured %}<span class="rkt-chip rkt-chip--gold">Most popular</span>{% endif %}
-            {% if level.sample %}<span class="rkt-chip">Sample — to be confirmed</span>{% endif %}
-          </div>
-          <ul>
-            {% for b in level.benefits %}
-            <li>{{ b }}</li>
-            {% endfor %}
-          </ul>
-        </div>
-      </li>
-      {% endfor %}
-    </ol>
-    <p class="rkt-note">Preview note: levels marked "sample" are placeholders pending confirmation by Athletic Development. The Gold ($600) and Executive ($1,200) benefits shown reflect current program materials.</p>
+    {{ tickets(levels) }}
+    <p class="rkt-note">Benefits are provided at the $100 level and up. Per IRS regulation, premium seating payments (PSP) are not tax-deductible — please consult your tax adviser.</p>
   </div>
 </section>
 
@@ -47,8 +29,8 @@ crumb: []
   <div class="rkt-wrap">
     <div class="rkt-prose rkt-reveal">
       {{ sechead("Parking & hospitality", "How assignments work") }}
-      <p>All donors receive a season parking pass, with the parking area assigned by your total giving level — Gold-level donors ($600+) qualify for a Lot 10 pass for football, and premium placement improves as you climb.</p>
-      <p>At Savage Arena, the Joe Grogan Room is open to all Gold-level donors for men's and women's basketball, with pregame table reservations for Executive-level donors ($1,200+).</p>
+      <p>All donors receive a season parking pass, with the parking area assigned by membership level — Century donors park in Areas 3 and 4 for football, Gold and Executive donors in Area 10, and Coaches and Directors donors in Area 9.</p>
+      <p>At Savage Arena, the Joe Grogan Room is open to all Gold-level donors ($600+) for men's and women's basketball, with pregame table reservations for Executive-level donors ($1,200+).</p>
       <div class="rkt-btnrow">
         <a class="rkt-btn" href="/premium/">Premium seating &amp; parking</a>
         <a class="rkt-btn rkt-btn--ghost" href="/faq/">Benefits FAQ</a>

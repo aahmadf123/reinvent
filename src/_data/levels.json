@@ -1,69 +1,78 @@
 [
   {
     "amount": "$100",
-    "per": "per year",
-    "name": "Blue & Gold",
-    "sample": true,
+    "per": "to $299 / year",
+    "name": "Century",
+    "sample": false,
+    "impact": "Your impact: academic tutoring sessions",
     "benefits": [
-      "Rocket Fund membership and donor communications",
-      "Priority seating assistance",
-      "Season parking pass — lot assigned by total giving level"
+      "Recognition in Rocket Fund listings",
+      "Member-only event invitations, e-newsletter and mailings",
+      "Discount at Rocky's Locker",
+      "Bowl, postseason and concert ticket assistance",
+      "Football parking Areas 3–4 · basketball Area B pass"
     ]
   },
   {
-    "amount": "$250",
-    "per": "per year",
-    "name": "Victory",
-    "sample": true,
+    "amount": "$300",
+    "per": "to $599 / year",
+    "name": "Blue",
+    "sample": false,
+    "impact": "Your impact: strength, conditioning and nutrition",
     "benefits": [
-      "Improved parking lot assignment",
-      "Invitations to select Rocket Fund events",
-      "All Blue & Gold benefits"
+      "Football parking Area 5",
+      "All Century benefits"
     ]
   },
   {
     "amount": "$600",
-    "per": "per year",
+    "per": "to $1,199 / year",
     "name": "Gold",
     "sample": false,
     "featured": true,
+    "impact": "Your impact: leadership and career development",
     "benefits": [
-      "Lot 10 parking pass for football",
-      "Joe Grogan Room access for men's and women's basketball",
-      "All lower-level benefits"
+      "Joe Grogan Room entry for men's and women's basketball",
+      "Olympic sport admission pass",
+      "Football parking Area 10 · basketball Area A pass",
+      "All Blue benefits"
     ]
   },
   {
     "amount": "$1,200",
-    "per": "per year",
+    "per": "to $2,499 / year",
     "name": "Executive",
     "sample": false,
+    "impact": "Your impact: annual textbook expenses",
     "benefits": [
-      "Pregame table reservations in the Joe Grogan Room",
-      "Premium parking placement",
+      "Joe Grogan Room pregame table reservation",
+      "Pregame Chalk Talk invitations",
+      "Premium seating pre-sale access",
       "All Gold benefits"
     ]
   },
   {
     "amount": "$2,500",
-    "per": "per year",
-    "name": "Director's Circle",
-    "sample": true,
+    "per": "to $4,999 / year",
+    "name": "Coaches",
+    "sample": false,
+    "impact": "Your impact: annual health and wellness expenses",
     "benefits": [
-      "Enhanced premium parking and hospitality access",
-      "Invitations to exclusive athletics events",
+      "Invitations to select team practices",
+      "Football parking Area 9",
       "All Executive benefits"
     ]
   },
   {
-    "amount": "$5,000+",
-    "per": "per year",
-    "name": "Champions Circle",
-    "sample": true,
+    "amount": "$5,000",
+    "per": "and up / year",
+    "name": "Directors",
+    "sample": false,
+    "impact": "Your impact: a semester of room and board",
     "benefits": [
-      "Top-priority seating and parking consideration",
-      "Personalized engagement with Toledo Athletics leadership",
-      "All Director's Circle benefits"
+      "Exclusive invitations to Athletic Department events",
+      "Opportunity to receive two pre-game sideline passes",
+      "All Coaches benefits"
     ]
   }
 ]

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Connor Whelan",
+    "title": "Deputy Athletic Director / Chief Revenue Officer",
+    "phone": "419.530.2127",
+    "tel": "+14195302127",
+    "email": "connor.whelan@utoledo.edu",
+    "img": "/assets/img/people/connor-whelan.jpg",
+    "w": 300,
+    "h": 450
+  },
+  {
+    "name": "Josh Dittman",
+    "title": "Senior Associate Athletic Director, Development",
+    "phone": "419.530.4183",
+    "tel": "+14195304183",
+    "email": "joshua.dittman@utoledo.edu",
+    "img": "/assets/img/people/josh-dittman.jpg",
+    "w": 300,
+    "h": 450
+  },
+  {
+    "name": "Ryleigh Gordon",
+    "title": "Assistant Athletic Director for Development",
+    "phone": "419.530.5316",
+    "tel": "+14195305316",
+    "email": "ryleigh.gordon@utoledo.edu",
+    "img": "/assets/img/people/ryleigh-gordon.jpg",
+    "w": 300,
+    "h": 450
+  },
+  {
+    "name": "Zane Collier",
+    "title": "Assistant Director of Development Operations",
+    "phone": "419.530.5087",
+    "tel": "+14195305087",
+    "email": "zane.collier@utoledo.edu",
+    "img": "/assets/img/people/zane-collier.jpg",
+    "w": 300,
+    "h": 450
+  }
+]

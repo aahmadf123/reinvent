@@ -1,6 +1,6 @@
 ---
 title: Varsity T Club
-description: The Varsity T Club connects former Toledo athletes, coaches, and friends — tailgates at the Varsity T All Sports Pavilion, appreciation nights, and $40 annual dues.
+description: The Varsity T Club is Toledo's letterwinners club — tailgates at the Varsity T All Sports Pavilion, the Hall of Fame banquet, ticket discounts, and $40 annual dues.
 sidearmSlug: varsity-t-club
 cleanUrl: utrockets.com/varsityt
 crumb:
@@ -9,31 +9,43 @@ crumb:
 ---
 {% from "components.njk" import hero, telemetry, sechead, cards, ctaband %}
 
-{% call hero("Once a Rocket, always a Rocket", "Varsity T Club", "The home base for former Toledo athletes, coaches, and friends of the program.", true) %}
+{% call hero("Once a Rocket, always a Rocket", "Varsity T Club", "The letterwinners club for former Toledo athletes, coaches, and trainers.", true) %}
 <div class="rkt-btnrow">
-  <a class="rkt-btn" href="/contact/">Join the club</a>
+  <a class="rkt-btn" href="{{ site.varsityTJoinUrl }}">Join the club</a>
 </div>
 {% endcall %}
 
 {{ telemetry([
   { n: "$40", label: "Annual dues" },
   { n: "Every", label: "Home football tailgate" },
-  { n: "2×", label: "Appreciation nights" }
+  { n: "1", label: "Hall of Fame banquet" }
 ]) }}
 
 <section class="rkt-section">
   <div class="rkt-wrap">
     {{ sechead(
-      "The mission",
+      "The club",
       "Keep the roster together",
-      "The club promotes Rockets athletics, raises funds for the program, and serves as the social home for former athletes, coaches, and friends."
+      "The club promotes Rockets athletics, honors its greats, and serves as the social home for everyone who earned a Toledo letter."
     ) }}
     {{ cards([
-      { tag: "Gameday", title: "Tailgate parties", text: "Before every home football game at the Varsity T All Sports Pavilion — the pregame tradition for Toledo letterwinners.", href: "/contact/", cta: "Join" },
-      { tag: "In season", title: "Appreciation nights", text: "Athletic Alumni Appreciation Nights during football and basketball seasons bring former Rockets back to the venues they built.", href: "/contact/", cta: "Join" },
-      { tag: "Year-round", title: "Events & fundraising", text: "Social events through the year that support Rockets athletics and keep teammates connected.", href: "/contact/", cta: "Join" }
+      { tag: "Gameday", title: "Tailgate parties", text: "Before every home football game at the Varsity T All Sports Pavilion, on the south side of the Glass Bowl.", href: site.varsityTJoinUrl, cta: "Join" },
+      { tag: "Tradition", title: "Hall of Fame banquet", text: "The annual induction night for the Varsity T Hall of Fame — and members can nominate the next class.", href: site.hofUrl, cta: "Visit the Hall of Fame" },
+      { tag: "In season", title: "Appreciation nights", text: "Athletic Alumni Appreciation Nights during football and basketball seasons bring former Rockets back to the venues they built.", href: "/events/", cta: "See events" },
+      { tag: "Benefits", title: "Ticket discounts", text: "Member discounts on season and single-game tickets for football and men's and women's basketball.", href: site.varsityTJoinUrl, cta: "Join" }
     ]) }}
   </div>
 </section>
 
-{{ ctaband("Forty dollars. A lifetime of teammates.", "/contact/", "Join the Varsity T Club", "/ways-to-give/", "More ways to give") }}
+<section class="rkt-section rkt-section--navy rkt-section--center">
+  <div class="rkt-wrap">
+    {{ sechead("Leadership", "Varsity T board", "", true) }}
+    <ul class="rkt-honorroll rkt-reveal">
+      {% for b in varsityT.board %}
+      <li>{{ b }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{{ ctaband("Forty dollars. A lifetime of teammates.", site.varsityTJoinUrl, "Join the Varsity T Club", "/ways-to-give/", "More ways to give") }}

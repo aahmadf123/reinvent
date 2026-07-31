@@ -1,7 +1,14 @@
 {
   "items": [
-    { "label": "Rocket Fund", "href": "/rocket-fund/" },
-    { "label": "Benefits & Levels", "href": "/benefits/" },
+    { "label": "Why Give", "href": "/why-give/" },
+    {
+      "label": "Rocket Fund",
+      "href": "/rocket-fund/",
+      "children": [
+        { "label": "Benefits & Giving Levels", "href": "/benefits/" },
+        { "label": "FAQ", "href": "/faq/" }
+      ]
+    },
     {
       "label": "Premium Seating & Parking",
       "href": "/premium/",
@@ -18,11 +25,19 @@
         { "label": "Legacy Society", "href": "/ways-to-give/legacy-society/" },
         { "label": "GameChange", "href": "/ways-to-give/gamechange/" },
         { "label": "Rocket Car Program", "href": "/ways-to-give/rocket-car/" },
-        { "label": "Varsity T Club", "href": "/ways-to-give/varsity-t-club/" }
+        { "label": "Varsity T Club", "href": "/ways-to-give/varsity-t-club/" },
+        { "label": "Downtown Coaches", "href": "/ways-to-give/downtown-coaches/" }
       ]
     },
-    { "label": "FAQ", "href": "/faq/" },
-    { "label": "Contact", "href": "/contact/" }
+    { "label": "Events", "href": "/events/" },
+    {
+      "label": "Our Team",
+      "href": "/team/",
+      "children": [
+        { "label": "Internships", "href": "/internships/" },
+        { "label": "Contact", "href": "/contact/" }
+      ]
+    }
   ],
   "cta": { "label": "Give Now", "href": "/give/" }
 }

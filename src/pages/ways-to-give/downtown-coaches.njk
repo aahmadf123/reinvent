@@ -1,0 +1,52 @@
+---
+title: Downtown Coaches Association
+description: Since 1937, the Downtown Coaches Association has promoted Toledo athletics — Monday luncheons in the Grogan Room, the 50/50 raffle, and dues of $50 a year.
+sidearmSlug: downtown-coaches
+cleanUrl: utrockets.com/downtowncoaches
+crumb:
+  - label: Ways to Give
+    href: /ways-to-give/
+---
+{% from "components.njk" import hero, telemetry, sechead, cards, ctaband %}
+
+{% call hero("Be a super fan", "Downtown Coaches", "Since 1937, the Downtown Coaches Association has welcomed men and women to promote and encourage interest in athletics at The University of Toledo.", true) %}
+<div class="rkt-btnrow">
+  <a class="rkt-btn" href="{{ site.dcaSignupUrl }}">Sign up online</a>
+</div>
+{% endcall %}
+
+{{ telemetry([
+  { n: "1937", label: "Founded" },
+  { n: "$50", label: "Dues per person" },
+  { n: "$60", label: "Dues per couple" }
+]) }}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    {{ sechead(
+      "Membership",
+      "Inside access, every week",
+      "The membership year runs July 1 through June 30 — and the calendar runs from kickoff to the MAC tournament."
+    ) }}
+    {{ cards([
+      { tag: "Weekly", title: "Monday luncheons", text: "Late August through mid-March in the Joe Grogan Room at Savage Arena — coaches, guests, and student-athlete recognition over lunch.", href: site.dcaSignupUrl, cta: "Join" },
+      { tag: "Gameday", title: "The 50/50 raffle", text: "DCA runs the 50/50 raffle at home football and basketball games, with student-athletes out front selling tickets.", href: site.dcaRaffleUrl, cta: "Current draw" },
+      { tag: "Every season", title: "Giving back", text: "All net proceeds are contributed to the Athletic Department each year — super fandom with a bottom line.", href: "/ways-to-give/", cta: "More ways to give" }
+    ]) }}
+  </div>
+</section>
+
+<section class="rkt-section rkt-section--navy">
+  <div class="rkt-wrap">
+    <div class="rkt-prose rkt-reveal">
+      {{ sechead("The 50/50", "Check your numbers") }}
+      <p>The raffle draw runs at every home football and basketball game. Follow the current jackpot, results from past draws, and the official rules of play.</p>
+      <div class="rkt-btnrow">
+        <a class="rkt-btn" href="{{ site.dcaRaffleUrl }}">Current draw</a>
+        <a class="rkt-btn rkt-btn--ghost" href="{{ site.dcaResultsUrl }}">Past results</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ ctaband("Join the longest-running boosters in Toledo.", site.dcaSignupUrl, "Sign up online", "/contact/", "Ask a question") }}
