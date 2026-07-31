@@ -1,0 +1,714 @@
+/* ============================================================
+   Rocket Fund components — "Launch Telemetry"
+   All selectors scoped under .rkt; classes prefixed rkt-.
+   This file ships inside every SIDEARM embed.
+   ============================================================ */
+
+/* ---------- layout primitives ---------- */
+.rkt .rkt-wrap {
+  max-width: var(--rkt-max);
+  margin-inline: auto;
+  padding-inline: var(--rkt-gutter);
+}
+
+.rkt .rkt-section {
+  padding-block: clamp(3rem, 8vw, 5.5rem);
+}
+
+.rkt .rkt-section--dark {
+  background: var(--rkt-midnight);
+  color: var(--rkt-white);
+}
+
+.rkt .rkt-section--deep {
+  background: var(--rkt-deep);
+  color: var(--rkt-white);
+}
+
+.rkt .rkt-section--dark a,
+.rkt .rkt-section--deep a {
+  color: var(--rkt-white);
+}
+
+.rkt .rkt-prose {
+  max-width: var(--rkt-measure);
+}
+
+.rkt .rkt-prose > * + * {
+  margin-top: 1rem;
+}
+
+.rkt .rkt-prose ul {
+  padding-left: 1.25rem;
+}
+
+/* ---------- type ---------- */
+.rkt .rkt-display {
+  font-family: var(--rkt-font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+}
+
+.rkt h1.rkt-display {
+  font-size: clamp(2.75rem, 8vw, 5.75rem);
+}
+
+.rkt .rkt-h2 {
+  font-family: var(--rkt-font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  line-height: 1;
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+}
+
+.rkt .rkt-h3 {
+  font-family: var(--rkt-font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.05;
+  font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+}
+
+.rkt .rkt-eyebrow {
+  font-family: var(--rkt-font-mono);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rkt-slate);
+  display: block;
+  margin-bottom: 0.875rem;
+}
+
+.rkt .rkt-section--dark .rkt-eyebrow,
+.rkt .rkt-section--deep .rkt-eyebrow {
+  color: var(--rkt-gold);
+}
+
+.rkt .rkt-lede {
+  font-size: clamp(1.125rem, 2vw, 1.3125rem);
+  line-height: 1.55;
+  max-width: 46ch;
+}
+
+.rkt .rkt-mono {
+  font-family: var(--rkt-font-mono);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- hero ---------- */
+.rkt .rkt-hero {
+  position: relative;
+  background: var(--rkt-deep);
+  color: var(--rkt-white);
+  padding-block: clamp(4rem, 11vw, 8rem) clamp(3.5rem, 9vw, 6.5rem);
+  overflow: hidden;
+}
+
+.rkt .rkt-hero .rkt-eyebrow {
+  color: var(--rkt-gold);
+}
+
+.rkt .rkt-hero .rkt-lede {
+  margin-top: 1.5rem;
+  color: #cfd8e3;
+}
+
+.rkt .rkt-hero-arc {
+  position: absolute;
+  inset: auto 0 0 0;
+  width: 100%;
+  height: clamp(110px, 20vw, 280px);
+  color: var(--rkt-gold);
+  pointer-events: none;
+}
+
+.rkt .rkt-hero--sub {
+  padding-block: clamp(3rem, 8vw, 5.5rem) clamp(2.5rem, 6vw, 4rem);
+}
+
+.rkt .rkt-hero--sub h1.rkt-display {
+  font-size: clamp(2.4rem, 6vw, 4.25rem);
+}
+
+/* ---------- buttons ---------- */
+.rkt .rkt-btnrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-top: 2rem;
+}
+
+/* a.rkt-btn (not .rkt-btn alone): must outrank ".rkt .rkt-section--dark a",
+   which would otherwise repaint gold buttons with white text. */
+.rkt a.rkt-btn {
+  display: inline-block;
+  font-family: var(--rkt-font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.125rem;
+  line-height: 1;
+  padding: 0.9em 1.6em 0.8em;
+  border-radius: var(--rkt-radius);
+  text-decoration: none;
+  background: var(--rkt-gold);
+  color: var(--rkt-deep);
+  border: 2px solid var(--rkt-gold);
+}
+
+.rkt a.rkt-btn:hover {
+  background: #ffdd45;
+  border-color: #ffdd45;
+  text-decoration: none;
+  color: var(--rkt-deep);
+}
+
+.rkt a.rkt-btn--ghost {
+  background: transparent;
+  color: var(--rkt-white);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.rkt a.rkt-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--rkt-white);
+  color: var(--rkt-white);
+}
+
+.rkt a.rkt-btn--ghost-light {
+  background: transparent;
+  color: var(--rkt-blue);
+  border-color: var(--rkt-blue);
+}
+
+.rkt a.rkt-btn--ghost-light:hover {
+  background: rgba(0, 63, 135, 0.06);
+  color: var(--rkt-blue);
+}
+
+/* ---------- telemetry stat strip ---------- */
+.rkt .rkt-telemetry {
+  border-top: 1px solid var(--rkt-line-dark);
+  border-bottom: 1px solid var(--rkt-line-dark);
+  background: var(--rkt-midnight);
+  color: var(--rkt-white);
+}
+
+.rkt .rkt-telemetry ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+}
+
+.rkt .rkt-telemetry li {
+  padding: 1.5rem var(--rkt-gutter);
+  border-left: 1px solid var(--rkt-line-dark);
+}
+
+.rkt .rkt-telemetry li:first-child {
+  border-left: 0;
+}
+
+.rkt .rkt-telemetry .rkt-stat {
+  font-family: var(--rkt-font-mono);
+  font-weight: 600;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--rkt-gold);
+  display: block;
+  line-height: 1.1;
+}
+
+.rkt .rkt-telemetry .rkt-stat-label {
+  font-family: var(--rkt-font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c3cedb;
+}
+
+/* ---------- trajectory divider (signature element) ---------- */
+.rkt .rkt-traj {
+  display: block;
+  width: 100%;
+  height: 44px;
+  color: var(--rkt-gold);
+}
+
+.rkt .rkt-traj--rule {
+  height: 28px;
+  max-width: 16rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ---------- section headers ---------- */
+.rkt .rkt-sechead {
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.rkt .rkt-sechead .rkt-h2 {
+  max-width: 24ch;
+}
+
+/* ---------- card grid ---------- */
+.rkt .rkt-cards {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+  margin-top: 2rem;
+}
+
+.rkt .rkt-card {
+  background: var(--rkt-white);
+  border: 1px solid var(--rkt-line);
+  border-top: 3px solid var(--rkt-gold);
+  border-radius: var(--rkt-radius);
+  padding: 1.75rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.rkt .rkt-section--dark .rkt-card,
+.rkt .rkt-section--deep .rkt-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.14);
+  border-top-color: var(--rkt-gold);
+}
+
+.rkt .rkt-card .rkt-h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.rkt .rkt-card .rkt-h3 a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--rkt-gold);
+  text-decoration-thickness: 2px;
+}
+
+.rkt .rkt-card p {
+  color: var(--rkt-slate);
+  font-size: 0.975rem;
+  flex-grow: 1;
+}
+
+.rkt .rkt-section--dark .rkt-card p,
+.rkt .rkt-section--deep .rkt-card p {
+  color: #c3cedb;
+}
+
+.rkt .rkt-card .rkt-card-cta {
+  font-family: var(--rkt-font-mono);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rkt .rkt-card .rkt-card-tag {
+  font-family: var(--rkt-font-mono);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rkt-slate);
+}
+
+.rkt .rkt-section--dark .rkt-card .rkt-card-tag,
+.rkt .rkt-section--deep .rkt-card .rkt-card-tag {
+  color: #c3cedb;
+}
+
+/* ---------- altitude bands (benefits page) ---------- */
+.rkt .rkt-bands {
+  list-style: none;
+  padding: 0;
+  margin-top: 2.5rem;
+  position: relative;
+}
+
+.rkt .rkt-band {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(7.5rem, 10rem) 1fr;
+  gap: 1.5rem;
+  padding: 2rem 0 2rem 2rem;
+  border-left: 2px solid var(--rkt-gold);
+}
+
+.rkt .rkt-band::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 2.55rem;
+  width: 12px;
+  height: 12px;
+  background: var(--rkt-gold);
+  border: 2px solid var(--rkt-paper);
+  border-radius: 50%;
+}
+
+.rkt .rkt-band + .rkt-band {
+  border-top: 1px solid var(--rkt-line);
+}
+
+.rkt .rkt-band-amount {
+  font-family: var(--rkt-font-mono);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--rkt-blue);
+  line-height: 1.15;
+}
+
+.rkt .rkt-band-amount .rkt-per {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rkt-slate);
+  margin-top: 0.2rem;
+}
+
+.rkt .rkt-band-name {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.rkt .rkt-band ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.875rem;
+  display: grid;
+  gap: 0.45rem;
+  max-width: 56ch;
+}
+
+.rkt .rkt-band li {
+  padding-left: 1.4rem;
+  position: relative;
+}
+
+.rkt .rkt-band li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.7rem;
+  height: 2px;
+  background: var(--rkt-gold);
+}
+
+.rkt .rkt-band-note {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--rkt-slate);
+}
+
+.rkt .rkt-band--featured {
+  background: linear-gradient(90deg, rgba(252, 209, 22, 0.1), rgba(252, 209, 22, 0) 65%);
+}
+
+.rkt .rkt-band--featured::before {
+  width: 16px;
+  height: 16px;
+  left: -9px;
+  top: 2.4rem;
+}
+
+/* Double class: must outrank the base .rkt-chip color, declared later. */
+.rkt .rkt-chip.rkt-chip--gold {
+  background: var(--rkt-gold);
+  border-color: var(--rkt-gold);
+  color: var(--rkt-deep);
+}
+
+@media (max-width: 40em) {
+  .rkt .rkt-band {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding-left: 1.5rem;
+  }
+}
+
+/* ---------- badges / preview notes ---------- */
+.rkt .rkt-chip {
+  display: inline-block;
+  font-family: var(--rkt-font-mono);
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.25em 0.7em;
+  border: 1px solid var(--rkt-slate);
+  border-radius: 999px;
+  color: var(--rkt-slate);
+  vertical-align: middle;
+}
+
+.rkt .rkt-note {
+  margin-top: 2rem;
+  padding: 0.9rem 1.1rem;
+  border-left: 3px solid var(--rkt-slate);
+  background: #efece4;
+  color: #3f4c5c;
+  font-size: 0.9rem;
+  max-width: var(--rkt-measure);
+}
+
+/* ---------- CTA band ---------- */
+.rkt .rkt-ctaband {
+  background: var(--rkt-deep);
+  color: var(--rkt-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.rkt .rkt-ctaband .rkt-wrap {
+  padding-block: clamp(3rem, 7vw, 4.5rem);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.rkt .rkt-ctaband .rkt-h2 {
+  max-width: 22ch;
+}
+
+.rkt .rkt-ctaband .rkt-btnrow {
+  margin-top: 0;
+}
+
+/* ---------- FAQ ---------- */
+.rkt .rkt-faq {
+  max-width: var(--rkt-measure);
+  margin-top: 2rem;
+}
+
+.rkt .rkt-faq details {
+  border-top: 1px solid var(--rkt-line);
+}
+
+.rkt .rkt-faq details:last-child {
+  border-bottom: 1px solid var(--rkt-line);
+}
+
+.rkt .rkt-faq summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 0.25rem;
+  font-family: var(--rkt-font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 1.2rem;
+}
+
+.rkt .rkt-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.rkt .rkt-faq summary::after {
+  content: "+";
+  font-family: var(--rkt-font-mono);
+  font-weight: 500;
+  color: var(--rkt-blue);
+  flex-shrink: 0;
+}
+
+.rkt .rkt-faq details[open] summary::after {
+  content: "\2212";
+}
+
+.rkt .rkt-faq .rkt-faq-a {
+  padding: 0 0.25rem 1.25rem;
+  max-width: 60ch;
+}
+
+.rkt .rkt-faq .rkt-faq-a > * + * {
+  margin-top: 0.75rem;
+}
+
+/* ---------- data tables ---------- */
+.rkt .rkt-tablewrap {
+  overflow-x: auto;
+  margin-top: 2rem;
+}
+
+.rkt .rkt-table caption {
+  text-align: left;
+  font-family: var(--rkt-font-mono);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rkt-slate);
+  padding-bottom: 0.75rem;
+}
+
+.rkt .rkt-table th,
+.rkt .rkt-table td {
+  text-align: left;
+  padding: 0.8rem 1rem 0.8rem 0;
+  border-bottom: 1px solid var(--rkt-line);
+  vertical-align: top;
+}
+
+.rkt .rkt-table thead th {
+  font-family: var(--rkt-font-mono);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rkt-slate);
+  border-bottom: 2px solid var(--rkt-deep);
+}
+
+.rkt .rkt-table .rkt-mono {
+  white-space: nowrap;
+}
+
+/* ---------- contact / channel cards ---------- */
+.rkt .rkt-channels {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr));
+}
+
+.rkt .rkt-channel {
+  border: 1px solid var(--rkt-line);
+  border-radius: var(--rkt-radius);
+  background: var(--rkt-white);
+  padding: 1.5rem;
+}
+
+.rkt .rkt-channel .rkt-h3 {
+  margin-bottom: 0.5rem;
+}
+
+.rkt .rkt-channel p {
+  color: var(--rkt-slate);
+  font-size: 0.95rem;
+}
+
+.rkt .rkt-channel .rkt-mono {
+  color: var(--rkt-deep);
+  font-size: 1.05rem;
+  display: block;
+  margin-top: 0.75rem;
+}
+
+/* ---------- breadcrumb (lives inside embed) ---------- */
+.rkt .rkt-crumb {
+  background: var(--rkt-midnight);
+  color: var(--rkt-white);
+  border-bottom: 1px solid var(--rkt-line-dark);
+}
+
+.rkt .rkt-crumb ol {
+  list-style: none;
+  margin: 0;
+  padding: 0.6rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  font-family: var(--rkt-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rkt .rkt-crumb li + li::before {
+  content: "/";
+  margin-right: 0.35rem;
+  color: var(--rkt-gold);
+}
+
+.rkt .rkt-crumb a {
+  color: #c3cedb;
+  text-decoration: none;
+}
+
+.rkt .rkt-crumb a:hover {
+  color: var(--rkt-white);
+  text-decoration: underline;
+  text-decoration-color: var(--rkt-gold);
+}
+
+.rkt .rkt-crumb [aria-current="page"] {
+  color: var(--rkt-white);
+}
+
+/* ---------- two-column feature rows ---------- */
+.rkt .rkt-split {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+  align-items: start;
+}
+
+.rkt .rkt-figure {
+  border: 1px solid var(--rkt-line);
+  border-radius: var(--rkt-radius);
+  background: repeating-linear-gradient(
+    -45deg,
+    #ece8df 0 12px,
+    var(--rkt-paper) 12px 24px
+  );
+  min-height: 14rem;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+}
+
+.rkt .rkt-figure figcaption {
+  font-family: var(--rkt-font-mono);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rkt-slate);
+  text-align: center;
+}
+
+/* ---------- reveal animation (preview only, JS-gated) ---------- */
+.rkt-js .rkt .rkt-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 250ms ease-out, transform 250ms ease-out;
+}
+
+.rkt-js .rkt .rkt-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rkt-js .rkt .rkt-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

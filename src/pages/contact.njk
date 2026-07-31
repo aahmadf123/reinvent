@@ -1,0 +1,37 @@
+---
+title: Contact
+description: Reach the University of Toledo Athletic Development Office — 419.530.2510, 2801 West Bancroft Street MS 302, Toledo, OH 43606.
+sidearmSlug: development-contact
+cleanUrl: utrockets.com/contact
+crumb: []
+---
+{% from "components.njk" import hero, sechead, ctaband %}
+
+{% call hero("Mission control", "Contact", "Questions about giving, benefits, premium seating, or any Rocket Fund program — our team is ready.", true) %}{% endcall %}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    {{ sechead("Athletic Development Office", "Reach the team") }}
+    <ul class="rkt-channels">
+      <li class="rkt-channel rkt-reveal">
+        <h3 class="rkt-h3">Call</h3>
+        <p>Weekdays during business hours.</p>
+        <span class="rkt-mono"><a href="tel:+14195302510">419.530.2510</a></span>
+        <span class="rkt-mono"><a href="tel:+14195304183">419.530.4183</a></span>
+      </li>
+      <li class="rkt-channel rkt-reveal">
+        <h3 class="rkt-h3">Visit or write</h3>
+        <p>On campus at the Athletic Development Office.</p>
+        <span class="rkt-mono">2801 West Bancroft Street MS 302<br>Toledo, OH 43606</span>
+      </li>
+      <li class="rkt-channel rkt-reveal">
+        <h3 class="rkt-h3">Legacy &amp; endowments</h3>
+        <p>Exploring the Legacy Society or an estate gift? Start with the information request form.</p>
+        <a class="rkt-btn rkt-btn--ghost-light" style="margin-top:1rem" href="{{ site.legacyFormUrl }}">Request information</a>
+      </li>
+    </ul>
+    <p class="rkt-note">Preview note: staff directory (names, titles, and direct lines) to be added once confirmed by Athletic Development — no placeholder names are shown by design.</p>
+  </div>
+</section>
+
+{{ ctaband("Ready when you are.", "/give/", "Give Now", "/faq/", "Read the FAQ") }}

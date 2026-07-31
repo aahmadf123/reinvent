@@ -1,0 +1,28 @@
+{
+  "items": [
+    { "label": "Rocket Fund", "href": "/rocket-fund/" },
+    { "label": "Benefits & Levels", "href": "/benefits/" },
+    {
+      "label": "Premium Seating & Parking",
+      "href": "/premium/",
+      "children": [
+        { "label": "Football Premium", "href": "/premium/football/" },
+        { "label": "Basketball Premium", "href": "/premium/basketball/" },
+        { "label": "Premium Parking", "href": "/premium/parking/" }
+      ]
+    },
+    {
+      "label": "Ways to Give",
+      "href": "/ways-to-give/",
+      "children": [
+        { "label": "Legacy Society", "href": "/ways-to-give/legacy-society/" },
+        { "label": "GameChange", "href": "/ways-to-give/gamechange/" },
+        { "label": "Rocket Car Program", "href": "/ways-to-give/rocket-car/" },
+        { "label": "Varsity T Club", "href": "/ways-to-give/varsity-t-club/" }
+      ]
+    },
+    { "label": "FAQ", "href": "/faq/" },
+    { "label": "Contact", "href": "/contact/" }
+  ],
+  "cta": { "label": "Give Now", "href": "/give/" }
+}

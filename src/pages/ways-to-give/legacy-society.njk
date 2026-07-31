@@ -1,0 +1,39 @@
+---
+title: Legacy Society
+description: The Rocket Fund Legacy Society lets you endow your giving in perpetuity — 4% supports the department's top priorities each year while the endowment grows forever.
+sidearmSlug: legacy-society
+cleanUrl: utrockets.com/legacysociety
+crumb:
+  - label: Ways to Give
+    href: /ways-to-give/
+---
+{% from "components.njk" import hero, sechead, ctaband, figureSlot %}
+
+{% call hero("Rocket Fund Legacy Society", "Give in perpetuity", "Ensure your support for Toledo student-athletes continues forever — an orbit that never decays.", true) %}
+<div class="rkt-btnrow">
+  <a class="rkt-btn" href="{{ site.legacyFormUrl }}">Request information</a>
+</div>
+{% endcall %}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    <div class="rkt-split">
+      <div class="rkt-prose rkt-reveal">
+        {{ sechead("How it works", "The mechanics of forever") }}
+        <p>The Rocket Fund Legacy Society gives every Rocket supporter the opportunity to make their giving permanent through the Rocket Fund endowment.</p>
+        <p>Each year, the athletic department may use <strong>4% of the endowment</strong> to address its top priorities. Any investment gains above that 4% are added back to the principal — so the endowment keeps growing, and your support lasts in perpetuity.</p>
+        <p>Legacy gifts can be established through outright gifts, pledges, or estate plans. Our team will work with you and the UToledo Foundation to structure the gift that fits your goals.</p>
+      </div>
+      <div class="rkt-prose rkt-reveal">
+        {{ sechead("Why it matters", "A gift with no final season") }}
+        <p>Annual gifts fuel this year's team. An endowed gift fuels every team that follows — a scholarship, a program need, a priority met, year after year, in your name or in honor of someone who shaped your Toledo story.</p>
+        <div class="rkt-btnrow">
+          <a class="rkt-btn" href="{{ site.legacyFormUrl }}">Request information</a>
+          <a class="rkt-btn rkt-btn--ghost-light" href="/contact/">Talk to our team</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ ctaband("Start a legacy that outlasts every season.", site.legacyFormUrl, "Request information", "/contact/", "Contact us") }}

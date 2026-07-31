@@ -1,0 +1,77 @@
+{# ============================================================
+   Shared component macros. Everything renders inside .rkt and
+   uses only rkt- prefixed classes so output stays portable.
+   ============================================================ #}
+
+{% macro traj(cls="") %}
+<svg class="rkt-traj{% if cls %} {{ cls }}{% endif %}" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <path d="M0 78 Q 720 70 1198 4" fill="none" stroke="currentColor" stroke-width="2.5"/>
+  <path d="M200 69.5 V 79.5 M500 59.1 V 69.1 M800 40.8 V 50.8 M1050 17.4 V 27.4" fill="none" stroke="currentColor" stroke-width="2"/>
+  <circle cx="1198" cy="4" r="4" fill="currentColor"/>
+</svg>
+{% endmacro %}
+
+{% macro hero(eyebrow, title, lede="", sub=false) %}
+<section class="rkt-hero{% if sub %} rkt-hero--sub{% endif %}">
+  <div class="rkt-wrap">
+    <p class="rkt-eyebrow">{{ eyebrow }}</p>
+    <h1 class="rkt-display">{{ title | safe }}</h1>
+    {% if lede %}<p class="rkt-lede">{{ lede }}</p>{% endif %}
+    {% if caller %}{{ caller() }}{% endif %}
+  </div>
+  {{ traj("rkt-hero-arc") }}
+</section>
+{% endmacro %}
+
+{% macro telemetry(stats) %}
+<div class="rkt-telemetry">
+  <ul>
+    {% for s in stats %}
+    <li>
+      <span class="rkt-stat">{{ s.n }}</span>
+      <span class="rkt-stat-label">{{ s.label }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endmacro %}
+
+{% macro sechead(eyebrow, title, lede="") %}
+<div class="rkt-sechead rkt-reveal">
+  {{ traj("rkt-traj--rule") }}
+  <p class="rkt-eyebrow">{{ eyebrow }}</p>
+  <h2 class="rkt-h2">{{ title | safe }}</h2>
+  {% if lede %}<p class="rkt-lede" style="margin-top:1rem">{{ lede }}</p>{% endif %}
+</div>
+{% endmacro %}
+
+{% macro cards(items) %}
+<ul class="rkt-cards">
+  {% for c in items %}
+  <li class="rkt-card rkt-reveal">
+    {% if c.tag %}<span class="rkt-card-tag">{{ c.tag }}</span>{% endif %}
+    <h3 class="rkt-h3"><a href="{{ c.href }}">{{ c.title }}</a></h3>
+    <p>{{ c.text }}</p>
+    {% if c.cta %}<span class="rkt-card-cta" aria-hidden="true">{{ c.cta }} →</span>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro %}
+
+{% macro ctaband(title, primaryHref, primaryLabel, secondaryHref="", secondaryLabel="") %}
+<section class="rkt-ctaband" aria-label="Give to the Rocket Fund">
+  <div class="rkt-wrap">
+    <h2 class="rkt-h2">{{ title | safe }}</h2>
+    <div class="rkt-btnrow">
+      <a class="rkt-btn" href="{{ primaryHref }}">{{ primaryLabel }}</a>
+      {% if secondaryHref %}<a class="rkt-btn rkt-btn--ghost" href="{{ secondaryHref }}">{{ secondaryLabel }}</a>{% endif %}
+    </div>
+  </div>
+</section>
+{% endmacro %}
+
+{% macro figureSlot(caption) %}
+<figure class="rkt-figure rkt-reveal">
+  <figcaption>{{ caption }}</figcaption>
+</figure>
+{% endmacro %}

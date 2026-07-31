@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} · {% endif %}Rocket Fund · Toledo Athletics</title>
+  <meta name="description" content="{{ description or site.tagline }}">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/reset.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/chrome.css">
+  <script src="/assets/js/rkt.js" defer></script>
+</head>
+<body class="rkt-body">
+<a class="rkt-skip" href="#rkt-main">Skip to main content</a>
+
+<header class="rkt-chrome rkt-header">
+  <div class="rkt-header-in">
+    <a class="rkt-mark" href="/">
+      <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+        <path d="M6 42 Q 22 38 40 10" fill="none" stroke="#fcd116" stroke-width="3" stroke-linecap="round"/>
+        <path d="M40 10 L33.5 12.4 L37.4 17.2 Z" fill="#fcd116"/>
+        <circle cx="6" cy="42" r="2.5" fill="#fcd116"/>
+      </svg>
+      <span>
+        <span class="rkt-mark-team">Toledo Rockets</span>
+        <span class="rkt-mark-sub">Rocket Fund</span>
+      </span>
+    </a>
+    <button class="rkt-menu-btn" aria-expanded="false" aria-controls="rkt-nav">Menu</button>
+    <nav class="rkt-nav" id="rkt-nav" aria-label="Giving site">
+      <ul>
+        {% for item in nav.items %}
+        <li class="rkt-nav-item">
+          <a href="{{ item.href }}"{% if page.url == item.href %} aria-current="page"{% endif %}>{{ item.label }}</a>
+          {% if item.children %}
+          <ul class="rkt-sub">
+            {% for child in item.children %}
+            <li><a href="{{ child.href }}"{% if page.url == child.href %} aria-current="page"{% endif %}>{{ child.label }}</a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+        <li class="rkt-cta"><a href="{{ nav.cta.href }}">{{ nav.cta.label }}</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="rkt-main">
+<!--RKT:START page={{ page.fileSlug or "home" }}-->
+<div class="rkt" data-page="{{ sidearmSlug or page.fileSlug or "home" }}">
+{% if crumb %}
+  <nav class="rkt-crumb" aria-label="Breadcrumb">
+    <div class="rkt-wrap">
+      <ol>
+        <li><a href="/">Rocket Fund</a></li>
+        {% for c in crumb %}
+        <li><a href="{{ c.href }}">{{ c.label }}</a></li>
+        {% endfor %}
+        <li><span aria-current="page">{{ title }}</span></li>
+      </ol>
+    </div>
+  </nav>
+{% endif %}
+{{ content | safe }}
+</div>
+<!--RKT:END-->
+</main>
+
+<footer class="rkt-chrome rkt-footer">
+  <div class="rkt-footer-in">
+    <div>
+      <h2>Athletic Development Office</h2>
+      <address>
+        {% for line in site.addressLines %}{{ line }}<br>{% endfor %}
+        <a href="tel:+14195302510">{{ site.phonePrimary }}</a> · <a href="tel:+14195304183">{{ site.phoneSecondary }}</a>
+      </address>
+    </div>
+    <div>
+      <h2>Quick links</h2>
+      <ul>
+        <li><a href="/give/">Give Now</a></li>
+        <li><a href="/benefits/">Benefits &amp; Giving Levels</a></li>
+        <li><a href="/ways-to-give/">Ways to Give</a></li>
+        <li><a href="/faq/">Frequently Asked Questions</a></li>
+        <li><a href="{{ site.mainSiteUrl }}">UTRockets.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>The Rocket Fund</h2>
+      <p>The official annual giving program of Toledo Athletics. Every gift fuels 400+ student-athletes across 17 varsity sports.</p>
+    </div>
+  </div>
+  <div class="rkt-footer-legal">
+    <span>© 2026 University of Toledo Athletics</span>
+    <span class="rkt-preview-chip">{{ site.previewNote }}</span>
+  </div>
+</footer>
+</body>
+</html>

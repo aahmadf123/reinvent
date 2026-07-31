@@ -1,0 +1,27 @@
+/* ============================================================
+   Rocket Fund design tokens — single source of truth.
+   Brand values: University of Toledo toolkit (updated 5/2026).
+   If a 2026-27 athletics guide supplies different values,
+   swap them here only.
+   ============================================================ */
+.rkt,
+.rkt-chrome {
+  --rkt-midnight: #002649; /* UT midnight blue — primary surface */
+  --rkt-blue: #003f87;     /* UT dark blue — links, secondary surfaces */
+  --rkt-deep: #06172e;     /* near-black navy — hero fields, text on paper */
+  --rkt-gold: #fcd116;     /* UT gold — CTAs and instruments; never text on light */
+  --rkt-paper: #f7f5f0;    /* warm white base */
+  --rkt-white: #ffffff;
+  --rkt-slate: #5a6b80;    /* secondary text on paper (AA at body size) */
+  --rkt-line: #ddd8cc;     /* hairlines on paper */
+  --rkt-line-dark: rgba(252, 209, 22, 0.3); /* hairlines on dark */
+
+  --rkt-font-display: "Barlow Condensed", "Arial Narrow", "Franklin Gothic Medium", sans-serif;
+  --rkt-font-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --rkt-font-mono: "IBM Plex Mono", ui-monospace, "Courier New", monospace;
+
+  --rkt-measure: 68ch;
+  --rkt-radius: 2px;
+  --rkt-gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --rkt-max: 72rem;
+}

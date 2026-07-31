@@ -1,0 +1,34 @@
+---
+title: GameChange
+description: Enroll a card with GameChange and every everyday purchase rounds up to the next dollar to support Toledo Athletics scholarships and student-athletes.
+sidearmSlug: gamechange
+cleanUrl: utrockets.com/gamechange
+crumb:
+  - label: Ways to Give
+    href: /ways-to-give/
+---
+{% from "components.njk" import hero, sechead, cards, ctaband %}
+
+{% call hero("Round-up giving", "GameChange", "Turn everyday spending into everyday support. Every purchase rounds up — the Rockets get the change.", true) %}
+<div class="rkt-btnrow">
+  <a class="rkt-btn" href="{{ site.gamechangeUrl }}">Enroll with GameChange</a>
+</div>
+{% endcall %}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    {{ sechead(
+      "How it works",
+      "Three steps to liftoff",
+      "Toledo Athletics partnered with GameChange, the first-ever competitive giving platform, to make supporting the Rockets automatic."
+    ) }}
+    {{ cards([
+      { tag: "Step 1", title: "Enroll a card", text: "Securely link the credit or debit card you already use every day.", href: site.gamechangeUrl, cta: "Enroll" },
+      { tag: "Step 2", title: "Spend like normal", text: "Every purchase rounds up to the next dollar. A $4.50 coffee becomes $5.00 — no extra effort.", href: site.gamechangeUrl, cta: "Enroll" },
+      { tag: "Step 3", title: "The Rockets get fuel", text: "The majority of proceeds directly benefit Toledo Athletics — scholarships and academic success for student-athletes.", href: site.gamechangeUrl, cta: "Enroll" }
+    ]) }}
+    <p class="rkt-note">GameChange round-up gifts are a great companion to — not a replacement for — your annual Rocket Fund gift, which sets your donor benefits level.</p>
+  </div>
+</section>
+
+{{ ctaband("Small change. Big trajectory.", site.gamechangeUrl, "Enroll with GameChange", "/give/", "Make an annual gift") }}

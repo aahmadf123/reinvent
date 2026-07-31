@@ -1,0 +1,84 @@
+/* Scoped reset — applies only inside the portable .rkt payload so it
+   cannot fight SIDEARM's global styles, and SIDEARM's cannot leak in
+   unchallenged. Every selector is anchored to .rkt. */
+.rkt,
+.rkt *,
+.rkt *::before,
+.rkt *::after {
+  box-sizing: border-box;
+}
+
+.rkt {
+  margin: 0;
+  font-family: var(--rkt-font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--rkt-deep);
+  background: var(--rkt-paper);
+  -webkit-text-size-adjust: 100%;
+  overflow-wrap: break-word;
+}
+
+.rkt h1,
+.rkt h2,
+.rkt h3,
+.rkt h4,
+.rkt p,
+.rkt ul,
+.rkt ol,
+.rkt dl,
+.rkt dd,
+.rkt figure,
+.rkt blockquote {
+  margin: 0;
+}
+
+.rkt img,
+.rkt svg,
+.rkt video {
+  max-width: 100%;
+  height: auto;
+}
+
+.rkt a {
+  color: var(--rkt-blue);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
+.rkt a:hover {
+  text-decoration-color: var(--rkt-gold);
+  text-decoration-thickness: 2px;
+}
+
+.rkt :focus-visible {
+  outline: 2px solid var(--rkt-blue);
+  outline-offset: 2px;
+  border-radius: var(--rkt-radius);
+}
+
+.rkt .rkt-dark :focus-visible,
+.rkt [class*="--dark"] :focus-visible {
+  outline-color: var(--rkt-gold);
+}
+
+.rkt button {
+  font: inherit;
+}
+
+.rkt table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rkt *,
+  .rkt *::before,
+  .rkt *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

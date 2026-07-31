@@ -1,0 +1,14 @@
+{
+  "name": "Rocket Fund",
+  "org": "University of Toledo Athletics",
+  "tagline": "The official annual giving program of Toledo Athletics",
+  "phonePrimary": "419.530.2510",
+  "phoneSecondary": "419.530.4183",
+  "addressLines": ["Athletic Development Office", "2801 West Bancroft Street MS 302", "Toledo, OH 43606"],
+  "giveUrl": "https://utrockets.com/",
+  "giveUrlIsPlaceholder": true,
+  "legacyFormUrl": "https://utrockets.com/form/91",
+  "gamechangeUrl": "https://www.gogamechange.com/",
+  "mainSiteUrl": "https://utrockets.com/",
+  "previewNote": "Design preview — not the live site. Content pending final verification by Athletic Development."
+}

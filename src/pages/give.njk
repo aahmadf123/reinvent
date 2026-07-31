@@ -1,0 +1,48 @@
+---
+title: Give Now
+description: Make your gift to the Rocket Fund — online, by phone, by mail, or automatically with GameChange.
+sidearmSlug: give-now
+cleanUrl: utrockets.com/givenow
+crumb: []
+---
+{% from "components.njk" import hero, sechead, ctaband %}
+
+{% call hero("Make your gift", "Give Now", "Every dollar fuels a Toledo student-athlete. Choose the way that works for you.", true) %}
+<div class="rkt-btnrow">
+  <a class="rkt-btn" href="{{ site.giveUrl }}">Give online</a>
+</div>
+{% endcall %}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    {{ sechead("Four ways to give", "Choose your launch method") }}
+    <ul class="rkt-channels">
+      <li class="rkt-channel rkt-reveal">
+        <h3 class="rkt-h3">Online</h3>
+        <p>The fastest way to give. Make a one-time or recurring gift through the university's secure giving form.</p>
+        <a class="rkt-btn rkt-btn--ghost-light" style="margin-top:1rem" href="{{ site.giveUrl }}">Give online</a>
+      </li>
+      <li class="rkt-channel rkt-reveal">
+        <h3 class="rkt-h3">By phone</h3>
+        <p>Call the Athletic Development Office and our team will take care of the rest.</p>
+        <span class="rkt-mono"><a href="tel:+14195302510">419.530.2510</a></span>
+        <span class="rkt-mono"><a href="tel:+14195304183">419.530.4183</a></span>
+      </li>
+      <li class="rkt-channel rkt-reveal">
+        <h3 class="rkt-h3">By mail</h3>
+        <p>Make checks payable to the UToledo Foundation, memo "Rocket Fund."</p>
+        <span class="rkt-mono">Athletic Development Office<br>2801 West Bancroft Street MS 302<br>Toledo, OH 43606</span>
+      </li>
+      <li class="rkt-channel rkt-reveal">
+        <h3 class="rkt-h3">Automatically</h3>
+        <p>Enroll a card with GameChange and every purchase rounds up to fuel the Rockets — no effort required.</p>
+        <a class="rkt-btn rkt-btn--ghost-light" style="margin-top:1rem" href="/ways-to-give/gamechange/">How GameChange works</a>
+      </li>
+    </ul>
+    {% if site.giveUrlIsPlaceholder %}
+    <p class="rkt-note">Preview note: the online giving button currently points to a placeholder destination. It will link to the official UToledo Foundation giving form before launch.</p>
+    {% endif %}
+  </div>
+</section>
+
+{{ ctaband("Giving $100 or more? Benefits start here.", "/benefits/", "See your benefits", "/faq/", "Read the FAQ") }}

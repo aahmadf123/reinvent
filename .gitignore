@@ -1,0 +1,5 @@
+node_modules/
+_site/
+_shots/
+package-lock.json.bak
+.DS_Store

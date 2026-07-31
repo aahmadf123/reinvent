@@ -1,0 +1,39 @@
+---
+title: Varsity T Club
+description: The Varsity T Club connects former Toledo athletes, coaches, and friends — tailgates at the Varsity T All Sports Pavilion, appreciation nights, and $40 annual dues.
+sidearmSlug: varsity-t-club
+cleanUrl: utrockets.com/varsityt
+crumb:
+  - label: Ways to Give
+    href: /ways-to-give/
+---
+{% from "components.njk" import hero, telemetry, sechead, cards, ctaband %}
+
+{% call hero("Once a Rocket, always a Rocket", "Varsity T Club", "The home base for former Toledo athletes, coaches, and friends of the program.", true) %}
+<div class="rkt-btnrow">
+  <a class="rkt-btn" href="/contact/">Join the club</a>
+</div>
+{% endcall %}
+
+{{ telemetry([
+  { n: "$40", label: "Annual dues" },
+  { n: "Every", label: "Home football tailgate" },
+  { n: "2×", label: "Appreciation nights" }
+]) }}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    {{ sechead(
+      "The mission",
+      "Keep the roster together",
+      "The club promotes Rockets athletics, raises funds for the program, and serves as the social home for former athletes, coaches, and friends."
+    ) }}
+    {{ cards([
+      { tag: "Gameday", title: "Tailgate parties", text: "Before every home football game at the Varsity T All Sports Pavilion — the pregame tradition for Toledo letterwinners.", href: "/contact/", cta: "Join" },
+      { tag: "In season", title: "Appreciation nights", text: "Athletic Alumni Appreciation Nights during football and basketball seasons bring former Rockets back to the venues they built.", href: "/contact/", cta: "Join" },
+      { tag: "Year-round", title: "Events & fundraising", text: "Social events through the year that support Rockets athletics and keep teammates connected.", href: "/contact/", cta: "Join" }
+    ]) }}
+  </div>
+</section>
+
+{{ ctaband("Forty dollars. A lifetime of teammates.", "/contact/", "Join the Varsity T Club", "/ways-to-give/", "More ways to give") }}
