@@ -1,0 +1,71 @@
+---
+title: Fuel the Rockets
+description: The Rocket Fund is the official annual giving program of Toledo Athletics. Your gift powers 400+ student-athletes across 17 varsity sports.
+sidearmSlug: rocket-fund-home
+cleanUrl: utrockets.com/give
+---
+{% from "components.njk" import hero, telemetry, sechead, cards, ctaband, traj %}
+
+{% call hero(
+  "Toledo Athletics · Official Annual Giving",
+  "Fuel the<br>Rockets.",
+  "Your gift powers more than 400 student-athletes across 17 varsity sports — in the classroom, in competition, and in the community."
+) %}
+<div class="rkt-btnrow">
+  <a class="rkt-btn" href="/give/">Give Now</a>
+  <a class="rkt-btn rkt-btn--ghost" href="/benefits/">See your benefits</a>
+</div>
+{% endcall %}
+
+{{ telemetry([
+  { n: "400+", label: "Student-athletes" },
+  { n: "17", label: "Varsity sports" },
+  { n: "$100", label: "Benefits begin" }
+]) }}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    {{ sechead(
+      "The mission",
+      "Every gift is fuel",
+      "The Rocket Fund is the athletic department's official annual giving program. It provides the essential support that lets Toledo student-athletes pursue their dreams — academically and athletically."
+    ) }}
+    {{ cards([
+      { title: "Scholarships", text: "Keep a Toledo education within reach for every Rocket who earns the jersey.", href: "/rocket-fund/", cta: "How gifts work" },
+      { title: "Academic success", text: "Tutoring, advising, and the resources that turn athletes into graduates.", href: "/rocket-fund/", cta: "How gifts work" },
+      { title: "Equipment & performance", text: "The gear, nutrition, and training that keep 17 varsity programs competitive.", href: "/rocket-fund/", cta: "How gifts work" }
+    ]) }}
+  </div>
+</section>
+
+<section class="rkt-section rkt-section--dark">
+  <div class="rkt-wrap">
+    {{ sechead(
+      "Benefits & levels",
+      "The higher you climb, the more you see",
+      "Donor benefits begin at $100 a year and build from there — priority seating assistance, premium parking, and access to the Joe Grogan Room at Savage Arena."
+    ) }}
+    <div class="rkt-btnrow">
+      <a class="rkt-btn" href="/benefits/">Explore giving levels</a>
+      <a class="rkt-btn rkt-btn--ghost" href="/premium/">Premium seating &amp; parking</a>
+    </div>
+  </div>
+</section>
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    {{ sechead(
+      "Ways to give",
+      "Pick your launch window",
+      "Annual gifts are only the beginning. Choose the way to give that fits how you cheer."
+    ) }}
+    {{ cards([
+      { tag: "Everyday", title: "GameChange", text: "Round up everyday purchases and turn spare change into scholarships — automatically.", href: "/ways-to-give/gamechange/", cta: "Enroll" },
+      { tag: "Forever", title: "Legacy Society", text: "Endow your Rocket Fund gift so it supports student-athletes in perpetuity.", href: "/ways-to-give/legacy-society/", cta: "Learn more" },
+      { tag: "Alumni", title: "Varsity T Club", text: "Former Rockets: stay connected with tailgates, reunions, and appreciation nights.", href: "/ways-to-give/varsity-t-club/", cta: "Join" },
+      { tag: "Partners", title: "Rocket Car Program", text: "Area dealerships keep Toledo coaches on the road — and recruiting.", href: "/ways-to-give/rocket-car/", cta: "Partner with us" }
+    ]) }}
+  </div>
+</section>
+
+{{ ctaband("Ready for liftoff?", "/give/", "Give Now", "/contact/", "Talk to our team") }}

@@ -1,0 +1,72 @@
+---
+title: Premium Parking
+description: Every Rocket Fund donor receives a season parking pass, with lot assignments based on total annual giving. See how parking works on gameday.
+sidearmSlug: premium-parking
+cleanUrl: utrockets.com/premiumparking
+crumb:
+  - label: Premium Seating & Parking
+    href: /premium/
+---
+{% from "components.njk" import hero, sechead, ctaband %}
+
+{% call hero("Gameday logistics", "Premium Parking", "Every donor parks. The closer lots go to the higher levels.", true) %}
+<div class="rkt-btnrow">
+  <a class="rkt-btn" href="/give/">Give Now</a>
+</div>
+{% endcall %}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    <div class="rkt-prose rkt-reveal">
+      {{ sechead("How it works", "Three simple rules") }}
+      <ol>
+        <li><strong>Every donor receives a season parking pass.</strong> Give at any benefits level and you're on the map.</li>
+        <li><strong>Lots are assigned by total giving.</strong> Your combined annual Rocket Fund support sets your parking area.</li>
+        <li><strong>Climbing levels moves you closer.</strong> Gold-level donors ($600) qualify for Lot 10 at football, with premium placement continuing to improve above that.</li>
+      </ol>
+    </div>
+
+    <div class="rkt-tablewrap rkt-reveal">
+      <table class="rkt-table">
+        <caption>Example lot assignments by giving level</caption>
+        <thead>
+          <tr>
+            <th scope="col">Annual giving</th>
+            <th scope="col">Level</th>
+            <th scope="col">Football parking</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rkt-mono">$100+</td>
+            <td>Blue &amp; Gold</td>
+            <td>Season pass — general donor lots</td>
+            <td><span class="rkt-chip">Sample</span></td>
+          </tr>
+          <tr>
+            <td class="rkt-mono">$250+</td>
+            <td>Victory</td>
+            <td>Improved lot assignment</td>
+            <td><span class="rkt-chip">Sample</span></td>
+          </tr>
+          <tr>
+            <td class="rkt-mono">$600+</td>
+            <td>Gold</td>
+            <td>Lot 10 parking pass</td>
+            <td>Confirmed</td>
+          </tr>
+          <tr>
+            <td class="rkt-mono">$1,200+</td>
+            <td>Executive</td>
+            <td>Premium placement</td>
+            <td>Confirmed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="rkt-note">Preview note: rows marked "sample" are placeholders. Final lot map and assignments to be confirmed by Athletic Development.</p>
+  </div>
+</section>
+
+{{ ctaband("Park closer this season.", "/give/", "Give Now", "/benefits/", "See giving levels") }}

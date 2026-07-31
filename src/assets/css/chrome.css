@@ -1,0 +1,334 @@
+/* ============================================================
+   Preview chrome — header, nav, footer for the GitHub Pages
+   preview ONLY. Never shipped inside SIDEARM embeds (SIDEARM
+   supplies its own site chrome).
+   ============================================================ */
+body.rkt-body {
+  margin: 0;
+  background: var(--rkt-paper, #f7f5f0);
+}
+
+.rkt-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: #fcd116;
+  color: #06172e;
+  font-family: "Barlow", Arial, sans-serif;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  text-decoration: none;
+}
+
+.rkt-skip:focus {
+  left: 0;
+}
+
+/* ---------- header ---------- */
+.rkt-header {
+  background: var(--rkt-deep);
+  color: var(--rkt-white);
+  border-bottom: 1px solid var(--rkt-line-dark);
+  font-family: var(--rkt-font-body);
+  position: relative;
+  z-index: 20;
+}
+
+.rkt-header .rkt-header-in {
+  max-width: var(--rkt-max);
+  margin-inline: auto;
+  padding: 0 var(--rkt-gutter);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 4.25rem;
+}
+
+.rkt-mark {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--rkt-white);
+  padding: 0.6rem 0;
+}
+
+.rkt-mark svg {
+  width: 2.1rem;
+  height: 2.1rem;
+  flex-shrink: 0;
+}
+
+.rkt-mark .rkt-mark-team {
+  font-family: var(--rkt-font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  display: block;
+}
+
+.rkt-mark .rkt-mark-sub {
+  font-family: var(--rkt-font-mono);
+  font-weight: 600;
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--rkt-gold);
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.rkt-menu-btn {
+  display: none;
+  margin-left: auto;
+  background: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  color: var(--rkt-white);
+  font-family: var(--rkt-font-mono);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+}
+
+.rkt-menu-btn:focus-visible,
+.rkt-header a:focus-visible {
+  outline: 2px solid var(--rkt-gold);
+  outline-offset: 2px;
+}
+
+.rkt-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.rkt-nav > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.rkt-nav a {
+  color: #dbe3ec;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 2px;
+  display: block;
+  white-space: nowrap;
+}
+
+.rkt-nav a:hover {
+  color: var(--rkt-white);
+  text-decoration: underline;
+  text-decoration-color: var(--rkt-gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+.rkt-nav a[aria-current="page"] {
+  color: var(--rkt-white);
+  text-decoration: underline;
+  text-decoration-color: var(--rkt-gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+.rkt-nav .rkt-nav-item {
+  position: relative;
+}
+
+.rkt-nav .rkt-sub {
+  list-style: none;
+  margin: 0;
+  padding: 0.4rem 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 14.5rem;
+  background: var(--rkt-midnight);
+  border: 1px solid var(--rkt-line-dark);
+  border-radius: 2px;
+  display: none;
+}
+
+.rkt-nav .rkt-nav-item:hover .rkt-sub,
+.rkt-nav .rkt-nav-item:focus-within .rkt-sub {
+  display: block;
+}
+
+.rkt-nav .rkt-sub a {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.rkt-nav .rkt-cta {
+  margin-left: 0.75rem;
+}
+
+.rkt-nav .rkt-cta a {
+  background: var(--rkt-gold);
+  color: var(--rkt-deep);
+  font-family: var(--rkt-font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.05rem;
+  padding: 0.6em 1.3em 0.5em;
+}
+
+.rkt-nav .rkt-cta a:hover {
+  background: #ffdd45;
+  text-decoration: none;
+  color: var(--rkt-deep);
+}
+
+/* mobile nav */
+@media (max-width: 56em) {
+  .rkt-menu-btn {
+    display: inline-block;
+  }
+
+  .rkt-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--rkt-deep);
+    border-bottom: 1px solid var(--rkt-line-dark);
+    margin: 0;
+    padding: 0.5rem var(--rkt-gutter) 1.25rem;
+  }
+
+  .rkt-nav.is-open {
+    display: block;
+  }
+
+  /* No JS: keep the menu visible so nothing is unreachable */
+  html:not(.rkt-js) .rkt-menu-btn {
+    display: none;
+  }
+
+  html:not(.rkt-js) .rkt-nav {
+    display: block;
+    position: static;
+  }
+
+  .rkt-nav > ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .rkt-nav a {
+    padding: 0.75rem 0.25rem;
+    white-space: normal;
+  }
+
+  .rkt-nav .rkt-sub {
+    display: block;
+    position: static;
+    border: 0;
+    padding: 0 0 0 1rem;
+    min-width: 0;
+  }
+
+  .rkt-nav .rkt-cta {
+    margin: 0.75rem 0 0;
+  }
+
+  .rkt-nav .rkt-cta a {
+    text-align: center;
+  }
+}
+
+/* ---------- footer ---------- */
+.rkt-footer {
+  background: var(--rkt-deep);
+  color: #c3cedb;
+  font-family: var(--rkt-font-body);
+  border-top: 3px solid var(--rkt-gold);
+}
+
+.rkt-footer .rkt-footer-in {
+  max-width: var(--rkt-max);
+  margin-inline: auto;
+  padding: 3rem var(--rkt-gutter) 2.5rem;
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+}
+
+.rkt-footer h2 {
+  font-family: var(--rkt-font-mono);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rkt-gold);
+  margin: 0 0 1rem;
+}
+
+.rkt-footer address {
+  font-style: normal;
+  line-height: 1.7;
+}
+
+.rkt-footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 2;
+}
+
+.rkt-footer a {
+  color: #dbe3ec;
+  text-decoration: none;
+}
+
+.rkt-footer a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-color: var(--rkt-gold);
+}
+
+.rkt-footer a:focus-visible {
+  outline: 2px solid var(--rkt-gold);
+  outline-offset: 2px;
+}
+
+.rkt-footer .rkt-footer-legal {
+  max-width: var(--rkt-max);
+  margin-inline: auto;
+  padding: 1.25rem var(--rkt-gutter) 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.rkt-footer .rkt-preview-chip {
+  font-family: var(--rkt-font-mono);
+  font-weight: 600;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 0.3em 0.9em;
+  align-self: center;
+}

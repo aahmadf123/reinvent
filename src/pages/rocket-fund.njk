@@ -1,0 +1,57 @@
+---
+title: The Rocket Fund
+description: The Rocket Fund is Toledo Athletics' annual giving program, funding scholarships, academic success, and equipment for 400+ student-athletes. Learn why your gift matters.
+sidearmSlug: rocket-fund
+cleanUrl: utrockets.com/rocketfund
+crumb: []
+---
+{% from "components.njk" import hero, telemetry, sechead, cards, ctaband, figureSlot %}
+
+{% call hero("Annual giving", "The Rocket Fund", "The official annual giving program of Toledo Athletics — and the financial backbone of the student-athlete experience.", true) %}
+<div class="rkt-btnrow">
+  <a class="rkt-btn" href="/give/">Give Now</a>
+</div>
+{% endcall %}
+
+{{ telemetry([
+  { n: "400+", label: "Student-athletes" },
+  { n: "17", label: "Varsity sports" },
+  { n: "365", label: "Days of impact" }
+]) }}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    <div class="rkt-split">
+      <div class="rkt-prose rkt-reveal">
+        {{ sechead("Why give?", "Because talent needs thrust") }}
+        <p>Rocket student-athletes commit to excellence twice over — once in their sport, and once in the classroom. The Rocket Fund provides the essential financial support that makes both possible: scholarships, academic assistance, and the equipment needs of 17 varsity programs.</p>
+        <p>Philanthropic gifts to the Rocket Fund are <strong>above and beyond</strong> any required payments for seating and parking. They are a direct investment in the people who wear midnight blue and gold — and they give Toledo Athletics the flexibility to meet its most important priorities.</p>
+        <p>Every gift, at every level, moves the program. And beginning at $100 a year, giving comes with <a href="/benefits/">benefits and privileges</a> that grow with your support.</p>
+      </div>
+      {{ figureSlot("Photo slot — student-athlete imagery to be supplied by Athletics Creative") }}
+    </div>
+  </div>
+</section>
+
+<section class="rkt-section rkt-section--dark">
+  <div class="rkt-wrap">
+    {{ sechead("Where it goes", "What your gift funds") }}
+    {{ cards([
+      { title: "Scholarships", text: "Tuition, housing, and books — the foundation of every student-athlete's opportunity.", href: "/give/", cta: "Fund it" },
+      { title: "Academic success", text: "Advisors, tutors, and study resources that keep Rockets on track to graduate.", href: "/give/", cta: "Fund it" },
+      { title: "Equipment & performance", text: "Practice gear, nutrition, and sports medicine across all 17 varsity sports.", href: "/give/", cta: "Fund it" }
+    ]) }}
+  </div>
+</section>
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    <div class="rkt-prose rkt-reveal">
+      {{ sechead("How it works", "One annual gift, a full year of benefits") }}
+      <p>Rocket Fund giving runs on an annual cycle. Your total giving for the year sets your donor level, which determines benefits like priority seating assistance, parking assignments, and hospitality access at Savage Arena.</p>
+      <p>Prefer to give beyond the annual cycle? Explore the <a href="/ways-to-give/legacy-society/">Rocket Fund Legacy Society</a> to endow your support in perpetuity, or <a href="/ways-to-give/gamechange/">GameChange</a> to give a little with every purchase, all year long.</p>
+    </div>
+  </div>
+</section>
+
+{{ ctaband("Be the boost they feel every day.", "/give/", "Give Now", "/benefits/", "See giving levels") }}

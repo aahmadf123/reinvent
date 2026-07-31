@@ -1,0 +1,28 @@
+---
+title: Frequently Asked Questions
+description: Answers to common questions about the Rocket Fund — giving levels, benefits, parking assignments, the Joe Grogan Room, GameChange, and more.
+sidearmSlug: rocket-fund-faq
+cleanUrl: utrockets.com/rocketfundfaq
+crumb: []
+---
+{% from "components.njk" import hero, sechead, ctaband %}
+
+{% call hero("Mission briefing", "Frequently Asked Questions", "Everything you need to know before liftoff. Can't find your answer? Our team is a phone call away.", true) %}{% endcall %}
+
+<section class="rkt-section">
+  <div class="rkt-wrap">
+    <div class="rkt-faq">
+      {% for f in faqs %}
+      <details>
+        <summary>{{ f.q }}</summary>
+        <div class="rkt-faq-a">
+          {% for p in f.a %}<p>{{ p }}</p>{% endfor %}
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+    <p class="rkt-note">Preview note: answers reflect current program materials and will receive a final review by Athletic Development before launch.</p>
+  </div>
+</section>
+
+{{ ctaband("Still have questions?", "/contact/", "Contact our team", "/give/", "Give Now") }}

@@ -1,0 +1,23 @@
+{
+  "name": "utrockets-giving",
+  "version": "1.0.0",
+  "private": true,
+  "description": "University of Toledo Athletics giving site (Rocket Fund) — SIDEARM consolidation preview",
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve --port 8080",
+    "build": "eleventy && node scripts/build-embeds.mjs && node scripts/check-links.mjs",
+    "embeds": "node scripts/build-embeds.mjs",
+    "links": "node scripts/check-links.mjs",
+    "shots": "node scripts/screenshot.mjs",
+    "a11y": "node scripts/audit-a11y.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@axe-core/playwright": "^4.10.2",
+    "@fontsource/barlow": "^5.2.6",
+    "@fontsource/barlow-condensed": "^5.2.6",
+    "@fontsource/ibm-plex-mono": "^5.2.6",
+    "playwright": "^1.54.0"
+  }
+}
